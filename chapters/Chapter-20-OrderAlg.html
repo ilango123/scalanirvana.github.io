@@ -1,0 +1,220 @@
+<html>
+<head>
+<title>Chapter 20 - Order of Algorithms</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 20: Order of Algorithms</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left">The two criteria used for selecting a data structure and 
+          algorithm are the amount of memory required and the speed of execution. 
+          The analysis of the speed of an algorithm leads to a summary statement 
+          called the order of an algorithm.</p>
+        <p><br>
+          The key topics for this lesson are:</p>
+        <p>A. Order of Algorithms<br>
+          B. Constant Algorithms, O(1)<br>
+          C. Log2N Algorithms, O(log2N)<br>
+          D. Linear Algorithms, O(N)<br>
+          E. N * Log2N Algorithms, O(N * log2N)<br>
+          F. Quadratic Algorithms, (N2)<br>
+          G. Other Orders<br>
+          H. Comparison of Orders of Algorithms</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "41%" valign="top"> 
+        <p align="left">ORDER OF ALGORITHM <br>
+          LOG2 N<br>
+          N LOG2 N <br>
+          CUBIC <br>
+          <br>
+        </p>
+      </td>
+      <td valign="top" width="45%"> 
+        <p align="left">CONSTANT<br>
+          LINEAR<br>
+          QUADRATIC<br>
+          BIG O NOTATION</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Order of Algorithms</u></font></p>
+        <p>1. The order of an algorithm is based on the number of steps that it 
+          takes to complete a task. Time is not a valid measuring stick because 
+          computers have different processing speeds. We want a method of comparing 
+          algorithms that is independent of computing environment and microprocessor 
+          speeds.</p>
+        <p>2. Most algorithms solve problems involving an amount of data, N. The 
+          order of algorithms will be expressed as a function of N, the size of 
+          the data set.</p>
+        <p> <br>
+          3. The following chart summarizes the numerical relationships of common 
+          functions of N.<br>
+        </p>
+        <p><img src="fig1.jpg" width="442" height="555"><br>
+          a. The first column, N, is the number of items in a data set.<br>
+          b. The other four columns are mathematical functions based on the size 
+          of N. In computer science, we write this with a capital O (order) instead 
+          of the traditional F (function) of mathematics. This type of notation 
+          is the order of an algorithm, or Big O notation.<br>
+          c. You have already seen the last column in an empirical sense when 
+          you counted the number of steps in the quadratic sorting algorithms. 
+          The relationship between columns A and E is quadratic - as the value 
+          of N increases, the other column increases as a function of N2.<br>
+          <br>
+          d. As we work through the rest of the student outline, assume the following 
+          array declaration of list applies:</p>
+        <p><code><b>int</b>[] list = <b>new</b> <b>int</b>[4001];</code></p>
+        <p>Here are the specifications of array <code>list</code>:</p>
+        <p>1. Index position 0 keeps track of how many integers are stored as 
+          data.<br>
+          2. Integers are stored from positions <code>list[1] ... list[list[0]]</code>.</p>
+        <p><font size=+2><u>B. Constant Algorithms, O(1)</u></font></p>
+        <p>1. This relationship was not included in the chart. Here, the size 
+          of the data set does not affect the number of steps this type of algorithm 
+          takes. For example:\</p>
+        <pre><b>int</b> howBig (<b>int</b>[] list)
+{
+    <b>return</b> list[0];
+}</pre>
+        <p>2. The number of data in the array could vary from 0..4000, but this 
+          does not affect the algorithm of howBig. It will take one step regardless 
+          of how big the data set is.</p>
+        <p>3. A constant time algorithm could have more than just one step, as 
+          long as the number of steps is independent of the size (N) of the data 
+          set.<br>
+        </p>
+        <p><font size=+2><u>C. Log2N Algorithms, O(log2N)</u></font></p>
+        <p>1. A logarithm is the exponent to which a base number must be raised 
+          to equal a given number.</p>
+        <p>2. A log2N algorithm is one where the number of steps increases as 
+          a function of log2N. If the number of data was 1024, the number of steps 
+          equals log2 1024, or 10 steps.</p>
+        <p>3. Algorithms in this category involve splitting the data set in half 
+          repeatedly. Several examples will be encountered later in the course. 
+        </p>
+        <p>4. Algorithms which fit in this category are classed as O(log N), regardless 
+          of the numerical base used in the analysis.<br>
+        </p>
+        <p><font size=+2><u>D. Linear Algorithms, O(N)</u></font></p>
+        <p>1. This is an algorithm where the number of steps is directly proportional 
+          to the size of the data set. As N increases, the number of steps also 
+          increases.</p>
+        <pre><b>long</b> sumData (<b>int</b>[] list)
+//  sums all the values in the array
+{
+  <b>long</b> total = 0;
+
+  <b>for</b> (<b>int</b> loop = 1; loop <= list[0]; loop++)
+  {
+    total += list[loop];
+  }
+  <b>return</b> total;
+}
+</pre>
+        <p>2. In the above example, as the size of the array increases, so does 
+          the number of steps in the function.</p>
+        <p>3. A non-recursive linear algorithm, O(N), always has a loop involved.</p>
+        <p>4. Recursive algorithms are usually linear where the looping concept 
+          is developed through recursive calls. The recursive factorial function 
+          is a linear function.</p>
+        <pre><b>long</b> fact (<b>int</b>  n)<br>//  precondition:  n &gt; 0<br>{<br>  <b>if</b> (1 == n)<br>    <b>return</b> 1;<br>  <b>else</b><br>    <b>return</b>  n * fact(n - 1);<br>}</pre>
+        <p>The number of calls of fact will be n. Inside of the function is one 
+          basic step, an if/then/else. So we are executing one statement n times.</p>
+        <p><font size=+2><u>E. N * Log2N Algorithms, O(N * log2N)</u></font></p>
+        <p>1. Algorithms of this type have a log N concept that must be applied 
+          N times. </p>
+        <p>2. When recursive MergeSort and Quicksort are covered, we will discover 
+          that they are O(N * log2N) algorithms.</p>
+        <p>3. These algorithms are markedly more efficient than our next category, 
+          quadratics.<br>
+        </p>
+        <p><font size=+2><u>F. Quadratic Algorithms, (N^2)</u></font> </p>
+        <p>1. This is an algorithm where the number of steps required to solve 
+          a problem increases as a function of N2. For example, here is bubbleSort.</p>
+        <pre><b>void</b> bubbleSort (<b>int</b>[][] list)
+{
+  <b>for</b> (<b>int</b> outer = 1; outer <= list[0]-1; outer++)
+  {
+    <b>for</b> (<b>int</b> inner = 1; inner <= list[0]-outer; inner++)
+    {
+      <b>if</b> (list[inner] > list[inner + 1])
+      {
+        // swap list[inner] & list[inner + 1]
+        <b>int</b> temp = list[inner];
+        list[inner] = list[inner + 1]);
+        list[inner + 1] = temp;
+      }
+    }
+  }
+}</pre>
+        <p>2. The <b>if</b> statement is buried inside nested loops, each of which 
+          is tied to the size of the data set, N. The <b>if</b> statement is going 
+          to happen approximately N2 times.</p>
+        <p>3. The efficiency of this bubble sort was slightly improved by having 
+          the inner loop decrease. But we still categorize this as a quadratic 
+          algorithm.</p>
+        <p>4. For example, the number of times the inner loop happens varies from 
+          1 to (N-1). On average, the inner loop occurs (N/2) times.</p>
+        <p>5. The outer loop happens (N-1) times, or rounded off N times.</p>
+        <p>6. The number of times the if statement is executed is equal to this 
+          expression:</p>
+        <p># if statements = (Outer loop) * (Inner loop)<br>
+          # if statements = (N) * (N/2)<br>
+          # if statements = (N^2)/2<br>
+          <br>
+          7. Ignoring the coefficient of 1/2, we have an algorithm that is quadratic 
+          in nature.</p>
+        <p>8. When determining the order of an algorithm, we are only concerned 
+          with its category, not a detailed analysis of the number of steps.<br>
+        </p>
+        <p><font size=+2><u>G. Other Orders</u></font></p>
+        <p>1. A cubic algorithm is one where the number of steps increases as 
+          a cube of N, or N^3.</p>
+        <p>2. An exponential algorithm is one where the number of steps increases 
+          as the power of a base, like 2^N.</p>
+        <p>3. Both of these categories are astronomical in the number of steps 
+          required. Such algorithms cannot be implemented on small personal computers.</p>
+        <p><font size=+2><u>H. Comparison of Orders of Algorithms</u></font></p>
+        <p>1. We obviously want to use the most efficient algorithm in our programs. 
+          Whenever possible, choose an algorithm that requires the fewest number 
+          of steps to process data.</p>
+        <p>2. The transparency, T.A.22.1, <i>Order vs. Efficiency in Algorithms</i>, 
+          summarizes all the categories in this lesson. Note that both axes in 
+          this diagram are exponential in scale.</p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left">When designing solutions to programming problems, we are 
+          concerned with the most efficient solutions regarding time and space. 
+          We will consider memory requirements at a later time. Speed issues are 
+          resolved based on the number of steps required by algorithms. 
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

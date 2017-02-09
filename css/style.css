@@ -1,0 +1,330 @@
+/* CSS declarations go here */
+/* Test to see if change made on ilangolulu succeeded */
+/* Test2 to see if change made on ilangolulu succeeded */
+.jumbotron {
+  min-height: 100px;
+  margin-bottom: 0px !important;
+}
+.header-title {
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400 !important;
+  letter-spacing: 4px;
+  display: inline-block;
+}
+#navbar-top {
+  border-bottom: 3px solid #F5D451;
+}
+.navbar-brand {
+  height: 50px;
+  font-weight: 500;
+}
+.navbar-default {
+  background-color: #FFF;
+}
+.navbar-nav li > a,
+.navbar-brand {
+  color: #473899 !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: #f1c40f !important;
+  color: #fff !important;
+}
+.navbar-brand.active,
+.navbar-brand.active:hover,
+.navbar-brand.active:focus {
+  background-color: #f1c40f !important;
+  color: #fff !important;
+}
+.clickable:hover,
+.clickable2:hover {
+  background-color: #f5d451 !important;
+}
+.navbar {
+  margin-bottom: 0px !important;
+}
+.card img.profile {
+  width: 100%;
+  max-width: 240px;
+}
+.navbar.greenstein {
+  background-color: #FFE552;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 1em;
+  text-align: center;
+  border: 0px none;
+}
+
+.card a {
+  color: #473899;
+}
+
+.card {
+  background-color: #FFF;
+  padding: 10px 10px;
+  border-radius: 6px;
+  border: solid 2px rgba(0, 0, 0, 0.1);
+  min-height: 200px;
+  margin-bottom: 15px;
+}
+.card button {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+}
+
+.card button .glyphicon {
+  top:3px;
+  float: right;
+  color: #868;
+}
+.dropdown-menu {
+  top: 0px;
+}
+
+.card .btn-group-vertical {
+  width: 95%;
+}
+
+.card h1,
+.card h2,
+.card h3,
+.card h4 {
+  padding-left: 10px;
+}
+.floaty-icons i {
+  font-size: 100px;
+}
+.jumbotron {
+  /*background-color: rgba(111, 84, 153, 1);*/
+
+  background-color: #D9D8CE;
+  color: #FFF;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+.contents {
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+#content {
+  padding-top: 25px;
+  margin-top: 0px !important;
+}
+.navbar-toggle {
+  padding: 7px 8px;
+  border: 2px solid;
+}
+.navbar-default .navbar-collapse {
+  border-color: #f5d451;
+}
+.navbar-default .navbar-toggle {
+  border-color: #473899 !important;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #473899 !important;
+}
+body {
+  background-image: url('/images/geometry2.png');
+  background-repeat: repeat;
+}
+h2,
+h3,
+h4,
+h5 {
+  padding-top: 0px;
+  margin-top: 5px;
+}
+@media (max-width: 600px) {
+  .header-title.sub {
+    display: none;
+  }
+}
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+  background-color: #f5d451 !important;
+}
+@media (max-width: 767px) {
+  .collapsing > ul > li {
+    display: inline-block;
+    width: 30%;
+  }
+  .collapse.in > ul > li {
+    display: inline-block;
+    width: 30%;
+  }
+}
+@media (min-width: 850px) {
+  .container {
+    width: 830px;
+  }
+}
+@media (min-width: 916px) {
+  .container {
+    width: 904px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1090px) {
+  .container {
+    width: 1060px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.coll_container {
+  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 5px 2px;
+}
+.page_collapsible {
+  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 3px 5px 3px;
+  border-radius: 6px 6px 0px 0px;
+}
+.card {
+  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 3px 1px;
+}
+.card p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.page_collapsible {
+  font-weight: 700;
+}
+.content {
+  padding-right: 10px;
+}
+#footer {
+  padding-left: 50px;
+}
+.card.gold {
+  background-color: #F5D76E;
+  color: #473899 !important;
+}
+hr {
+  padding: 10px 10px 10px 10px !important;
+  margin: 0px !important;
+  border-top: 1px solid #ddd;
+}
+
+.bottom {
+  background-color: white;
+  border-top: 3px solid #DDD;
+  padding: 20px 0px;
+}
+
+.card h3 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.card a {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#myCarousel {
+  height: auto;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1980392) 0px 1px 2px 3px;
+}
+.carousel-control.right {
+    background-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.carousel-control.left {
+    background-image: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+.item {height: auto; overflow: hidden;}
+.item img {
+  width: 100%;
+  height: auto;
+  min-height: auto;
+  max-width: none !important;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #AA6CC4;
+  margin-top: -1px;
+}
+
+.card {
+  border: solid 2px rgba(205, 120, 205, 0.3)
+}
+
+.bottom {
+  border-top: 5px solid #8E44AD;
+  margin-top: 10px;
+  margin-right: -25px;
+  margin-left: -10px;
+  padding-bottom: 30px;
+}
+
+.card .placard {
+  width: 100%;
+}
+
+.card.p {
+  min-height: 0px;
+}
+
+.placards {
+  padding-left: 5px;
+  margin-right: -10px;
+}
+
+footer {
+  height: 50px;
+  background-color: #F8E8FF;
+  vertical-align: center;
+}
+
+.page_collapsible.collapse-close {
+  background-color: #888 !important;
+}
+
+button {
+  border-radius: 4px !important;
+}
+
+.lesson_content table {
+  margin-top: 30px;
+  background-color: #fff8ff !important;
+  display: none;
+}
+
+.lesson_content table td {
+   padding: 20px;
+}
+
+.must_display {
+  display: inherit !important;
+}
+
+@media (max-width: 767px) {
+  .secondary {
+    display: none;
+  }
+
+  #thursday {
+    border-left: 2px solid #ccc !important;
+  }
+}
+
+#bighead {
+  font-size: 56px;
+}
+
+div.coll_container {
+  margin-bottom: 10px !important;
+}

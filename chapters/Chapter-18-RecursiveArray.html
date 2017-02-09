@@ -1,0 +1,271 @@
+<html>
+<head>
+<title>Chapter 18 - Recursive Array Programming</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 18: Recursive Array Programming</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Suppose you were trapped in a maze and you needed to find 
+          your way out. Your initial attempts are random and due to the same appearance 
+          of the white walls, you begin wasting time and energy trying the same 
+          routes over and over. After some thought and remembering a computer 
+          science algorithm, you take advantage of a tool in your pocket, a marking 
+          pen. You begin marking the walls with some notes and a time stamp. At 
+          each branch point, you mark the direction you are about to attempt with 
+          an arrow. If a dead-end is encountered just around the corner, you retreat 
+          to the branch point, mark &quot;dead-end&quot; for that direction, and 
+          try another direction. By marking which directions have failed, you 
+          avoid trying them again. This 2 dimensional problem and the required 
+          backtracking leads us to a recursive matrix problem! After defining 
+          the problem, an entire solution will be covered in the outline. Your 
+          programming exercise will also be a recursive matrix problem.</p>
+        <p> The maze searching problem is translated from, Oh! Pascal!, 2nd edition. 
+        </p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. Defining the Maze Problem<br>
+          B. Developing the Recursive Solution<br>
+          C. The Solution to the Maze Problem</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left">BACKTRACKING</p>
+      </td>
+      <td valign="top"> 
+        <p align="left">&nbsp; </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Defining the Maze Problem</u></font></p>
+        <p>1. The maze will be defined as a 2-D grid of asterisks (marking walls) 
+          and blanks (marking potential paths). The size of the grid will be 12 
+          x 12 and the starting location will be at 6, 6.</p>
+        <p>2. The data structure for this problem will be an 2 dimensional array 
+          of char. The array will be declared as a 13 x 13 grid so that we can 
+          use locations 1..12 by 1..12. Row 0 and column 0 will not be used in 
+          the data structure.</p>
+        <p>3. The initial grid is stored as a text file and will be loaded into 
+          the array.<br>
+        </p>
+        <p><font size="2">{Here is a copy of the mazeData.txt file} </font></p>
+        <p>&nbsp;<pre>*** ********
+***    *****
+*** **  ****
+***   *  ***
+***** ** ***
+***** ** ***
+***** ******
+*****   ****
+****  * ****
+*   **  ****
+* *    *****
+* **********
+</pre>
+        <p>4. A potential path out of the maze will be traced with a !, with moves 
+          limited to horizontal or vertical directions.</p>
+        <p>5. We will be at an exit point if we arrive at row 1 or MAXROW, or 
+          at column 1 or MAXCOL.</p>
+        <p>6. The solution is a backtracking algorithm involving a series of trial 
+          and error attempts. If a dead-end is hit, back up and try a different 
+          direction.<br>
+        </p>
+        <p><font size=+2><u>B. Developing the Recursive Solution</u></font></p>
+        <p>1. In developing a recursive solution, consider the base cases first. 
+          What situation(s) cause the algorithm to stop?<br>
+          a. We have arrived at a location which is off the data structure. It 
+          is important to catch this situation first to avoid an array indexing 
+          error.<br>
+          b. Encountering a '*' character means that we have run into a wall. 
+          The algorithm should stop.<br>
+          c. Arriving at a location which has a row or column value equal to 1 
+          or MAXROW or MAXCOL. We have found an exit point.</p>
+        <p>2. The general case of encountering a blank space requires the following 
+          steps:<br>
+          a. Change the character value from the blank space to the '!' character.<br>
+          b. Check to see if we are at an exit point. If we are, print the maze 
+          with a trail of '!' markers to the exit point.<br>
+          c. If we are not at an exit point, make 4 recursive calls to check all 
+          4 directions, feeding the new coordinates of the 4 neighboring cells.</p>
+        <p>3. When a recursive call is made, a value parameter will be used in 
+          the formal parameter list of the function. Each recursive call will 
+          work with a copy of the array. Why is this? If a reference parameter 
+          was used the placement of ! marks would be permanent in the data structure. 
+          However, when an exit point is found we want to print only the successful 
+          trail of ! marks which leads to an exit.</p>
+        <p><font size=+2><u>C. The Solution to the Maze Problem</u></font></p>
+        <pre><b>import</b> apcslib.*;
+
+<b>class</b> ThreadTheMaze
+{
+  <b>private final static int</b> MAXROW = 12;
+  <b>private final static int</b> MAXCOL = 12;
+  <b>private final static char</b> BLANK = ' ';
+
+  <b>public void</b> loadMaze(char[][] maze)
+  {
+    TextReader inFile = <b>new</b> TextReader("mazeData.txt");
+
+    <b>for</b> (<b>int</b> row = 1; row <= MAXROW; row++)
+    {
+      <b>for</b> (<b>int</b> col = 1; col <= MAXCOL; col++)
+      {
+        maze[row][col] = inFile.readAnyChar();
+      }
+      inFile.readLine();
+    }
+  }
+
+  <b>public void</b> printMaze(char[][] maze)
+  {
+    TextReader kbd = <b>new</b> TextReader();
+
+    <b>for</b> (<b>int</b> row = 1; row <= MAXROW; row++)
+    {
+      <b>for</b> (<b>int</b> col = 1; col <= MAXCOL; col++)
+      {
+        System.out.print("" + maze[row][col]);
+      }
+      System.out.println();
+    }
+    System.out.println();
+    <b>char</b> anyChar = kbd.readAnyChar();
+  }
+
+  /**
+   *  Will attempt to find a path out of the maze.  A path will
+   *  be marked with the ! marker.  The method makes a copy of
+   *  the array each time so that only the path out will be
+   *  marked, otherwise extra ! markers will appear in the
+   *  answer. The function is recursive.
+   */
+  <b>public void </b>traceMaze(char[][] maze, int row, int col)
+  {
+    // make a local copy of maze
+    char[][] mazeCopy = <b>new</b> char[maze.length][maze[0].length];
+    <b>for</b> (<b>int</b> r = 0; r < mazeCopy.length; r++)
+    {
+      <b>for</b> (<b>int</b> c = 0; c < mazeCopy[0].length; c++)
+      {
+        mazeCopy[r][c] = maze[r][c];
+      }
+    }
+
+    <b>if</b> (1 <= row && row <= MAXROW && 1 <= col && col <= MAXCOL)
+    {
+      // boundary check, if false, a base case
+      <b>if</b> (BLANK == mazeCopy[row][col])
+      {
+        // if false, base case
+        mazeCopy[row][col] = '!';
+        <b>if</b> (1 == row || MAXROW == row ||
+            1 == col || MAXCOL == col)
+        {
+          printMaze(mazeCopy);      // base case
+        }
+        <b>else</b>
+        {
+          traceMaze(mazeCopy, row - 1, col);
+          traceMaze(mazeCopy, row, col + 1);
+          traceMaze(mazeCopy, row + 1, col);
+          traceMaze(mazeCopy, row, col - 1);
+        }
+      }
+    }
+  }
+
+  <b>public static void main</b>(String[] args)
+  {
+    ThreadTheMaze mazeWalker = <b>new</b> ThreadTheMaze();
+
+    char[][] maze = <b>new</b> char[MAXROW + 1][MAXCOL + 1];
+
+    mazeWalker.loadMaze(maze);
+    mazeWalker.traceMaze(maze, 6, 6);
+  }
+}
+</pre>
+        <p>Here are the two solutions to starting at location (6,6):</p>
+        <table width="75%" border="0">
+          <tr>
+            <td>
+<pre>***!********
+***!   *****
+***!**  ****
+***!!!*  ***
+*****!** ***
+*****!** ***
+***** ******
+*****   ****
+****  * ****
+*   **  ****
+* *    *****
+* **********</pre>
+            </td>
+            <td>
+<pre>*** ********
+***    *****
+*** **  ****
+***** ** ***
+***** ** ***
+*****!** ***
+*****!******
+*****!!!****
+****  *!****
+*!!!**!!****
+*!*!!!!*****
+*!**********</pre>
+            </td>
+          </tr>
+        </table>
+        <p>1. It is very significant that a blank space be changed to an '!' mark 
+          before the recursive calls are made. For example, suppose we begin at 
+          location 6,6 and a blank space is encountered. If we did not change 
+          the blank to an '!' mark, the recursive call to solve the upward direction 
+          receives the location 5,6. This recursive call will eventually look 
+          back down at location 6,6 - the location where it came from. A blank 
+          space would still be there and the recursive calls would go round in 
+          circles until the computer runs out of memory.</p>
+        <p>2. Changing the blank space to an '!' mark is like leaving a trail 
+          of markers. When a recursive call of a neighboring cell looks back at 
+          the cell from which it came it will see a '!' mark and not a blank space. 
+          <br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Some of the earlier examples of recursion were applied 
+          to linear problems. The factorial or Fibonacci problems were one dimensional, 
+          which required only one recursive call within the algorithm. The maze 
+          problem is best solved recursively because of the different directions 
+          that the problem solving takes. Loosely stated, any problem that involves 
+          multiple directions and returning to a branch point is a likely candidate 
+          for recursion.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

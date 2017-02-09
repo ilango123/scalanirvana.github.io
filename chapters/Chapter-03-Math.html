@@ -1,0 +1,222 @@
+<HTML><HEAD><TITLE>Chapter 3 - Math Functions, Constants</TITLE></HEAD>
+<BODY>
+  <H2 align=center>Chapter 3 - Math Functions, Constants</H2>
+  <HR align=center width="80%">
+
+  <CENTER>
+  <Table BORDER = "0" WIDTH = "80%" CELLPADDING="10">
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>INTRODUCTION:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3">
+  <P ALIGN="left">The JAVA language provides some unusual operators called 
+  assignment operators.  These shortcuts allow you to write shorter source 
+  code and they allow the compiler to create more efficient runtime code.  
+  Because of the abundance of operators in this language, the operator 
+  precedence table in JAVA is a long one.  We begin our study of operator 
+  precedence with the familiar math operators.<BR><BR>
+  In keeping with the concept of recycling code, we will examine some of 
+  the functions available in the <B>Math</B> class.  A fundamental set of 
+  math methods are pre-defined in JAVA and ready for use.<BR><BR>
+  The key topics for this lesson are:<BR><BR>
+  A. &nbsp;Standard Math Methods<BR>
+  B. &nbsp;Precedence of Math Operators<BR>
+  C. &nbsp;Assignment Operators<BR>
+  D. &nbsp;Increment Operators<BR>
+  E. &nbsp;Named Constants
+  </P>
+  </TD>
+  </TR>
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>VOCABULARY:</B></P></TD>	
+  <TD WIDTH = "27%" VALIGN="top"><P ALIGN="left">
+  PRECEDENCE<BR>INCREMENT OPERATOR<BR>NAMED CONSTANTS</TD>
+  <TD WIDTH = "30%" VALIGN="top"><P ALIGN="left">
+  ASSIGNMENT OPERATORS<BR>DECREMENT OPERATOR</P></TD>
+  <TD WIDTH = "23%" VALIGN="top"></TD>
+  </TR>
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>DISCUSSION:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">
+  <P><FONT size=+2>A. <U>Standard Math Methods</U></FONT></P>
+  <P>1. The <B>Math</B> class in the <B>java.lang</B> package contains class methods for 
+  commonly used mathematical functions.  Java loads the <B>java.lang</B> package automatically, 
+  so no special actions are required to access these.
+  </P>
+  <P>2. For example, to express the mathematical formula
+  <PRE>
+      0.5 sin ( x - pi / y^3 )</PRE>
+  Using the Math class constant and methods would give
+  <PRE>
+      (1.0/2.0) * Math.sin(x – Math.PI / Math.pow(y, 3) );  </PRE>
+  Notice how the class methods and class constants are referred to in the expression. 
+  The syntax is
+  <PRE>
+	&lt;class name&gt;.&lt;method name&gt; ( &lt;arguments&gt; );  </PRE>
+  or
+  <PRE>
+	&lt;class name&gt;.&lt;class constant&gt;;  
+  </PRE>
+  </P>
+
+  <P><FONT size=+2>B. &nbsp;<U>Precedence of Math Operators</U></FONT></P>
+  <P>1. Precedence rules govern the order in which an expression is solved.  
+  For example:
+  <PRE>
+	2 + 3 * 6 = 20       The * operator has priority over +.  </PRE>
+  </P>
+  <P>2. Associativity refers to the order in which operators are applied if they 
+  have the same precedence level.  The two possibilities are from left-to-right or right-to-left.
+  </P>
+  <P>3.	The following table summarizes precedence and associativity of math operators:<BR><BR>
+  <TABLE WIDTH = 400 BORDER = 1><TBODY>
+  <TR><TH Width = "40%" ALIGN = middle>Level of Precedence</TH>
+  <TH Width = "30%" ALIGN = middle>Operator</TH>
+  <TH Width = "30%" ALIGN = middle>Associativity</TH></TR>	
+  <TR><TD Width = "40%" ALIGN = middle>Highest</TD><TD Width = "30%" ALIGN = middle>unary -</TD>
+  <TD Width = "30%" ALIGN = middle>right to left</TD></TR>
+  <TR><TD Width = "40%" ALIGN = middle>&nbsp;</TD><TD Width = "30%" ALIGN = middle>* / %</TD>
+  <TD Width = "30%" ALIGN = middle>left to right</TD></TR>
+  <TR><TD Width = "40%" ALIGN = middle>Lowest</TD><TD Width = "30%" ALIGN = middle>+ -</TD>
+  <TD Width = "30%" ALIGN = middle>left to right</TD></TR>
+  </TBODY></TABLE>
+  </P>
+  <P>4. An  example follows:<BR><BR>
+  <TABLE WIDTH = 400 BORDER = 1><TBODY>
+  <TR><TD Width = "60%" ALIGN = middle>9  +  5  *  7  %  8  -  5</TD>
+  <TD Width = "40%" ALIGN = middle>(solve * first)</TD></TR>
+  <TR><TD Width = "60%" ALIGN = middle>9  +  35  %  8  -  5</TD>
+  <TD Width = "40%" ALIGN = middle>(solve % next)</TD></TR>
+  <TR><TD Width = "60%" ALIGN = middle>9  +  3  -  5</TD>
+  <TD Width = "40%" ALIGN = middle>(solve left-to-right)</TD></TR>
+  <TR><TD Width = "60%" ALIGN = middle>7</TD>
+  <TD Width = "40%" ALIGN = middle>&nbsp;</TD></TR>	
+  </TBODY></TABLE>
+  </P>
+  <P>5. Parentheses take priority over all the math operators.
+  <PRE>
+      (5+6)/(9-7) = 11/2 = 5   (integer division is used here)  </PRE>
+  </P>
+  <P>6. JAVA has a long list of operators for which there are many  different levels of 
+  precedence.  A partial list of the operators in JAVA have been summarized in <a href="../L06if-else/L06if-else.html#precedence">Chapter 6</a>, organized by precedence level.  </P>
+
+  <P><FONT size=+2>C. &nbsp;<U>Assignment Operators</U></FONT></P>
+  <P>1. The statement &nbsp;&nbsp;&nbsp;&nbsp;<B>number = number + 5;</B>&nbsp;&nbsp;
+  &nbsp;&nbsp; is an example of an accumulation statement.  The old value of <B>number</B> 
+  is incremented by 5 and the new value is stored in <B>number</B>.
+  </P>
+  <P>2. The above statement can be replaced as follows:
+  <PRE>
+	number += 5;  </PRE>
+  </P>
+  <P>3.	Java provides for the following assignment operators:
+  <PRE>
+        +=       -=       *=       /=       %=  </PRE>
+  </P>
+  <P>4. The following examples are equivalent statements:
+  <PRE>
+        rate *= 1.05;        rate = rate * 1.05;
+        sum += 25;           sum = sum + 25;
+        number %= 5;         number = number % 5;  </PRE>
+  </P>
+  <P>5. The precedence of the assignment operators is the lowest of all operators.
+  </P>
+
+  <P><FONT size=+2>D. &nbsp;<U>Increment Operators</U></FONT></P>
+  <P>1. Incrementing or decrementing by one is a common task in programs.  This can 
+  be solved by the statements:
+  <PRE>
+        n = n + 1;     or     n += 1;  </PRE>
+  </P>
+  <P>2. Java also provides a unary operator called an increment operator, ++.
+  </P>
+  <P>3. The statement  n = n + 1  can be rewritten as ++n. The following statements 
+  are equivalent:
+  <PRE>
+        n = n + 1;          ++n;
+        sum = sum + 1;      ++sum;  </PRE>	
+  </P>
+  <P>4. JAVA also provides for a decrement operator, --, which decrements a value by one.  
+  The following are equivalent statements:
+  <PRE>
+        n = n - 1;          --n;
+        sum = sum - 1;      --sum;  </PRE>
+  </P>
+  <P>5. The increment and decrement operator can be written as either a prefix or postfix 
+  unary operator.  If the ++ is placed before the variable it is called a prefix increment 
+  operator (++number), but it can follow after the variable (number++), which is called a 
+  postfix increment operator.  The following three statements have the same effect:
+  <PRE>
+        ++number;      number++;      number = number + 1;  </PRE>
+  </P>
+  <P>6. Before we look at the difference between prefix and postfix unary operators it 
+  is important to remember Java operators solve problems and often return values.  Just 
+  as the assignment operator (=) returns a value, the ++ and -- operators return values.  
+  Consider the following code fragments:<BR><BR>
+  <TABLE WIDTH = 500 cellPadding = 10 BORDER = 1><TBODY>
+  <TR><TD Width = "50%" ALIGN = left>int  a=1, b;<BR><BR>b = ++a;<BR><BR>
+  After execution of the code<BR><BR>b = ++a;<BR><BR>a = 2 and b = 2</TD>
+  <TD Width = "50%" ALIGN = left>int  a=1, b;<BR><BR>b = a++;<BR><BR>
+  After execution of the code<BR><BR>b = a++;<BR><BR>a = 2 and b = 1</TD></TR>
+  </TBODY></TABLE>
+  </P>
+  <P>7. The statement  b = ++a  uses the preincrement operator.  It increments the 
+  value of a and returns the new value of a.
+  </P>
+  <P>8. The statement b = a++ uses the postincrement operator.  It increments the 
+  value of a and returns the old value of a.
+  </P>
+  <P>9. The precedence and associativity of the unary increment and decrement operators 
+  is the same as the unary - operator.
+  </P>
+
+  <P><FONT size=+2>E. &nbsp;<U>Named Constants</U></FONT></P>
+  <P>1. Java allows for declaration of named constants in a program.  The general 
+  syntax is:
+  <PRE>
+        final &lt;data type&gt; &lt;CONSTANT_NAME&gt; = &lt;expression&gt;;  </PRE>
+  a. &nbsp;<B>final</B> is a Java reserved word<BR>
+  b. &nbsp;&lt;data type&gt; is any previously defined type<BR>
+  c. &nbsp;&lt;CONSTANT_NAME&gt; is a valid Java identifier<BR>
+  d. &nbsp;&lt;expression&gt; is any valid expression of the appropriate type
+  </P>
+  <P>2. Examples:
+  <PRE>
+        final double PI = 3.14159;
+        final double GAS_CONSTANT = 8.206E-2D;
+        final short DAY_IN_WEEK = 7;
+        final char BIG_J = 'J';  </PRE>
+  </P>
+  <P>3. Some programmers declare constant identifiers using all uppercase letters.  This 
+  distinguishes such identifiers from variables.  This curriculum guide will use uppercase 
+  identifiers for constant values.
+  </P>
+  <P>4.	The major benefit of using constant values occurs when such constants need to be 
+  modified.  Suppose you have a program which uses a tax rate value in 20 different lines of 
+  code.  If you had used the literal value of 0.0525, you would need to change the value in 20 
+  different spots.  However, if you had declared a constant identifier and used the identifier 
+  in those 20 spots, then one change at the top of the program would update the value throughout 
+  the program.
+  <PRE>
+        final double TAXRATE = 0.0825;  </PRE>
+  All references to TAXRATE are now changed.
+  </P>
+  </TD></TR>
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>SUMMARY/ REVIEW:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">
+  <P>Your lab work will incorporate the material from the previous lessons.  The worksheet 
+  will provide practice on operator precedence and assignment operators.
+  </P>
+  </TD></TR>
+  </TABLE>
+  </CENTER>
+<P>
+   <BR><BR>
+   <CENTER><A href="../../index.html">Back to Java Main Page</A>
+  </CENTER>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>Chapter 21 - Merge and Mergesort</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 21: Merge and Mergesort</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left">In Chapter 21, we studied the quadratic sorting algorithms. 
+          We saw how the number of steps required increased as an N2 factor when 
+          sorting N elements. In the next two lessons we will study two recursive 
+          sorts, mergesort and quicksort, which work by dividing lists in half. 
+          In this lesson, after solving a preliminary merge problem, you will 
+          code a recursive mergesort.</p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. A Merge Algorithm<br>
+          B. A Sort Using Merge and Selectionsort<br>
+          C. Recursive Mergesort<br>
+          D. Order of Recursive Mergesort</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "41%" valign="top"> 
+        <p align="left">MERGE </p>
+      </td>
+      <td valign="top" width="45%"> 
+        <p align="left">MERGESORT</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. A Merge Algorithm</u></font></p>
+        <p>1. The mergesort algorithm requires a merge algorithm which we will 
+          solve first.</p>
+        <p>2. The method header and the specifications of the merge routine are 
+          given below. You may assume the array definitions from the sorting template 
+          program in Chapter 21 apply.<br>
+        <pre>
+
+/* Preconditions: Lists A and B are sorted in nondecreasing
+                  order.
+   Action: Lists A and B are merged into one list, C.
+   Postcondition: List C contains all the values from
+                  Lists A and B, in nondecreasing order.
+ */
+<b>void</b> merge (<b>int</b>[] A, <b>int</b>[] B, <b>int</b>[] C)
+</pre>
+        <p> <br>
+          3. The <code>merge</code> method breaks down into four cases:<br>
+          a. List A is done, so pull a value from List B.<br>
+          b. List B is done, so pull a value from List A.<br>
+          c. Neither is done, and if List<code> A[i] </code>&lt; List <code>B[j]</code> 
+          (where i &amp; j are index markers in lists A and B) then pull from 
+          List A.<br>
+          d. Neither is done, and if List <code>B[j]</code>&lt;= List <code>A[i]</code> 
+          then pull from List B.</p>
+        <p>4. It is important to deal with the four cases in the order described 
+          above. For example, if you are done with List A (if i &gt; A.length-1), 
+          you do not want to inspect any values past A[i].<br>
+        </p>
+        <p>5. Example of method Merge:</p>
+        <p>A: 2 6 11 15 21</p>
+        <p>B: 4 5 9 13 17 25 29</p>
+        <p>C: 2 4 5 6 9 11 13 15 17 21 25 29<br>
+        </p>
+        <p><font size=+2><u>B. A Hybrid Sort (Merge with Selectionsort)</u></font></p>
+        <p>1. The overall logic of mergesort is to &quot;divide and conquer.&quot; 
+          Before we look at a recursive mergsort, let's investigate a hybrid sort that
+          takes a list of random integers, splits them into two equal-sized lists (each 
+          with the same number of elements, plus or minus one), with each half-list 
+          sorted independently of the other. The next step will be to merge the 
+          two sorted sublists back into one sorted list.</p>
+        <p>2. Here is the method, combining merge with a selectionsort:<br>
+        <pre>
+
+/* List A is unsorted, with A.length values in the array.
+   first is the index position of the first value, last
+   is the index position of the last value in the array;
+   first < last. */
+<b>void</b> DivideSort (<b>int</b> A[], <b>int</b> first, <b>int</b> last)
+{
+  <b>int</b>  mid;
+
+  mid = (first + last) / 2;
+  selectionSort (A, first, mid);
+  selectionSort (A, mid+1, last);
+  merge (A, first, mid, last);
+}</pre>
+        <p>3. A modified selection sort would have to be written to sort a range 
+          of values in list A. Likewise, the merge method will also have to be 
+          modified to internally merge two halves of the array into one ordered 
+          array.</p>
+        <p>4. The following example will illustrate the action of the above method
+        on a list of 8 values:</p>
+        <p><img src="fig1.jpg" width="396" height="180"></p>
+        <p>5. Merging the two halves of the array in the modified merge method 
+          will require the use of a local temporary array. Because the two sublists 
+          are stored within one array, the easiest approach is to merge the two 
+          sublists into another array, then copy the temp array back to the original.</p>
+        <p><img src="fig2.jpg" width="425" height="114"></p>
+        <p>Then copy Temp back into List A:</p>
+        <p><img src="fig3.jpg" width="425" height="114"></p>
+        <p>6. This version of merge will need to be able to work with sections 
+          of List A. Here is a proposed method parameter list for <code>merge</code>:<br>
+        <pre>
+
+/* will merge the two sorted sublists within A into
+   one continuous sublist from A[first] .. A[last].
+   The left list ranges from A[first]..A[mid].  The
+   right list ranges from A[mid+1]..A[last].
+ */
+<b>void</b> merge (<b>int</b> A[], <b>int</b> first, <b>int</b> mid, <b>int</b> last)
+</pre>
+        <p>7. You will need to write the code for this version of the merge method 
+          to support a recursive mergesort.</p>
+        <p><font size=+2><u>C. Recursive Mergesort</u></font></p>
+        <p>1. Instead of dividing the list once, a recursive mergesort will keep 
+          dividing the list in half until the sublists are one or two values in 
+          length.</p>
+        <p>2. When developing a recursive solution, a key step is identifying 
+          the base case of the solution. What situation will terminate the recursion? 
+          In this case, a sublist of one or two values will be our two base cases.</p>
+        <p>3. Let's try and work through the recursive mergesort of a list of 
+          eight values.<br>
+        </p>
+        <img src="fig4.jpg" width="332" height="45"> 
+        <p>The list is divided into two sublists.</p>
+        <p><img src="fig5.jpg" width="359" height="45"></p>
+        <p>Now let's work on the left sublist. It will be divided into lists of 
+          two.</p>
+        <p><img src="fig6.jpg" width="195" height="48"></p>
+        <p>Each list of two is now very easy to sort. After each list of two is 
+          sorted, we then merge these two lists back into a list of four.</p>
+        <p><img src="fig7.jpg" width="195" height="182"></p>
+        <p>Now the algorithm proceeds to solve the right sublist (positions 5-8) 
+          recursively. Then the two lists of four are merged back together.</p>
+        <p><img src="fig8.jpg" width="372" height="304"><br>
+        </p>
+        <p><font size=+2><u>D. Order of Recursive Mergesort</u></font></p>
+        <p>1. Suppose we have a list of 8 numbers. If we trace the migration of 
+          one value, it will be a member of the following sizes of lists: eight, 
+          four, two. The number of calls of mergesort needed to sort one value 
+          into its final resting spot is log2N. If N = 8, then it will take three 
+          calls of the algorithm for one value to find its final resting spot.</p>
+        <p>2. We must apply log2N steps to N elements in the list. The order of 
+          recursive Mergesort is O(N * log2N) or O(N * log N).</p>
+        <p>3. What about the cost of merging the fragments of the list? The merge 
+          algorithm is a linear one, so when combined with the Mergesort routine 
+          we have a O (N * log N) + O(N), which remains in the category of an 
+          O(N * log N) algorithm.<br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left">When you time and graph the recursive mergesort you will 
+          notice a dramatic change in efficiency. This concept of dividing the 
+          problem in two is used in several other classic algorithms. Once again, 
+          recursion makes it easier to define a problem and code the solution.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

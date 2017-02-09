@@ -1,0 +1,334 @@
+<html>
+<head>
+<title>Chapter 7 - while loops</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 7: while Loops<br>
+    </b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font>
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">In many situations, the number of times a loop will occur 
+          is dependent on some changing condition within the loop itself. The<b> 
+          while</b> control structure allows us to set up a conditional loop, 
+          one which occurs for an indefinite period of time until some condition 
+          becomes false. In this lesson we will focus on <b>while</b> loops with 
+          some minor usage of nested <b>if-else</b> statements inside. Later on 
+          in the course you will be asked to solve very complex nesting of selection, 
+          iterative, and sequential control structures. The <b>while</b> loops 
+          are extremely useful but also very susceptible to errors. This lesson 
+          will cover key methodology issues that assist in developing correct 
+          loops. <br>
+        </p>
+        <p>The key topics for this lesson are:</p>
+        <p> A. The <b>while</b> Loop<br>
+          B. Loop Boundaries<br>
+          C. The <b>break</b> Statement Variations<br>
+          D. Conditional Loop Strategies<br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left"> <b>while</b><br>
+          <b>break</b><br>
+          STATE </p>
+      </td>
+      <td valign="top"> 
+        <p align="left"> SENTINEL<br>
+          BOUNDARY</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2>A. <u>The while Loop</u></font></p>
+        <p>1. The general form of a while statement is:</p>
+        <pre>while (expression) 
+           statement;</pre>
+        <p>a. &nbsp;&nbsp;As in the if-else control structure, the Boolean expression 
+          must be enclosed in parentheses ().<br>
+          b. &nbsp;&nbsp;The statement executed by the while loop can be a simple 
+          statement, or a compound statement &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blocked 
+          with braces {}.<br>
+        </p>
+        <p>2. If the expression is true the statement is executed. After execution 
+          of the statement, program control returns to the top of the <b>while</b> 
+          construct. The statement will continue to be executed until the expression 
+          evaluates as false.<br>
+        </p>
+        <p>3. The following diagram illustrates the flow of control in a while 
+          loop:</p>
+        <img src="fig1.jpg" width="189" height="190"><br>
+        4. The following loop will print out the integers from 1-10.<br>
+        <pre>    int number = 1; // initialize<br>    while (number &lt;= 10) // loop boundary condition
+    {<br>        System.out.println (number);<br>        number++; // increment<br>    }</pre>
+        <p>5. The above example has three key lines that need emphasis:<br>
+          <br>
+          a. You must initialize the loop control variable (lcv). If you do not 
+          initialize number to 1, the initial value &nbsp;&nbsp;&nbsp;&nbsp;of 
+          number is a garbage value and the results are unpredictable.<br>
+          b. The loop boundary conditional test (number &lt;= 10) is often a source 
+          of error. Make sure that you &nbsp;&nbsp;&nbsp;&nbsp;have the correct 
+          comparison (&lt;, &gt;, ==, &lt;=, &gt;=, !=) and that the boundary 
+          value is correct.<br>
+          c. There must be some type of increment or other statement which allows 
+          the loop boundary to &nbsp;&nbsp;&nbsp;&nbsp;eventually become false. 
+          Otherwise the program will get stuck in an endless loop.</p>
+        <p>6. It is possible for the <b>while</b> loop to occur zero times. If 
+          the condition is false due to some initial value, the statement inside 
+          of the <b>while</b> loop will never happen. This is appropriate in some 
+          cases.<br>
+        </p>
+        <p><font size=+2>B. &nbsp;<u>Loop Boundaries</u></font></p>
+        <p>1. The loop boundary is the Boolean expression that evaluates as true 
+          or false. We must consider two aspects as we devise the loop boundary:</p>
+        <p>a.&nbsp; It must eventually become false, which allows the loop to 
+          exit.<br>
+          b.&nbsp; It must be related to the task of the loop. When the task is 
+          done, the loop boundary must become &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false.<br>
+        </p>
+        <p>2. There are a variety of loop boundaries of which two will be discussed 
+          in this section.</p>
+        <p>3. The first is the idea of attaining a certain count or limit. The 
+          code in section A.4 is an example of a count type of bounds.</p>
+        <p>4. <b>Sample problem</b>: In the margin to the left, write a program 
+          fragment that prints the even numbers 2-20. Use a <b>while</b> loop.
+        <p></p>
+        <p>5. A second type of boundary construction involves the use of a sentinel 
+          value. In this category, the while loop continues until a specific value 
+          is entered as input. The loop watches out for this sentinel value, continuing 
+          to execute until this special value is input. For example, here is a 
+          loop that keeps a running total of positive integers, terminated by 
+          a negative value.
+        <p><pre>int total = 0;<br>int number = 1; // set to an arbitrary value<br>                //to get inside the loop<br>while (number &gt;= 0)<br>{<br>  System.out.print ( &quot;Enter a number (-1 to quit) --&gt; &quot;);<br>    number = IO.readlnInt();<br>  if (number &gt;= 0)<br>    total += number;<br>}<br>System.out.println( &quot;Total = &quot; + total );</pre>
+        <br>
+        a. Initialize number to some positive value. A random garbage value could 
+        be negative and the loop would never begin.<br>
+        b. The <b>if </b>(number &gt;= 0) expression is used to avoid adding the 
+        sentinel value into the running total.<br>
+        <p></p>
+        <p>6. Data types are provided by high level languages to minimize memory 
+          usage and processing time. Integers and characters require less memory 
+          and are easier to process. Floating point values require more memory 
+          and time to process. </p>
+        <p><font size=+2>C. &nbsp;<u>The break Statement Variations</u></font></p>
+        <p>1. Java provides a<b> break</b> command that forces an immediate end 
+          to a control structure (<b>while</b>, <b>for</b>, <b>do</b>, and <b>switch</b>).</p>
+        <p>2. The same problem of keeping a running total of integers provides 
+          an example of using the break statement:</p>
+        <pre>    Scanner console = new Scanner( System.in );
+    total = 0;
+    number = 1;	/* set to an arbitrary value */
+    while (number &gt;= 0)
+    {
+         System.out.print( &quot;Enter a number (-1 to quit) --&gt; &quot;);
+         number = console.nextInt();
+         if (number &lt; 0)
+                      break;
+         total += number;	 // this does not get executed if number &lt; 0
+    }</pre>
+        <p> a. &nbsp;As long as (number &gt;= 0), the <b>break</b> statement will 
+          not occur and number is added to total.<br>
+          b. &nbsp;When a negative number is typed in, the <b>break</b> statement 
+          will cause program control to immediately exit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the 
+          <b>while</b> loop.<br>
+        </p>
+        <p>3. The keyword <b>break</b> causes program control to exit out of a 
+          <b>while</b> loop. This contradicts the rule of structured programming 
+          which states that a control structure should have only one entrance 
+          and one exit point.</p>
+        <p>4. The <b>switch</b> structure (to be covered in a later lesson) will 
+          require the use of the <b>break</b> statement.</p>
+        <p><font size=+2>D. &nbsp;<u>Conditional Loop Strategies</u></font></p>
+        <p> 1. This section will present a variety of strategies that assist the 
+          novice programmer in developing correct <b>while</b> loops. The problem 
+          to be solved is described first.</p>
+        <p>Problem statement:</p>
+        <p> A program will read integer test scores from the keyboard until a 
+          negative value is typed in. The program will drop the lowest score from 
+          the total and print the average of the remaining scores.<br>
+        </p>
+        <p>2. One strategy to utilize in the construction of a while loop is to 
+          think about the following four sections of the loop: initialization, 
+          loop boundary, contents of loop, and the state of variables after the 
+          loop.</p>
+        <p>a. Initialization - Variables will usually need to be initialized before 
+          you get into the loop. This is especially &nbsp;&nbsp;&nbsp;&nbsp;true 
+          of while loops which have the boundary condition at the top of the control 
+          structure.</p>
+        <p>b. Loop boundary - You must construct a Boolean expression that becomes 
+          false when the problem is &nbsp;&nbsp;&nbsp;&nbsp;done. This is the 
+          most common source of error in coding a while loop. Be careful of off-by-one 
+          errors &nbsp;&nbsp;&nbsp;&nbsp;that cause the loop to happen one too 
+          few or one too many times.</p>
+        <p>c. Contents of loop - This is where the problem is solved. The statement 
+          of the loop must also provide the &nbsp;&nbsp;&nbsp;&nbsp;opportunity 
+          to reach the loop boundary. If there is no movement toward the loop 
+          boundary you will get &nbsp;&nbsp;&nbsp;&nbsp;stuck in an endless loop.</p>
+        <p>d. State of variables after loop - To ensure the correctness of your 
+          loop you must determine on paper the &nbsp;&nbsp;&nbsp;&nbsp;status 
+          of key variables used in your loop. This involves tracing of code, which 
+          is demanding but &nbsp;&nbsp;&nbsp;&nbsp;necessary.<br>
+        </p>
+        <p>3. We now solve the problem by first developing pseudocode.</p>
+        <p> Pseudocode:</p>
+        <blockquote>
+        <p>initialize total and count to 0<br>
+          initialize smallest to INT_MAX<br>
+          get first score<br>
+          while score is not a negative value<br>
+          increment total<br>
+          increment count<br>
+          change smallest if necessary<br>
+          get next score<br>
+          subtract smallest from total<br>
+          calculate average<br>
+        </p>
+        </blockquote>
+        <p>4. And now the code:</p>
+        <pre>public static void main (String [] args)
+{
+    Scanner console = new Scanner( System.in );
+    int  total=0;
+    int  smallest = INT_MAX;
+    int  score;
+    double  avg;
+    
+    System.out.print(&quot;Enter a score (-1 to quit) ---&gt; &quot;);
+    score = console.nextInt();
+    <b>while</b> (score &gt;= 0) // loop boundary
+    {
+        total += score;
+        count++;
+        <b>if </b>(score &lt; smallest)
+            smallest = score; // maintain state of smallest
+        System.out.print(&quot;Enter a score (-1 to quit) --&gt; &quot;);
+        score = console.nextInt(); // allows us to approach boundary
+    }
+    <b>if</b> (count &gt; 1)
+    {
+      total -= smallest;
+      avg = double (total)/(count-1);
+      System.out.println( &quot;Average = &quot; + avg);
+    }
+    <b>else</b>
+        System.out.println(&quot;Insufficient data to average&quot;);
+}</pre>
+        <p>5. Tracing code is best done in a chart or table format. It keeps your 
+          data organized instead of marking values all over the page. We now trace 
+          the following sample data input:</p>
+        <p> 65 23 81 17 45 -1<br>
+        </p>
+        <table width="75%" border="1">
+          <tr> 
+            <td><i>score</i></td>
+            <td><i>score&gt;=0</i></td>
+            <td><i>total</i></td>
+            <td><i>count</i></td>
+            <td><i>smallest</i></td>
+          </tr>
+          <tr> 
+            <td>undefined</td>
+            <td>undefined</td>
+            <td>0</td>
+            <td>0</td>
+            <td>INT_MAX</td>
+          </tr>
+          <tr> 
+            <td>65</td>
+            <td>1(true)</td>
+            <td>65</td>
+            <td>1</td>
+            <td>65</td>
+          </tr>
+          <tr> 
+            <td>23</td>
+            <td>1(true)</td>
+            <td>88</td>
+            <td>2</td>
+            <td>23</td>
+          </tr>
+          <tr> 
+            <td>81</td>
+            <td>1(true)</td>
+            <td>169</td>
+            <td>3</td>
+            <td>23</td>
+          </tr>
+          <tr> 
+            <td>17</td>
+            <td>1(true)</td>
+            <td>231</td>
+            <td>5</td>
+            <td>17</td>
+          </tr>
+          <tr> 
+            <td>-1</td>
+            <td>0(false)</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        <p>When the loop is terminated the three key variables (total, score, 
+          and smallest) contain the correct values.</p>
+        <p>6. Another development tool used by programmers is the concept of a 
+          state variable. The term state refers to the condition or value of a 
+          variable. The variable smallest maintains state information for us, 
+          that of the smallest value read so far. There are three aspects to consider 
+          about state variables:</p>
+        <p>a. A state variable must be initialized.<br>
+          b. The state will be changed as appropriate.<br>
+          c. The state must be maintained as appropriate.</p>
+        <p> In the chart above, smallest was initialized to the highest possible 
+          integer. As data was read, smallest was changed only if a newer smaller 
+          value was encountered. If a larger value was read, the state variable 
+          did not change. <br>
+        </p>
+        <p>7. When analyzing the correctness of state variables you should consider 
+          three things.</p>
+        <p> Is the state initialized?<br>
+          Will the state find the correct value?<br>
+          Will the state maintain the correct value?</p>
+        <p> As first-time programmers, students will often initialize and find 
+          the state, but their code will lose the state information as the loop 
+          continues on. Learn to recognize when you are using a state variable 
+          and focus on these three parts: initialize, find, and maintain state.<br>
+        </p>
+        <p>8. In a later lesson, we will add the strategy of developing loop boundaries 
+          using DeMorgan's law from Boolean algebra.</p>
+        <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">This lesson provides both syntax and strategies needed 
+          to build correct while loops. The terminology of loop construction will 
+          give us tools to build and debug conditional loops. We can use terms 
+          such as &quot;off-by-one&quot; errors or &quot;failure to maintain state.&quot; 
+          This is a critical topic, one that takes much time and practice to master.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

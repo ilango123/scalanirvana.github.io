@@ -1,0 +1,272 @@
+<html>
+<head>
+<title>Chapter 14 - Text File I/O</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 14 - Text File I/O</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">In this lesson you will learn about text file input and 
+          output using the Java  <strong><a href="../../APIs/Scanner.html">Scanner</a></strong> and <strong><a href="../../APIs/PrintWriter.html">PrintWriter</a></strong> classes. 
+          The source programs you have been writing are all stored as text files. 
+          After this lesson you will have a greater understanding of how files 
+          are saved and retrieved.</p>
+        <p>Sending output to disk and reading text files from 
+          disk are a bit harder because we need to watch for errors or &quot;exceptions&quot;. Reading from a text file also requires us to watch out for the EOF (end-of-file) 
+          sentinel value. After this lesson, many of the programming exercises 
+          will work with data stored in text files.</p>
+        <p><br>
+          The key topics for this lesson:</p>
+        <p>A. Standard ASCII Text Files<br>
+          B. Exception Handling<br>
+          C. Saving Text Files to Disk using the PrintWriter Class<br>
+          D. Reading Text Files from Disk using the Scanner Class<br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left">TEXT FILE<br>
+          EXCEPTION <br>
+        TRY-CATCH BLOCK</p>
+      </td>
+      <td valign="top"> 
+        <p align="left">THROW<br>
+          EOF<br>
+      EXTERNAL FILE</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Standard ASCII Text Files</u></font></p>
+        <p>1.A text file is a sequential access file that stores characters. A 
+          sequential file is one which must be read from the beginning of the 
+          file, and then element by element. You must read the file from the beginning. 
+          You cannot jump to any location in the file.</p>
+        <p>2. A random access file is one where the program can access any element 
+          in the file, given its location in the file. Random access files are 
+          available in Java, but they will not be covered in this curriculum guide.</p>
+        <p>3. An ASCII text file is stored using the ASCII codes for each keystroke. 
+          An 'a' is ASCII code 97, which is eventually stored in binary format 
+          (using ones and zeroes) on disk.</p>
+        <p><br>
+          4. A text file is organized by lines, just as a printed page would be. 
+          Each line ends with a special character (or characters), called the <strong>eoln</strong> (end-of-line) 
+          marker. Different operating systems (Windows, MacOS, Unix) separate 
+          lines of text in different ways. In Java environments, the eoln marker 
+          corresponds to the return key and has an ASCII value of 10 ('\n'), 13 
+          ('\r') or a combination of both.</p>
+        <p>5. The <strong>eof</strong> (end of file)  marks the termination of a text file. 
+          There is no standard character for eof. Instead, each operating system has its own way to handle eof. Various standard Java stream processing tools are available to create and detect the eof.</p>
+        <p>6. A text file has as many eoln's as there are lines in the file, but 
+          only one eof marker.</p>
+        <p>7. A text file can store numeric data, but integer and float types 
+          are converted into text format. For example, the character '4' is stored as ASCII code 52.</p>
+        <p>8. When a text file is stored on disk, it can be thought of as one 
+          long stream of ASCII codes. The following text example on screen would 
+          be stored as one long list of ASCII codes on disk.</p>
+        <p>Apple<br>
+          IBM<br>
+        </p>
+        <p>Disk text file (for Windows):<br>
+        <pre>65  112  112  108  101  13  10  73  66  77  "eof"
+A    P    P    L    E    eoln   I   B   M</pre>
+        <p><font size=+2><u>B. Exception Handling</u></font></p>
+        <p>1. Exception handling is a mechanism in Java designed to handle errors that disrupt the flow of execution during runtime. Raising an exception is a useful way to signal that a routine could not execute normally. Exceptions are especially useful when Java is trying to read from or write to a device, like a hard drive, a DVD, a USB port, a network port, etc.</p>
+        <p>2. Reading from or writing to a file on the hard drive can cause an exception to occur.  Java requires that you specify how these exceptions are handled. Java provides a <em>try-catch</em> block to handle them. Program 14-1 is an example.</p>
+        <p><u>Program 14-1</u><br>
+<pre>
+    <b>try</b> {
+    	&lt;open the file&gt;...
+    } <b>catch</b> (&lt;exceptionName&gt; id) {
+    	&lt;do this if file is not found&gt;...
+    }
+</pre>
+        <p>In this example, the <em>try</em> block contains  a command which opens a file  and can <strong>throw</strong> (detect) an exception. If the file is not found, an exception is <strong>thrown</strong> and Java proceeds to the <em>catch</em> block which contains the error handling commands you specify.</p>
+        <p>4. If you try to open a file without using a <em>try-catch</em> block,  the compiler will produce the following error:</p>
+        <pre>
+		unreported exception; &lt;exceptionName&gt;
+		must be caught or declared to be thrown
+</pre>
+        <p>&nbsp;</p>
+        <p><font size=+2><u>C. Saving Text Files to Disk using the PrintWriter 
+          Class</u></font></p>
+        <p>1. The <strong><a href="../../APIs/PrintWriter.html">PrintWriter</a></strong> class is used to write text to files. An output stream is an object used to transfer data from memory to a file. A PrintWriter object must be declared to allow a program to write to a text file. The PrintWriter object must also be embedded in a <em>try-catch</em> block in case an exception occurs. For example, the effect of the following program is to create a file named &quot;<em>output.txt</em>&quot; which will receive the output  shown below. Notice that numbers are saved as text  in the file.</p>
+        <p><u>Program 14-2</u><br>
+<table border="1">
+	<tr>
+    	<td width="560">
+<pre><strong>import</strong> java.io.File;
+<strong>import</strong> java.io.IOException;
+<strong>import</strong> java.io.PrintWriter;
+<br>
+<strong>public class</strong> SaveTextFile {
+	PrintWriter outFile;
+    <br>
+	<strong>public static void</strong> main (String[] args) {
+		SaveTextFile stf = new SaveTextFile();
+		stf.Run();
+	}
+	<strong>public void</strong> Run() {
+		<strong>try</strong> {
+		  outFile = <strong>new</strong> PrintWriter(<strong>new</strong> File("output.txt"));
+		} <strong>catch</strong> (IOException e) {
+		  e.printStackTrace();
+		  System.exit(1);
+		}
+		<strong>for</strong> (<strong>int</strong> i = 4; i < 10; i++)
+			outFile.printf("i = %d\n", i);
+		outFile.close();
+	}
+}
+</pre>
+		</td>
+    </tr>
+    <tr>
+    	<td>
+<pre>
+	Run output to "output.txt":
+        i = 4
+        i = 5
+        i = 6
+        i = 7
+        i = 8
+        i = 9
+</pre>
+		</td>
+    </tr>
+</table>
+        <p>2. In Program 14-2, the <em>try</em> block declares and initializes <em>outFile</em>.
+        <pre>
+	PrintWriter outFile = <strong>new</strong> PrintWriter(<strong>new</strong> File("output.txt"));</pre>        
+        <p>This declaration wipes out the contents of the file &quot;<em>output.txt</em>&quot;, if it exists, and starts with a blank file.
+        <p>3. If the file &quot;output.txt&quot; cannot be created, then PrintWriter <strong>throws</strong> <em><a href="../../APIs/IOException.html">IOException</a></em> which is handled by the <em>catch</em> block.        
+        <pre>
+	<strong>catch</strong> (IOException e){
+	    e.printStackTrace();
+	    System.exit(1);
+	}</pre>
+        <p>In this case, the <em>catch</em> block  prints        
+          the execution stack trace to the screen, then exits the program.</p>
+        <p>4. If the file &quot;output.txt&quot; is successfully created, then Java ignores the <em>catch</em> block and continues with the rest of the program.
+        <p>5. PrintWriter provides print(), println(), and printf() methods, the same as in System.out, to write data to a file. For example:
+        <pre>
+		<strong>int</strong> i = 4;
+		outFile.print(&quot;i = &quot; + i + &quot;\n&quot;);
+		outFile.println(&quot;i = &quot; + i);
+		outFile.printf(&quot;i = %d\n&quot;, i);</pre>
+        <p>Each of these  print statements output &quot;i = 4&quot; to the file.</p>
+        <p>6. A close() method is provided to finalize file processing and to mark the <strong>eof</strong> in the file. The close() 
+          method should <strong>always</strong> be used when a program is finished writing to a file. If 
+          a file is not closed, the program might end before the operating system 
+          has finished writing data to the file. The last data in the file might 
+          be lost!</p>
+        <p>&nbsp;</p>
+        <p><font size=+2><u>D. Reading Text Files from Disk using the Scanner Class</u></font></p>
+        <p>1.The <strong><a href="../../APIs/Scanner.html">Scanner</a></strong> class is used to read text from files. An input stream is an object used to transfer data from a file to 
+          memory. The syntax of declaring and initializing (opening) an Scanner 
+          object is identical to that of PrintWriter objects. Once initialized, 
+          we can use all of the methods associated with the Scanner class to 
+          retrieve data from a text file.</p>
+        <p>2. Reading a text file assumes that the file already exists at some 
+          external location. If the file does not exist or cannot be opened, then Scanner will <strong>throw</strong> a <em><a href="../../APIs/FileNotFoundException.html">FileNotFoundException</a></em> that forces Java to execute the <em>catch</em> block. If the file is successfully opened, then Java will ignore the <em>catch</em> block and continue with the rest of the program.</p>
+        <p>3. The following example Program 14-3 will read a text file of integer data 
+          and echo its contents to the terminal. The contents of &quot;data.txt&quot; 
+          are shown to the right of program 14-3.<br>
+        </p>
+        <table width="75%" border="1">
+          <tr>
+            <td>
+              <p><u>Program 14-3</u></p>
+<pre>
+<strong>import</strong> java.io.File;
+<strong>import</strong> java.io.FileNotFoundException;
+<strong>import</strong> java.util.Scanner;
+<br>
+<strong>public class</strong> ReadData {
+	<strong>private</strong> Scanner inFile;
+	<strong>private</strong> <strong>int</strong> number;
+	
+	<strong>public static void</strong> main(String[] args) {
+  		ReadData rd = <strong>new</strong> ReadData();
+  		rd.Run2();
+  	}
+  
+	<strong>public void</strong> Run2() {
+		String fileName = "data.txt";
+		<strong>try</strong> {
+			inFile = new Scanner(new File(fileName));
+		} <strong>catch</strong> (FileNotFoundException e) {
+			System.err.printf("ERROR: Cannot open %s\n", fileName);
+			System.exit(1);
+		}
+		<strong>while</strong> (inFile.hasNext()) {
+			number = inFile.nextInt();
+			System.out.print(number + "   ");
+		}
+		inFile.close();
+	}
+}
+</pre>
+            </td>
+            <td valign="top"> 
+              <p><i>data.txt</i></p>
+              <p> <br>
+                -2<br>
+                -1<br>
+                0<br>
+                1<br>
+                2<br>
+                &quot;eof&quot;</p>
+            </td>
+          </tr>
+          <tr>
+          	<td colspan="2">
+<pre>
+	Run output:
+
+		-2   -1   0   1   2
+</pre>
+			</td>
+          </tr>
+        </table>
+        <p>4. A text file always has a special sentinel, or  <strong>eof</strong> (end of file) marker. The Scanner's hasNext() method detects this sentinel marker. It returns <strong>true</strong> if the input file has another piece of information  or <strong>false</strong> if it has reached the end of file.</p>
+        <p>5. In Program 14-3, the while loop reads the 5 integers from the file and echoes them to the screen. When it detects the eof, 
+          it closes the file.<br>
+          <br>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Text files can be used to store, manipulate, and move 
+          information from one location to another. Such files can be used to 
+          transfer information from one environment (Macintosh to Windows) and 
+          even from one application to another (word processor to spreadsheet). 
+          While there are many ways to get the job done, this lesson has attempted 
+          to show the cleanest methods to manipulate text files.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

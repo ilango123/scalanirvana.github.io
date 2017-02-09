@@ -1,0 +1,308 @@
+<html>
+<head>
+<title>Chapter 5 - More About Methods</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"><font size="5"><b>Chapter 5 - More About Methods</b></font><br>
+</p>
+<hr width="80%">
+<table border = "0" width = "80%" cellpadding="10" align="center">
+  <tr> 
+    <td width = "16%" valign="top"> 
+      <p align="left"><b>INTRODUCTION:</b></p>
+    </td>
+    <td valign="top" colspan="2"> 
+      <p align="left">Programs of any significant size are broken down into logical 
+        pieces called methods. It was recognized long ago that programming is 
+        best done in small sections which are connected in very specific and formal 
+        ways. Java provides the construct of a function, allowing the programmer 
+        to develop new methods not provided in the original Java libraries. Breaking 
+        down a program into blocks or sections leads to another programming issue 
+        regarding identifier scope. Also, methods need to communicate with other 
+        parts of a program which requires the mechanics of parameter lists and 
+        a return value.<br>
+      </p>
+      <p>The key topics for this lesson are:</p>
+      <p> A. Writing Methods in Java<br>
+        B. Value Parameters and Returning Values<br>
+        C. Lifetime, Initialization, and Scope of Variables<br>
+      </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width = "16%" valign="top"> 
+      <p align="left"><b>VOCABULARY:</b></p>
+    </td>
+    <td width = "41%" valign="top"> 
+      <p align="left"> METHOD DECLARATION<br>
+        METHOD DEFINITION<br>
+        PARAMETERS<br>
+        FORMAL ARGUMENTS<br>
+        SCOPE </p>
+    </td>
+    <td width = "43%" valign="top"> 
+      <p align="left"> VALUE PARAMETERS<br>
+        ACTUAL ARGUMENTS<br>
+        GLOBAL SCOPE<br>
+        BLOCK<br>
+        LOCAL SCOPE </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width = "16%" valign="top"> 
+      <p align="left"><b>DISCUSSION:</b></p>
+    </td>
+    <td valign="top" colspan="2"> 
+      <p align="left"> 
+      <p><font size=+2>A. <u>Writing Methods in Java</u></font></p>
+      <p>1. A method is like a box that takes data in, solves a problem, and usually 
+        returns a value. The standard math methods follow this pattern:</p>
+      <pre> Math.sqrt (2) --&gt; 1.414</pre>
+      <p>2. There are times when the built-in methods of Java will not get the 
+        job done. We will often need to write customized methods which solve a 
+        problem using the basic tools of a programming language.</p>
+      <p>3. For example, suppose we need a program that converts gallons into 
+        liters. We could solve the problem within the <i>main</i> method.<br>
+      </p>
+      <p><u>Program 7-1</u></p>
+      <pre>
+import java.util.Scanner;
+
+class GallonsToLiters
+{
+  public static void main (String[] args)
+  {
+    double gallons, liters;
+    Scanner console = new Scanner();
+
+    System.out.println("Enter an amount of gallons --> ");
+    gallons = console.nextDouble();
+    liters = gallons * 3.785;
+    System.out.println("Amount in liters = " + liters);
+  }
+}
+</pre>
+      <p>This works fine, but the mathematics of the conversion is buried inside 
+        the main method. The conversion tool is not available for general use. 
+        We are not following the software engineering principle of writing code 
+        that can be recycled in other programs.</p>
+      <p>4. Here is the same routine coded as a reusable method:</p>
+      <p><u>Program 7-2</u></p>
+      <pre>import java.util.Scanner;
+
+class FluidConverter
+{
+  public double toLiters(double gallons)
+  {
+    return gallons * 3.785;
+  }
+}
+
+
+public class TestConverter
+{
+  public static void main(String[] args)
+  {
+    double gallons;
+    Scanner console = new Scanner( System.in );
+    FluidConverter convert = new FluidConverter();
+
+    System.out.print("Enter an amount of gallons --> ");
+    gallons = console.nextDouble();
+    System.out.println("Amount in liters = " +
+      convert.toLiters(gallons));
+  }
+}
+
+Sample run output:
+
+Enter an amount of gallons --> 10
+Amount in liters = 37.85
+</pre>
+      <p>5. Here is the sequence of events in this short program. </p>
+      <p> a. &nbsp;&nbsp;Execution begins in the main method with the user prompt 
+        and the input of an amount of gallons.<br>
+        b. &nbsp;&nbsp;The toLiters method of the convert object is called and 
+        the amount of gallons is passed as an &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;argument 
+        to the toLiters method.<br>
+        c.&nbsp;&nbsp; Program execution moves to toLiters which solves the math 
+        and returns the answer to the calling &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statement.<br>
+        d. &nbsp;&nbsp;The answer is printed out.</p>
+      <p>6. The general syntax of a method declaration is</p>
+      <pre>&lt;modifiers&gt; &lt;return type&gt; &lt;method name&gt; ( &lt;parameters&gt; )<br>{
+      <br>    &lt;method body&gt;<br>}</pre>
+        <br>
+        a. &nbsp;&nbsp;The &lt;modifiers&gt; refers to a sequence of terms designating 
+        different kinds of methods.<br>
+        b. &nbsp;&nbsp;The &lt;return type&gt; refers to the type of data a method 
+        returns. The data type can be one of the &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;predefined 
+        types (integer, double, char) or a user-defined type.<br>
+        c. &nbsp;&nbsp;The &lt;method name&gt; name is the name of the method. 
+        The name of the method must be a valid &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;identifier. 
+        In the case of Program 6-2, the names of the methods are main and toLiters.<br>
+        d. &nbsp;&nbsp;The &lt;parameters&gt; list will allow us to send values 
+        to a method. The parameter list consists of one &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or 
+        more type-identifier pairs of information. These parameters are called 
+        the formal parameters.<br>
+        e. &nbsp;&nbsp;The &lt;method body&gt; contains statements to accomplish 
+        the work of the method.<br>
+      </p>
+      <p>7. When the method is called, the value passed to the method is called 
+        the actual parameter. The integer named gallons inside of the main method 
+        serves as the actual parameter. </p>
+      <p><font size=+2>B. <u>Value Parameters and Returning Values</u></font></p>
+      <p>1. The values passed to a method become the source of input for the method. 
+        Notice that inside of <code>toLiters</code>, no data input was required 
+        from an external source. 
+      <p> 
+      <p></p>
+      <p>2.The single parameter in Program 6-2, shown previously, is an example 
+        of a <i>value parameter</i>. A value parameter has the following characteristics: 
+      <p> 
+      <dl> 
+        <dt>a. &nbsp;&nbsp;&nbsp;It receives a copy of the argument that was passed 
+          to the method. The value of 10 stored in &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gallons 
+          (inside of main) is passed to the parameter amount (inside of toLiters).<br>
+          b. &nbsp;&nbsp;&nbsp;This value parameter is a variable that can be 
+          modified within the function.<br>
+          c. &nbsp;&nbsp;&nbsp;This value parameter is a local variable. This 
+          means that it is valid only inside of the block in which &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it 
+          is declared. We refer to a method in Java as a block of code.<br>
+        </dt>
+      </dl>
+      <p></p>
+      <p>3. A method can return a single value. Somewhere in the body of the method 
+        there must be a <b>return</b> statement if we want the method to return 
+        the correct answer. A method that returns a value is also called a <i>function</i>. 
+      <p></p>
+      <p>4. If a method returns no value the term void should be used. For example: 
+      <pre>public void printHello ( )<br>{<br>   System.out.println(&quot;Hello world&quot;);<br>} </pre>
+      <p></p>
+      <p>5. A function can have multiple parameters in its parameter list. For 
+        example: 
+      <pre>public double doMath (int a, double x)<br>{<br>   ... code ...<br>   return doubleVal;<br>}</pre>
+      <p>When this method is called, the arguments fed to the doMath method must 
+        be of an appropriate type. The first argument must be an integer. The 
+        second argument can be an integer (which will be promoted to a double), 
+        but it will most likely be a double.</p>
+      <p> 
+      <pre><b>double</b> dbl = doMath (2, 3.5); // this is okay
+<b>double</b> dbl = doMath (1.05, 6.37); // this will not compile</pre>
+      <p>6. Value parameters are often described as one-way parameters. The information 
+        flows into a function but no information is passed back through the value 
+        parameters. A single value can be passed back using the return statement, 
+        but the actual parameters in the function remain unchanged.</p>
+      <p>7. The actual arguments used to supply values for the value parameters 
+        can be either literal values (2, 3.5) or variables (a, x). 
+      <pre><b>double</b> dbl = doMath (a, x);    // example using variables</pre>
+      <p><font size=+2>C. &nbsp;<u>Lifetime, Initialization, and Scope of Variables</u></font></p>
+      <p>1. Three categories of Java variables have been explained thus far in 
+        this curriculum guide.</p>
+      <ul>
+        <li>Instance variables</li>
+        <li>Local variables</li>
+        <li>Parameter variables</li>
+      </ul>
+      <p>2. The lifetime of a variable defines the portion of run time during 
+        which the variable exists.</p>
+      <p>a. &nbsp;&nbsp;When an object is constructed, all its instance variables 
+        are created. As long as any part of the &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;program 
+        can access the object, it stays alive.<br>
+        b. &nbsp;&nbsp;A local variable is created when the program enters the 
+        statement that defines it. It stays alive until &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the 
+        block that encloses the variable definition is exited.<br>
+        c. &nbsp;&nbsp;When a method is called, its parameter variables are created. 
+        They stay alive until the method &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returns 
+        to the caller.<br>
+      </p>
+      <p>3. The initial state of these variables are also determined by their 
+        type.</p>
+      <p>a. &nbsp;&nbsp;Instance variables and static variables are automatically 
+        initialized with a default value (0 for &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numbers, 
+        false for boolean, null for objects) unless you specify another parameter.<br>
+        b. &nbsp;&nbsp;Parameter variables are initialized with copies of the 
+        actual parameters.<br>
+        c. &nbsp;&nbsp;Local variables are not initialized by default. An initial 
+        value must be supplied. The compiler will &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generate 
+        an error if an attempt is made to use a local variable that has never 
+        been initialized.<br>
+      <p>&nbsp;</p>
+      <p>4. Scope refers to the area of a program in which an identifier is valid 
+        and has meaning.</p>
+      <p>a. &nbsp;&nbsp;Instance variables of a class are usually declared private, 
+        and have class scope. Class scope &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begins 
+        at the opening left brace, {, of the class definition and terminates at 
+        the closing brace, }, of &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the class 
+        definition. Class scope enables methods of a class to directly access 
+        all instance variables &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defined in 
+        the class.<br>
+        b. &nbsp;&nbsp;The scope of a local variable extends from the point of 
+        its definition to the end of the enclosing &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block.<br>
+        c. &nbsp;&nbsp;The scope of a parameter variable is the entire body of 
+        its method.<br>
+      </p>
+      <p>5. Example of the scope of the variable type is given in the program 
+        below. 
+      <p><u>Program 7-3</u> 
+      <p>&nbsp;
+      <pre>public class ScopeTest
+{
+  private int test = 30;
+  
+  public void printLocalTest()
+  {
+    int test = 20;   
+    System.out.println("printLocalTest: test = " + test);
+  }
+
+  public void printInstanceTest()
+  {
+    System.out.println("printInstanceTest: test = " + test);
+  }
+  
+  public void printParamTest(int test)
+  {
+    System.out.println("printParamTest: test = " + test);
+  }
+
+  public static void main (String[ ] args)
+  {
+    int test = 10;
+    
+    ScopeTest st = new ScopeTest();
+    System.out.println("main: test = " + test);
+    
+    st.printLocalTest();
+    st.printInstanceTest();
+    st.printParamTest(40);
+  }
+}
+
+Run output:
+
+main: test = 10
+printLocalTest: test = 20
+printInstanceTest: test = 30
+printParamTest: test = 40
+</pre>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width = "16%" valign="top"> 
+      <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+    </td>
+    <td valign="top" colspan="2"> 
+      <p align="left">Your programs will grow in size and complexity. Initially 
+        you will not use all the tools presented in this lesson and other lessons 
+        regarding methods. However, you need to see and understand all the method-writing 
+        tools in Java since eventually you will need them in your own work and 
+        to help you read another programmer's code.
+    </td>
+  </tr>
+</table>
+<p align="center"><a href="../../index.html">Back to Java Main Page</a></p>
+</body>
+</html>

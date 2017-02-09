@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>Chapter 13 - Recursion</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 13 - Recursion</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Recursion is defined as the process of a subprogram calling 
+          itself as part of the solution to a problem. It is a problem solving 
+          technique which can turn a long and difficult solution into a compact 
+          and elegant answer. It can also solve problems that are very difficult 
+          to solve with a straightforward iterative solution. </p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. Recursion<br>
+          B. Pitfalls of Recursion<br>
+          C. Recursion Practice</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left">RECURSION</p>
+      </td>
+      <td valign="top"> 
+        <p align="left">BASE CASE</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Recursion</u></font></p>
+        <p>1.Recursion occurs when a method calls itself to solve a simpler version 
+          of the problem. With each recursive call, the problem is different from, 
+          and simpler than, the original problem.</p>
+        <p>2. Recursion involves the internal use of a stack. A stack is a data 
+          abstraction which works like this: New data is &quot;pushed,&quot; or 
+          added to the top of the stack. When information is removed from the 
+          stack it is &quot;popped,&quot; or removed from the top of the stack. 
+          The recursive calls of a method will be stored on a stack, and manipulated 
+          in a similar manner.</p>
+        <p>3. The problem of solving factorials is our first example of recursion. 
+          The factorial operation in mathematics is illustrated below. <br>
+        </p>
+        <pre>1! = 1
+	2! = 2 * 1		or 	2 * 1!
+	3! = 3 * 2 * 1	or	3 * 2!
+	4! = 4 * 3 * 2 *1	or	4 * 3!
+</pre><p></p>
+        <p>Notice that each successive line can be solved in terms of the previous 
+          line. For example, 4! is equivalent to the problem <br>
+          4 * 3!.</p>
+        <p>A recursive method to solve the factorial problem is given below. Notice 
+          in the last line of the method the recursive call. The method calls 
+          another implementation of itself to solve a smaller version of the problem.<br>
+        <pre><br><b>int</b> fact (<b>int </b>n)
+//  returns the value of n!
+//  precondition:  n >= 1
+{
+   <b>if</b> (n == 1)
+      <b>return</b> 1;
+ <b>  else</b>
+     <b> return </b> n * fact(n - 1);
+}
+</pre>
+        <p>4. The base case is a fundamental situation where no further problem 
+          solving is necessary. In the case of finding factorials, the answer 
+          of 1! is by definition == 1. No further work is needed.</p>
+        <p>5. Suppose we call the method to solve fact(4). This will result in 
+          four calls of method fact.</p>
+        <p>fact(4): This is not the base case (1 == n), so we return the result 
+          of 4 * fact(3). This multiplication will be solved until an answer is 
+          found for fact(3). This leads to the second call of fact to solve fact(3).</p>
+        <p>fact(3): Again, this is not the base case and we return <br>
+          3 * fact (2). This leads to another recursive call to solve fact(2).</p>
+        <p>fact(2): Still, this is not the base case, we solve 2 * fact(1).</p>
+        <p>fact(1): Finally we reach the base case which returns the <br>
+          value 1.</p>
+        <p>6. When a recursive call is made, the current computation is temporarily 
+          suspended and placed on the stack with all its current information available 
+          for later use. </p>
+        <p>7. A completely new copy of the method is used to evaluate the recursive 
+          call. When that is completed, the value returned by the recursive call 
+          is used to complete the suspended computation. The suspended computation 
+          is removed from the stack and its work now proceeds.</p>
+        <p>8. When the base case is encountered the recursion will now unwind 
+          and result in a final answer. The expressions below should be read from 
+          right to left.<br>
+        </p>
+        <pre>fact(4) = 4 * fact(3) = 3 * fact(2) = 2 * fact(1) = 1
+
+24  4 * 6  3 * 2  2 * 1
+</pre>
+        <p>Here is a picture. Look at what happens:</p>
+        <p align="center"><img src="fig1.jpg" width="312" height="388"></p>
+        <p>Each box represent a call of method fact. To solve fact (4) requires 
+          four calls of method fact.</p>
+        <p>9. Notice that when the recursive calls were made inside the else statement, 
+          the value fed to the recursive call was (n-1). This is where the problem 
+          is getting smaller and simpler with the eventual goal of solving 1!.<br>
+        </p>
+        <p><font size=+2><u>B. Pitfalls of Recursion</u></font></p>
+        <p>1. If the recursion never reaches the base case, the recursive calls 
+          will continue until the computer runs out of memory and the program 
+          crashes. Experienced programmers try to examine the remains of a crash. 
+          The message &quot;stack overflow error&quot; or &quot;heap storage exhaustion&quot; 
+          indicates a possible runaway recursion.</p>
+        <p>2. When programming recursively, you need to make sure that the algorithm 
+          is moving toward the base case. Each successive call of the algorithm 
+          must be solving a simpler version of the problem.</p>
+        <p>3. Any recursive algorithm can be implemented iteratively, but sometimes 
+          only with great difficulty. However, a recursive solution will always 
+          run more slowly than an iterative one because of the overhead of opening 
+          and closing the recursive calls.<br>
+        </p>
+        <p></p>
+        <p><font size=+2><u>C. Recursion Practice</u></font></p>
+        <p>1. Write a recursive power method that raises a base to some exponent, 
+          n. We will use integers to keep things simple.</p>
+        <pre><b>double</b> power(<b>int</b> base, <b>int</b> n)<br>//  Recursively determines base raised to<br>//  the nth power. Assumes 0 &lt;= n &lt;= 10.<br></pre>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Recursion takes some time and practice to get used to. 
+          Eventually you want to be able to think recursively without the aid 
+          of props and handouts. Study the examples provided in these notes and 
+          work it through for yourself. Recursion is a very powerful programming 
+          tool for solving difficult problems.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

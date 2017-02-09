@@ -1,0 +1,19 @@
+.coll_content {
+  background-color: #fffff1 !important;
+}
+
+.page_collapsible {
+  background-color: #E67E22 !important;
+}
+
+.page_collapsible.collapse-close {
+  background-color: #888 !important;
+}
+
+.calendar {
+  background:#fffff1 !important;
+}
+
+[class*="cal-col col-"] {
+  background-color: #fffff1 !important;
+}

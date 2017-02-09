@@ -1,0 +1,419 @@
+<html>
+<head>
+<title>Chapter 10 - Object Reference</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 10- Object References</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">This lesson discusses object reference variables. These 
+          variables refer to objects (as opposed to holding a primitive data value.)</p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. Primitive Data Type Variables<br>
+          B. Object Reference variables<br>
+          C. Variable Versus Object Reference Assignment<br>
+          D. Object References<br>
+          E. The == operator with Variables and Object References<br>
+          F. The <b>equals() </b>Method.<br>
+          G. The <b>null </b>Value.</p>
+        <p align="left"><br>
+        </p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left"> PRIMITIVE DATA <br>
+          GARBAGE COLLECTION</p>
+      </td>
+      <td valign="top"> 
+        <p align="left"> OBJECT REFERENCE</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Primitive Data Type Variables</u></font></p>
+        <p>1. Java has many data types built into it, and you (as a programmer) 
+          can define as many more as you need. Other than the primitive data types, 
+          all data types are classes. In other words, data is primitive data or 
+          object data. The only type of data a programmer can define is an object 
+          data type (a class).</p>
+        <p>2. Here is a tiny program that uses a primitive data type:<br>
+        <pre><br><b>class</b> pimitiveDataType
+{
+  <b>public static void</b> main(String[] args)
+  {
+    <b>long</b> value;
+
+    primitiveValue = 95124;
+    System.out.println(primitiveValue);
+  }
+}</pre>
+        <p>In this program, the variable value is the name for a 64 bit section 
+          of memory that is used to hold long integers. The statement <br>
+          <code>primitiveValue = 95124;</code><br>
+          puts a particular bit pattern in that 64 bit section of memory.</p>
+        <p>4. With primitive data types, a variable is a section of memory reserved 
+          for a value of a particular style. For example by saying <b>long</b> 
+          value, 64 bits of memory are reserved for an integer. By saying <b>int</b> 
+          sum, 32 bits of memory are reserved an integer.<br>
+        </p>
+        <p><font size=+2><u>B. Object Reference variables</u></font></p>
+        <p>1. Since objects are big, complicated, and vary in size you do not 
+          automatically get an object when you declare an object reference variable. 
+          All you get is a name for a future object. For example:</p>
+        <p>2. Here is a tiny program that uses a primitive data type:</p>
+        <pre>class StrRefExample<br>{<br>  public static void main (String[] args)<br>  {<br>    String str;<br>    <br>    str = new String(&quot;example string&quot;);<br>    System.out.println(str);<br>  }<br>}<br></pre>
+        <p>3. An object contains data and methods (state and behavior). You can 
+          visualize the String object in the above program like this: <br>
+          <img src="fig1.jpg" width="475" height="205" border="0"> </p>
+        <p>The data section of the object contains the characters. The methods 
+          section of the object contains many methods.</p>
+        <p>4. An object reference is information on how to find a particular object. 
+          The object is a chunk of main memory; a reference to the object is a 
+          way to get to that chunk of memory. The variable str does not actually 
+          contain the object, but contains information about where the object 
+          is.<br>
+        </p>
+        <p>5. Objects are created while a program is running. Each object has 
+          a unique object reference, which is used to find it. When an object 
+          reference is assigned to a variable, then that variable says how to 
+          find that object.<br>
+        </p>
+        <p></p>
+        <p><font size=+2><u>C. Variable Versus Object Reference Assignment</u></font></p>
+        <p>1. Notice that there is a difference between the two statements: </p>
+        <p><code>primitiveValue = 18234;</code></p>
+        <p>and</p>
+        <p><code>str = new String(&quot;example string&quot;);</code></p>
+        <p>In the first statement, <code>primitiveValue</code> is a primitive 
+          type, so the assignment statement puts the data directly into it. In 
+          the second statement, <code>str</code> is an object reference variable 
+          (the only other possibility) so a reference to the object is put into 
+          that variable.</p>
+        <p>2. A variable will<i> never</i> contain an object. There are only primitive 
+          variables and object reference variables, and each contains a specific 
+          kind of information:<br>
+        </p>
+        <table width="100%" border="1">
+          <tr> 
+            <td width="24%"> 
+              <div align="center"><b>Kind of Variable</b></div>
+            </td>
+            <td width="34%"> 
+              <div align="center"><b>Information it Contains</b></div>
+            </td>
+            <td width="42%"> 
+              <div align="center"><b>When on the left of &quot;=&quot;</b></div>
+            </td>
+          </tr>
+          <tr> 
+            <td width="24%"> 
+              <div align="center">primitive variable</div>
+            </td>
+            <td width="34%"> 
+              <div align="center">Contains actual data</div>
+            </td>
+            <td width="42%"> 
+              <div align="center">Previous data is replaced with new data.</div>
+            </td>
+          </tr>
+          <tr> 
+            <td width="24%"> 
+              <div align="center">reference variable</div>
+            </td>
+            <td width="34%"> 
+              <div align="center">Contains information on how to find an object.</div>
+            </td>
+            <td width="42%"> 
+              <div align="center">Old reference is replaced with a new reference</div>
+            </td>
+          </tr>
+        </table>
+        <p>3. The two types of variable are distinguished by how they are declared. 
+          Unless it was declared to be of a primitive type, it is an object reference 
+          variable. A variable will not change its declared type.<br>
+        </p>
+        <p><font size=+2><u>D. Object References</u></font></p>
+        <p> 1. It is possible to reassign an object reference to a new value. 
+          For example:<br>
+        <pre><b>class</b> OneStringReference
+{
+  <b>public</b> <b>static void</b> main (String[] args)
+  {
+    String str;
+     
+    str = <b>new</b> String("first string");
+    System.out.println(str);
+
+    str = <b>new</b> String("second string");
+    System.out.println(str);
+   }
+}
+
+Run Output:
+
+first string
+second string</pre>
+        <p>2. Notice that: </p>
+        <blockquote> 
+          <p>a. Each time the new operator is used, a new object is created. <br>
+            b. Each time an object is created, there is a reference to it. <br>
+            c. This reference is saved in a variable. <br>
+            d. Later on, the reference in the variable is used to find the object. 
+            <br>
+            e. If another reference is saved in the variable, it <i>replaces</i> 
+            the previous reference. <br>
+            f. If no variables hold a reference to an object, there is no way 
+            to find it, and it becomes &quot;<i>garbage.</i>&quot;</p>
+        </blockquote>
+        <p><img src="fig2.jpg" width="409" height="207"></p>
+        <p>3. The word &quot;garbage&quot; is the correct term from computer science 
+          to use for objects that have no references. This is a commonly occurring 
+          situation, not usually a mistake. As a program executes, a part of the 
+          Java system called the &quot;garbage collector&quot; reclaims the lost 
+          objects (the &quot;garbage&quot;) so that their memory can be used again.</p>
+        <p>4. Multiple objects of the same class can be maintained by creating 
+          unique reference variables for each object.<br>
+        </p>
+        <pre><b>class</b> TwoStringReferences
+{
+  <b>public static void</b> main (String[] args)
+  {
+    String strA;  // reference to the first object
+    String strB;  // reference to the second object
+
+    // create the first object and save its reference     
+    strA = <b>new</b> String("first string"); 
+
+    // print data referenced by the first object.
+    System.out.println(strA);
+    
+    // create the second object and save its reference
+    strB = <b>new</b> String("second string");
+
+    // print data referenced by the first object.
+    System.out.println(strB);
+
+    // print data referenced by the second object.
+    System.out.println(strA);   
+  }
+}
+
+Run Output:
+
+first string
+second string
+first string</pre>
+        <p>This program has two reference variables,<code> strA</code> and <code>strB</code>. 
+          It creates two objects and places each reference in one of the variables. 
+          Since each object has its own reference variable, no reference is lost, 
+          and no object becomes garbage (until the program has finished running.)<br>
+          <img src="fig3.jpg" width="397" height="223"></p>
+        <p>5. Different reference variables that refer to the same object are 
+          called <i>aliases</i>. In effect, there are two names for the same object. 
+          For example:</p>
+        <p>&nbsp;
+        <pre>class Alias
+{
+  public static void main (String[] args)
+  {
+    String strA;  // reference to the object
+    String strB;  // another reference to the object
+    
+    // Create the only object and save its
+    //   reference in strA
+    strA = new String("only one string");
+    System.out.println(strA); 
+
+    strB = strA;  // copy the reference to strB.                             
+    System.out.println(strB);
+  }
+}
+
+Run Output:
+
+only one string
+only one string</pre>
+        <p><br>
+          <img src="fig4.jpg" width="399" height="146"> </p>
+        <p>When this program runs, only one object is created (by new). Information 
+          about how to find the object is put into strA. The assignment operator 
+          in the statement </p>
+        <p><code>strB = strA; // copy the reference to strB.</code></p>
+        <p>copies the information that is in strA to strB. It does not make a 
+          copy of the object. </p>
+        <p><font size="+2"><u>E. The == operator with Variables and Object References.</u></font><br>
+        </p>
+        <p>1. The == operator is used to look at the contents of two reference 
+          variables. If the contents of both reference variables is the same, 
+          then the result is<code> true</code>. Otherwise the result is<code> 
+          false</code>. </p>
+        <p>&nbsp;
+        <pre>class EqualsEquals
+{
+  public static void main (String[] args)
+  {
+    String strA;  // reference to the first object
+    String strB;  // reference to the second object
+   
+    // create the first object and save its reference
+    strA = new String("same characters"); 
+    System.out.println(strA); 
+
+    // create the second object and save its reference
+    strB = new String("same characters");   
+    System.out.println(strB);
+
+    if (strA == strB) 
+      System.out.println("This will not print.");
+  }
+}
+
+Run Output:
+
+same characters
+same characters</pre>
+        <p>2. In this program, there are two completely separate objects, each 
+          of which happens to contain character data equivalent to that in the 
+          other. Each object consists of a section of main memory completely separate 
+          from the memory that makes up the other object. The variable strA contains 
+          information on how to find the first object, and the variable strB contains 
+          information on how to find the second object</p>
+        <p>Since the information in strA is different from the information in 
+          strB, (strA == strB) is false, for the first comparison. Since there 
+          are two objects, made out of two separate sections of main memory, the 
+          reference stored in strA is different from the reference in strB. It 
+          doesn't matter that the data inside the objects looks the same.<br>
+        </p>
+        <p><img src="fig5.jpg" width="394" height="195"></p>
+        <p>3. The == operator does not look at objects. It only looks at references 
+          (information about where an object is located.)</p>
+        <p>4. For primitive types, the == operator looks only at the variables. 
+          For example:<br>
+        </p>
+      <pre>int x = 32;
+int y = 48;
+
+if (x == y)                                // false, 32 != 48
+  System.out.println("They are equal");
+
+X = y;
+
+if (x == y)                                // true, 48 == 48
+  System.out.println("Now they are equal");
+
+Run Output:
+
+Now they are equal
+</pre>
+        <p>In this code, only the contents of the variables x and y are examined. 
+          But with primitive types, the contents of a variable is the data, so 
+          with primitive types == looks at data. </p>
+        <p>5. With primitive and reference types, == looks at the contents of 
+          the variables. However, with reference types, the variables contain 
+          object references and with primitive types, the variables contain the 
+          actual data values.<br>
+        </p>
+        <p><font size="+2"><u>F. The equals() Method. </u></font></p>
+        1. You have previously seen the equals(String) method of class String. 
+        The equals(String) method of class String tests if two Strings contain 
+        the same characters.
+        <p>2. The equals(String) method does look at the contents of objects. 
+          It detects &quot;equivalence.&quot; The == operator detects &quot;identity&quot;. 
+          For example,<br>
+        </p>
+      <pre>String strA;  // first object
+String strB;  // second object
+ 
+strA = new String("different object, same characters");   
+strB = new String("different object, same characters ");   
+
+if (strA == strB) 
+  System.out.println("This will NOT print");
+
+if (strA.equals(strB)) 
+  System.out.println("This WILL print");
+
+Run Output:
+
+This WILL print
+</pre>
+        <p>3. In this example, there are two objects. Since each object has its 
+          own identity, == reports false. Each object contains equivalent data 
+          so equals() reports true.</p>
+        <p><u><font size="+2">G. The null Value</font></u></p>
+        <p>1. In most programs, objects are created and objects are destroyed, depending 
+          on the data and on what is being computed. A reference variable sometimes 
+          does and sometimes does not refer to an object. You need a way to say 
+          that a variable does not now refer to an object. You do this by assigning 
+          null to the variable.</p>
+        <p>2. The value null is a special value that means &quot;no object.&quot; 
+          A reference variable is set to null when it is not referring to any 
+          object.<br>
+        </p>
+      <pre>class nullDemo
+{
+  public static void main (String[] arg)
+  {
+    String a = "abracadabra"; // 1. an object is created; 
+                              //    variable a refers to it
+    String b = null;          // 2. variable b refers to no
+                              //    object.
+    String c = "";            // 3. an object is created 
+                              //    (containing no characters)
+                              //     variable c refers to it
+    if (a != null)            // 4. is true, so the
+       System.out.println(a); // 5. the println(a) executes.
+                                              
+    if (b != null)            // 6. is false, so the
+       System.out.println(b); // 7. println(b) is skipped.
+
+    if (c != null)            // 8. is true, so the
+       System.out.println(c); // 9. println(c) executes (but
+                              //    it has no characters to 
+                              //    print).
+  }
+}    
+
+Run Output:
+
+abracadabra
+</pre>
+        <p>3. Variables a and c are initialized to object references. Variable 
+          b is initialized to null. Note that variable c is initialized to a <i>reference</i> 
+          to a String object containing no characters. This is a different value 
+          than null.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">It is important to understand how an object reference 
+          variable differs from a primitive variable. Nearly every program you 
+          write will require you to know this. Unfortunately, the topic can get 
+          confusing if you rush through it too quickly.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

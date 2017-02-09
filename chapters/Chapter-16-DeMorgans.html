@@ -1,0 +1,314 @@
+<html>
+<head>
+<title>Chapter 16 - Boolean Algebra - Loop Boundaries</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE</font></b> 
+  <p><font size="5"><b>Chapter 16 - Boolean Algebra - Loop Boundaries</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Conditional loops often prove to be one of the most difficult 
+          control structures to work with. This lesson will increase your strategies 
+          in developing correct loops.</p>
+        <p><br>
+          The key topics for this lesson are:</p>
+        <p>A. Negations of Boolean Assertions<br>
+          B. Boolean Algebra and DeMorgan's Laws<br>
+          C. Application of DeMorgan's Laws<br>
+          D. Generating Random Values</p>
+        <p align="left"><br>
+        </p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left">BOOLEAN ASSERTIONS<br>
+          BOOLEAN ALGEBRA</p>
+      </td>
+      <td valign="top"> 
+        <p align="left">DE MORGAN'S LAWS</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Negations of Boolean Assertions</u></font></p>
+        <p>1. A Boolean assertion is simply an expression that results in a true 
+          or false answer. For example,</p>
+        <p><code> a &gt; 5 0 == b a &lt;= b</code></p>
+        <p> are all statements which will result in a true or false answer.</p>
+        <p>2. To negate a Boolean assertion means to write the opposite of a given 
+          Boolean assertion. For example, given the following Boolean assertions 
+          noted as A, the corresponding negated statements are the result of applying 
+          the not operator to A. </p>
+        <table width="75%" border="1">
+          <tr> 
+            <td> 
+              <p align="center"><b>A</b></p>
+              <p align="center">5 == x <br>
+                x &lt; 5<br>
+                x &gt;= 5 </p>
+            </td>
+            <td> 
+              <p align="center"><b>not A</b></p>
+              <p align="center">5 != x<br>
+                x &gt;= 5<br>
+                x &lt; 5 </p>
+            </td>
+          </tr>
+        </table>
+        <p>3. Notice that negation of Boolean assertions can be used to re-write 
+          code. For example:</p>
+        <p><code><b>if</b> (!(x &lt; 5))<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do something...</code></p>
+        <p>can be rewritten as </p>
+        <p><code><b>if</b> (x &gt;= 5)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do something ...</code><br>
+        </p>
+        <p><font size=+2><u>B. Boolean Algebra and DeMorgan's Laws</u></font></p>
+        <p>1. Boolean Algebra is a branch of mathematics devoted to the study 
+          of Boolean values and operators. Boolean Algebra consists of these fundamentals 
+          operands and operations:</p>
+        <p> operands (values): <b>true, false</b></p>
+        <p> operators : and (&amp;&amp;), or (| |), not (!)</p>
+        <p> (note: there are other Boolean operators such as ^ (XOR) and equivalence 
+          in Java)</p>
+        <p>2. There are many identities which have been developed to work with 
+          compound Boolean expressions. Two of the more useful identities are 
+          DeMorgan's Laws which are used to negate compound Boolean expressions.</p>
+        <p>DeMorgan's Laws:</p>
+        <p>not (A or B) = not A and not B</p>
+        <p>not (A and B) = not A or not B</p>
+        <p> The symbols A and B represent Boolean values, true (1) or false (0).</p>
+        <p>3. Here is the truth table which proves the first DeMorgan's Law.<br>
+        </p>
+        <table width="75%" border="0">
+          <tr> 
+            <td> 
+              <p align="center"><b>A</b></p>
+              <p align="center">1<br>
+                1<br>
+                0<br>
+                0 </p>
+            </td>
+            <td> 
+              <p align="center"><b>B </b></p>
+              <p align="center">1<br>
+                0<br>
+                1<br>
+                0 </p>
+            </td>
+            <td> 
+              <p align="center"><b>not (A or B)</b></p>
+              <p align="center">0<br>
+                0<br>
+                0<br>
+                1 </p>
+            </td>
+            <td> 
+              <p align="center"><b>not A</b></p>
+              <p align="center">0<br>
+                0<br>
+                1<br>
+                1 </p>
+            </td>
+            <td> 
+              <p align="center"><b>not B</b></p>
+              <p align="center">0<br>
+                1<br>
+                0<br>
+                1</p>
+            </td>
+            <td> 
+              <p align="center"><b>not A and not B</b></p>
+              <p align="center">0<br>
+                0<br>
+                0<br>
+                1 </p>
+            </td>
+          </tr>
+        </table>
+        <p>Notice that columns with the titles<i> <b>not (A or B)</b></i> and 
+          <b><i>not A and not B</i></b> result in the same answers.</p>
+        <p>4. Following is the truth table which proves the second DeMorgan's 
+          Law.</p>
+        <table width="75%" border="0">
+          <tr> 
+            <td> 
+              <p align="center"><b>A</b></p>
+              <p align="center">1<br>
+                1<br>
+                0<br>
+                0</p>
+            </td>
+            <td> 
+              <p align="center"><b>B </b></p>
+              <p align="center">1<br>
+                0<br>
+                1<br>
+                0</p>
+            </td>
+            <td> 
+              <p align="center"><b>not (A and B)</b></p>
+              <p align="center">0<br>
+                1<br>
+                1<br>
+                1</p>
+              </td>
+            <td> 
+              <p align="center"><b>not A</b></p>
+              <p align="center">0<br>
+                0<br>
+                1<br>
+                1</p>
+            </td>
+            <td> 
+              <p align="center"><b>not B</b></p>
+              <p align="center">0<br>
+                1<br>
+                0<br>
+                1</p>
+            </td>
+            <td> 
+              <p align="center"><b>not A or not B</b></p>
+              <p align="center">0<br>
+                1<br>
+                1<br>
+                1</p>
+            </td>
+          </tr>
+        </table>
+        <p>Notice that columns with the titles <i><b>not (A and B)</b></i> and 
+          <i> <b>not A or not B</b></i> result in the same answers.</p>
+        <p>5. Here is a good way to think about both of DeMorgan's Laws. Notice 
+          that it is similar to the distributive postulate in mathematics. The 
+          not operator is distributed among both terms inside of the parentheses, 
+          except the operator switches from and to or, or vice versa.</p>
+        <p> not (A and B) = not A or not B (<code>!(A &amp;&amp; B) == !A || !B</code>)</p>
+        <p> not (A or B) = not A and not B (<code>!(A || B) == !A &amp;&amp; !B</code>)</p>
+        <p><font size=+2><u>C. Application of DeMorgan's Laws</u></font></p>
+        <p>1.The casino game of craps involves rolling a pair of dice. The rules 
+          of the game are as follows.</p>
+        <p>- If you roll a 7 or 11 on the first roll, you win.<br>
+          - If you roll a 2, 3, or 12 on the first roll, you lose.<br>
+          - Otherwise rolling a 4,5,6,8,9, or 10 establishes what is called the 
+          point value.<br>
+          - If you roll the point value before you roll a 7, you win. If you roll 
+          a 7 before you match the point value, you lose.<br>
+          - After the point value has been matched, or a 7 terminates the game, 
+          play resumes from the top.</p>
+        <p></p>
+        <p>2. The following sequences of dice rolls gives these results:</p>
+        <table width="75%" border="0">
+          <tr>
+            <td>7 <br>
+              4 5 3 7 <br>
+              8 6 2 8 <br>
+              3 <br>
+            </td>
+            <td>player wins<br>
+              player loses<br>
+              player wins<br>
+              player loses </td>
+          </tr>
+        </table>
+        <p>3. The rules of the game are set so that the house (casino) always 
+          wins a higher percentage of the games. Based on probability calculations, 
+          the actual winning percentage of a player is 49.29%.</p>
+        <p>4. A complete program, craps.java, is provided in Handout H.A.18.1. 
+          The application of DeMorgan's Laws occurs in the getPoint() method. 
+          The do-while loop has a double exit condition. </p>
+        <p>
+        <pre>do
+{
+	sum = rollDice();
+}
+while ((sum != point) && (sum != 7));</pre>
+        <p>5. When developing a conditional loop it is very helpful to think about 
+          what assertions are true when the loop will be finished. When the loop 
+          is done, what will be true?</p>
+        <p>6. When the loop in <code>getPoint</code> is done, one of two things 
+          will be true:</p>
+        <p> a. the point will be matched (<code>sum == point</code>).<br>
+          b. or a seven has been rolled.</p>
+        <p> These two statements can be combined into one summary assertion statement:<br>
+          (<code>(sum == point) || (sum == 7)</code>)<br>
+          7. The loop assertion states what will be true when the loop is done. 
+          Once you have established the loop assertion, writing the boundary condition 
+          involves a simple negation of the loop assertion. </p>
+        <p>8. Taking the assertion developed in Section 6, the negation of the 
+          assertion follows.</p>
+        <p><code>!((sum == point) || (sum == 7))</code></p>
+        <p>9. Applying DeMorgan's law results in<br>
+          <code>(!(sum == point)) &amp;&amp; (!(sum == 7))</code><br>
+          Then negate each half of the expression to give</p>
+        <p><code>(sum != point) &amp;&amp; (sum != 7)</code></p>
+        <p>10. Looking at the first half of the developing boundary condition, 
+          the statement (sum != point) means that we have not yet matched the 
+          point, keep rolling the dice. </p>
+        <p>11. The second half of the boundary condition (<code>value != 7</code>) 
+          means we have not yet &quot;crapped&quot; out (rolled a 7). Keep rolling 
+          the dice.</p>
+        <p>12. DeMorgan's laws can be very useful in developing conditional loop 
+          boundaries.<br>
+        </p>
+        <p><font size=+2><u>D. Generating Random Values</u></font> </p>
+        <p>1. The casino game of craps involves rolling a pair of dice to generate 
+          random values within a specified range. Java has a class named Random 
+          that makes it easy to get seemingly random numbers into your program.</p>
+        <p>2. To use the capabilities of the Random class, you must first import 
+          the class as follows:</p>
+        <p><code>import java.util.Random;</code></p>
+        <p>3. A Random object can then be constructed with a statement like</p>
+        <p><code>Random die = new Random();</code></p>
+        <p>and then use the nextInt method.</p>
+        <p><pre>/** From the Random class
+ *
+ * Returns a pseudorandom, uniformly distributed int
+ * value between 0 (inclusive) and the specified value
+ * n (exclusive), drawn from this random number 
+ * generator's sequence.
+ */
+public int nextInt(int n);
+</pre>
+        <p>4. For example, you can get a number from 1 to 6 with an expression 
+          like:</p>
+        <pre>// The message randomly returns 0, 1, 2, 3, 4, or 5.
+// A die is simulated by adding 1 to give a value
+//   in the range 1 - 6.
+int dieRoll = die.nextInt(6) + 1;
+</pre>
+        <p>5. The Random class contains additional methods for generating random 
+          <code>longs, floats, doubles, bytes, booleans</code>, etc. Please consult 
+          the Java documentation for a complete explanation of its capabilities.</p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> Conditional loops are some of the hardest pieces of code 
+          to write correctly. The goal of this lesson is to have a structured 
+          approach for the construction of conditional loops.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

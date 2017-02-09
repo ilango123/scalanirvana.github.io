@@ -1,0 +1,376 @@
+<html>
+<head>
+<title>Chapter 11 - String Class</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 11 - String Class</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Strings are needed in many large programming tasks. Much 
+          of the information which identifies a person must be stored as a string: 
+          name, address, city, social security number, etc. </p>
+        <p>A standard <code>String</code> class has been provided for your use. 
+          Your job in this lesson is to learn the specifications of the <code>String</code> 
+          class and use it to solve string-processing questions.</p>
+        <p><br>
+          The key topics for this lesson are:</p>
+        <p>A. The String Class<br>
+          B. String Constructors<br>
+          C. String Query Methods<br>
+          D. String Translate Methods<br>
+          E. Comparing Strings<br>
+          F. Strings and Characters</p>
+        <p align="left"><br>
+        </p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left">none </p>
+      </td>
+      <td valign="top"> 
+        <p align="left">&nbsp; </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. The String Class</u></font></p>
+        <p>1.Character strings in Java are not represented by a primitive types 
+          as are integers (<b>int</b>) or single characters (<b>char</b>). Strings 
+          are represented as objects of the <code>String</code> class. The String 
+          class is defined in <code>java.lang.String</code>, which is automatically 
+          imported for use in every program you write. We've used character string 
+          literals, such as &quot;Enter a value&quot; in earlier examples. Now 
+          we can begin to explore the String class and the capabilities that it 
+          offers.</p>
+        <p>2. A <code>String</code> is the only Java reference data type that 
+          has a built-in syntax for constants. These constants, referred to as 
+          string literals, consists of any sequence of characters enclosed within 
+          double quotations. For example:</p>
+        <pre>&quot;This is a string&quot;<br>&quot;Hello World!&quot;<br>&quot;\tHello World!\n&quot;</pre>
+        <p>The characters that a String object contains can include control characters. 
+          The last example contains a tab (\t) and a linefeed (\n) character, 
+          specified with escape sequences.</p>
+        <p>3. A second unique characteristic of the String type is that it supports 
+          the &quot;+&quot; operator to concatenate two String expressions. For 
+          example:<br>
+          <code><br>
+          sentence = &quot;I &quot; + &quot;want &quot; + &quot;to be a &quot; 
+          + &quot;Java programmer.&quot;;</code></p>
+        <p>The &quot;+&quot; operator can be used to combine a String expression 
+          with any other expression of primitive type. When this occurs, the primitive 
+          expression is converted to a String representation and concatenated 
+          with the string. For example, consider the following instruction sequence:<br>
+          <br>
+        <pre>PI = 3.14159;
+System.out.println("The value of PI is " + PI);
+
+Run output:
+
+The value of PI is 3.14159</pre>
+        <p>4. String objects are <i>immutable</i>. This means that after construction, 
+          they cannot be altered. Once a String object has been constructed, the 
+          characters it contains will always be the same. None of its methods 
+          will change those characters, and there is no other way to change them. 
+          The characters can be used for various purposes (such as in constructing 
+          new <code>String</code> objects), and can be inspected. But never altered.</p>
+        <p>5. <code>String </code>shares some of the characteristics with the 
+          primitive types, However, <code>String</code> <i>is a reference type, 
+          not a primitive type</i>. As a result, assigning one String to another 
+          copies the reference to the same String object. Similarly, each<code> 
+          String</code> method returns a new <code>String</code> object.</p>
+        <p>6. The rest of the student outline details a partial list of the constructors, 
+          and methods, provided by the Java <code>String</code> class. For a detailed 
+          listing of all of the capabilities of the class, please refer to the 
+          appropriate Sun Java Documentation.<br>
+        </p>
+        <p><br>
+        </p>
+        <p><font size=+2><u>B. String Constructors</u></font></p>
+        <p>1. You create a String object by using the keyword new and the <code>String</code> 
+          constructor method, just as you would create an object of any other 
+          type.</p>
+        <table width="100%" border="1">
+          <tr> 
+            <td width="16%">Constructor</td>
+            <td width="84%">Sample Syntax</td>
+          </tr>
+          <tr> 
+            <td width="16%"><code>String();</code></td>
+            <td width="84%"><code>// emptyString is a reference to an empty string<br>
+              String emptyString = <b>new</b> String();</code></td>
+          </tr>
+          <tr> 
+            <td width="16%" height="41"><code>String(String value);</code></td>
+            <td width="84%" height="41"> 
+              <p><code>String aGreeting;</code></p>
+              <p><code>// aGreeting is reference to a String<br>
+                aGreeting = new String(&quot;Hello world&quot;);</code></p>
+              <p><code>// Shortcut for constructing String objects.<br>
+                aGreeting = &quot;Hello world&quot;;<br>
+                // anotherGreeting is a copy of aGreeting<br>
+                String anotherGreeting = <b>new</b> String(aGreeting);</code></p>
+            </td>
+          </tr>
+        </table>
+        <p>&nbsp;</p>
+        <p>2. Though they are not primitive types, strings are so important and 
+          frequently used that Java provides an addition syntax for declaration:</p>
+        <pre>String aGreeting = &quot;Hello world&quot;;</pre>
+        <p>A <code>String</code> created in this short-cut way is called a <i>String 
+          literal</i>. Only <code>Strings</code> have a short-cut like this. All 
+          other objects are constructed by using the new operator</p>
+        <p></p>
+        <p><font size=+2><u>C. String Query Methods</u></font></p>
+        <table width="75%" border="1">
+          <tr> 
+            <td>Query Method</td>
+            <td>Sample syntax</td>
+          </tr>
+          <tr> 
+            <td><code>int length();</code></td>
+            <td><code>String str1 = &quot;Hello!&quot;<br>
+              <b>int</b> len = str1.length(); //len == 6</code></td>
+          </tr>
+          <tr> 
+            <td><code>char charAt(int index);</code></td>
+            <td> 
+              <p><code>String str1 = &quot;Hello!&quot;<br>
+                <b>char</b> ch = str1.charAt(0); // ch == 'H'</code></p>
+            </td>
+          </tr>
+          <tr> 
+            <td><code>int indexOf(String str);</code></td>
+            <td> 
+              <p><code>String str2 = &quot;Hi World!&quot;<br>
+                </code><code><b>int</b> n = str2.indexOf(&quot;World&quot;); // 
+                n == 3<br>
+                <b>int</b> n = str2.indexOf(&quot;Sun&quot;); // n == -1</code></p>
+            </td>
+          </tr>
+          <tr> 
+            <td><code>int indexOf(char ch);</code></td>
+            <td><code>String str2 = &quot;Hi World!&quot;<br>
+              <b>int</b> n = str2.indexOf('!'); // n == 8<br>
+              <b>int</b> n = str2.indexOf('T'); // n == -1</code></td>
+          </tr>
+        </table>
+        <p>1. The method int length(); returns the number of characters in the String 
+          object.</p>
+        <p>2. The method charAt method is a tool for extracting a character from
+           within a String. The charAt parameter specifies the position of the
+           desired char (0 for the leftmost character, 1 for the second from
+          the  left, etc.). For example, executing the following two instructions,
+           prints the char value 'X'.<br>
+        </p>
+        <pre>String stringVar = "VWXYZ"
+System.out.println(stringVar.charAt(2);
+</pre>
+        <p>3. The method <b>int</b> <code>indexOf</code>(<code>String str</code>); 
+          will find the first occurrence of <code>str</code> within this <code>String</code> 
+          and return the index of the first character. If str does not occur in 
+          this String, the method returns -1.</p>
+        <p>4. The method <b>int</b> <code>indexOf</code>(<code>int ch</code>); 
+          is identical in function and output to the other<code> indexOf</code> 
+          function except it is looking for a single character.<br>
+        </p>
+        <p><font size=+2><u>D. String Translate Methods</u></font></p>
+        <table width="75%" border="1">
+          <tr> 
+            <td>Translate Method</td>
+            <td>Sample syntax</td>
+          </tr>
+          <tr> 
+            <td><code>String toLowerCase();</code></td>
+            <td><code>String greeting = &quot;Hi World!&quot;;<br>
+              greeting.toLowerCase();<br>
+              // returns &quot;hi world!&quot;</code></td>
+          </tr>
+          <tr> 
+            <td><code>String toUpperCase();</code></td>
+            <td><code>String greeting = &quot;Hi World!&quot;;<br>
+              greeting.toUpperCase();<br>
+              // returns &quot;HI WORLD!&quot;</code></td>
+          </tr>
+          <tr> 
+            <td><code>String trim();</code></td>
+            <td><code>String needsTrim = &quot; trim me! &quot;;<br>
+              needsTrim.trim();<br>
+              // returns &quot;trim me!&quot;</code></td>
+          </tr>
+          <tr> 
+            <td><code>String substring(int beginIndex)</code></td>
+            <td><code>String sample = &quot;hamburger&quot;;<br>
+              sample.substring(3);<br>
+              // returns &quot;burger&quot;</code></td>
+          </tr>
+          <tr> 
+            <td><code>String substring(int beginIndex, int endIndex)</code></td>
+            <td><code>String sample = &quot;hamburger&quot;;<br>
+              sample.substring(4, 8);<br>
+              // returns &quot;urge&quot;</code></td>
+          </tr>
+        </table>
+        <p>1. <code>toLowerCase()</code> returns a String with the same characters 
+          as the string object, but with all characters converted to lowercase. 
+        <p>2. <code>toUpperCase()</code> returns a String with the same characters 
+          as the string object, but with all characters converted to uppercase.</p>
+        <p>3.<code> trim()</code> returns a String with the same characters as 
+          the string object, but with the leading and trailing whitespace removed.</p>
+        <p>4. <code>substring(<b>int</b> beginIndex)</code> returns the substring 
+          of the String object starting from <code>beginIndex</code> through to 
+          the end of the <code>String</code> object. </p>
+        <p>5. <code>substring(<b>int</b> beginIndex, <b>int</b> endIndex)</code> 
+          returns the substring of the String object starting from <code>beginIndex</code> 
+          through, but not including, position <code>endIndex</code> of the String 
+          object. <br>
+        </p>
+        <p><font size="+2"><u>E. Comparing Strings</u></font><br>
+        </p>
+        <p>1. Because String variables hold object references, you cannot make 
+          a simple comparison to determine whether two String objects are equivalent. 
+          If you declare two Strings as</p>
+        <pre>String aGreeting = &quot;Hello&quot;;
+String anotherGreeting = &quot;Hello&quot;;
+</pre>
+        <p>Java will evaluate a comparison such as</p>
+        <pre>If (aGreeting == anotherGreeting) ...</pre>
+        <p>as <code>false</code>. When you compare <code>aGreeting</code> and 
+          <code>anotherGreeting</code> with the == operator, you are comparing 
+          memory addresses, and not their values.</p>
+        <p>Fortunately, the String class provides you with a number of useful 
+          methods.</p>
+        <table width="97%" border="1">
+          <tr> 
+            <td>Comparison Method</td>
+            <td>Sample syntax</td>
+          </tr>
+          <tr> 
+            <td><code><b>boolean</b> equals(Object anObject);</code></td>
+            <td><code>String aName = &quot;Mat&quot;;<br>
+              String anotherName = &quot;Mat&quot;;<br>
+              <b>if</b> (aName.equals(anotherName)) &nbsp;&nbsp;System.out.println(&quot;the 
+              same&quot;);</code></td>
+          </tr>
+          <tr> 
+            <td><code><b>boolean</b> equalsIgnoreCase(String anotherString);</code></td>
+            <td><code>String aName = &quot;Mat&quot;;<br>
+              <b>if</b> (aName.equalsIgnoreCase(&quot;MAT&quot;)) <br>
+              &nbsp;&nbsp;System.out.println(&quot;the same&quot;);</code></td>
+          </tr>
+          <tr> <code> 
+            <td><code><b>boolean</b> compareTo(String anotherString)</code></td>
+            </code> 
+            <td><code>String aName = &quot;Mat&quot;<br>
+              n = aName.compareTo(&quot;Rob&quot;); // n &lt; 0<br>
+              n = aName.compareTo(&quot;Mat&quot;); // n == 0<br>
+              n = aName.compareTo(&quot;Amy&quot;); // n &gt; 0</code></td>
+          </tr>
+        </table>
+        <p>2.The <code>equals()</code> method evaluates the contents of two String 
+          objects to determine if they are equivalent. The method returns true 
+          if the objects have identical contents. For example, the code below 
+          shows two String objects and several comparisons. Each of the comparisons 
+          evaluate to true; each comparison results in printing the line &quot;Name's 
+          the same&quot;
+        <pre>String aName = "Mat";
+String anotherName = "Mat";
+
+<b>if</b> (aName.equals(anotherName))
+  System.out.println("Name's the same");
+
+<b>if</b> (anotherName.equals(aName))
+  System.out.println("Name's the same");
+
+<b>if</b> (aName.equals("Mat"))
+  System.out.println("Name's the same");
+</pre>
+        <p>Each String shown above-<code>aName</code> and <code>anotherName</code>-is 
+          an object of type <code>String</code>, so each String has access to 
+          the equals() method. The <code>aName</code> object can cal <code>equals() 
+          </code>with <code>aName.equals()</code>, or the <code>anotherName</code> 
+          object can call <code>equals()</code> with <code>anotherName.equals()</code>. 
+          The <code>equals()</code> method can take either a variable <code>String</code> 
+          object or a literal <code>String</code> as its argument.</p>
+        <p>3. The equalsIgnoreCase() method is very similar to the equals() method. 
+          As its name implies, it ignores case when determining if two Strings 
+          are equivalent. This method is very useful when users type responses 
+          to prompts in your program. The equalsIgnoreCase() method allow you 
+          to test entered data without regard to capitalization.</p>
+        <p>4. The compareTo() method compares the calling string object and the 
+          string argument to see which comes first in the lexicographic ordering. 
+          Lexicographic ordering is the same as alphabetical ordering when both 
+          strings are either all uppercase or all lowercase. If the calling string 
+          is first, it returns a negative value. If the two strings are equal, 
+          it returns zero. If the arguments is first, it returns a positive number.<br>
+        </p>
+        <p><br>
+        </p>
+        <p><font size="+2"><u>F. Strings and Characters. </u></font></p>
+        <p>1. It is natural to think of a <b>char</b> as a <code>String</code> 
+          of length 1. Unfortunately, in Java the <b>char </b>and <code>String</code> 
+          types are incompatible since a <code>String</code> is a reference type 
+          and a <b>char</b> is a primitive type. Some of the limitation of this 
+          incompatibility are: </p>
+        <blockquote>
+          <p>a. You cannot pass a char argument to a String parameter (nor the 
+            opposite).<br>
+            b. You cannot use a char constant in place of a String constant.<br>
+            c. You cannot assign a char expression to a String variable (nor the 
+            opposite).<br>
+          </p>
+        </blockquote>
+        <p>The last restriction is particularly troublesome, because there are 
+          many times in programs when char data and <code>String</code> data must 
+          be used cooperatively.</p>
+        <p>2.Extracting a char from within a String can be accomplished using 
+          the charAt method as previously described.</p>
+        <p>3. Conversion from char to String can be accomplished by using the 
+          &quot;+&quot; (concatenation) operator described previously. Concatenating 
+          any char with an<i> empty string</i> (String of length zero) results 
+          in a string that consists of that char. The java notation for an empty 
+          string is two consecutive double quotation marks. For example, the following 
+          expression</p>
+        <p><code>&quot;&quot; + 'X';</code></p>
+        <p>evaluates to a String of length 1, consisting of the letter &quot;X&quot; <pre>// charVar is a variable of type char
+// stringVar is a variable of type String
+stringVar = "" + charVar;
+</pre>
+        <p>The execution of this instruction assigns to <code>stringVar</code> 
+          a String object that consist of the single character from <code>charVar</code>. 
+        </p>
+        <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">The use of pre-existing code (classes) has helped reduce 
+          the time and cost of developing new programs. In this lesson you will 
+          use the String class without knowing its inner details. This is an excellent 
+          example of data type abstraction.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

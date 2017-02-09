@@ -1,0 +1,283 @@
+<html>
+<head>
+<title>Chapter 8 - for loops, etc.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 8 - for, do-while, Nested Loops<br>
+    </b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">We continue our study of looping control structures with 
+          a look at the<b> for</b> and <b>do-while</b> loops. The concept of nested 
+          loops to solve two-dimensional problems will also be covered.</p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. The <b>for</b> Loop<br>
+          B. Nested Loops<br>
+          C. The <b>do-while </b>Loop<br>
+          D. Choosing a Loop Control Structure<br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left"> FOR <br>
+          NESTED LOOP<br>
+        </p>
+      </td>
+      <td valign="top"> 
+        <p align="left"> DO-WHILE</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. The for Loop</u></font></p>
+        <p>1. The for loop has the same effect as a while loop, but using a different 
+          format. The general form of a for loop is:</p>
+        <pre>for (statement1;  expression2;  statement3)  <br>		statement;<br></pre>
+        <p><code>statement1</code> initializes a value<br>
+          <code>expression2</code> is a Boolean expression<br>
+          <code>statement3</code> alters the key value, usually via an increment/decrement 
+          statement<br>
+        </p>
+        <p>2. Here is an example of a for loop, used to print the integers 1-10.<br>
+        <pre><b>for</b> (loop = 1;  loop <= 10;  loop++)
+  System.out.print( loop);
+</pre>
+        <p>3. The flow of control is illustrated:</p>
+        <img src="fig1.jpg"><br>
+        Notice that after the statement is executed, control passes to the increment/decrement 
+        statement, and then back to the Boolean condition.
+        <p>4. Following the general form of section 1 above, the equivalent while 
+          loop would look like this:<br>
+        <pre>statement1;			/*  initializes variable  */
+<b>while</b> (expression2)	/*  Boolean expression  */
+{
+  statement;
+  statement3;		    /*  alters key value  */
+}
+
+
+Coded version:
+
+loop = 1;
+<b>while</b> (loop <= 10)
+{
+  System.out.print( loop);
+  loop++;
+}</pre>
+        <p>5. A for loop is appropriate when the initialization value and number 
+          of iterations is known in advance. The above example of printing 10 
+          numbers is best solved with a for loop because the number of iterations 
+          of the loop is well-defined. </p>
+        <p>6. Constructing a for loop is easier than a while loop because the 
+          key structural parts of a loop are contained in one line. The initialization, 
+          loop boundary, and increment/decrement statement are written in one 
+          line. It is also easier to visually check the correctness of a for loop 
+          because it is so compact.</p>
+        <p>7. A while loop is more appropriate when the boundary condition is 
+          tied to some input or changing value inside of the loop. </p>
+        <p>8. Here is an interesting application of a for loop to print the alphabet:<br>
+        <pre><b>char</b> letter;
+
+<b>for</b> (letter = 'A'; letter <= 'Z'; letter++)
+	System.out.print(letter);
+</pre>
+        <p>The increment statement letter++ will add one to the ASCII value of 
+          letter.</p>
+        <p>9. A simple error, but time-consuming to find and fix is the accidental 
+          use of a null statement.<br>
+        <pre><b>for</b> (loop = 1; loop <= 10; loop++);  // ';' is a mistake
+  System.out.print(loop);
+</pre>
+        <p>The semicolon placed at the end of the first line causes the <b>for</b> 
+          loop to do &quot;nothing&quot; except increment loop 10 times. The print 
+          statement will only happen once after the <b>for</b> loop has done the 
+          null statement 10 times. The null statement can be used as a valid statement 
+          in control structures.</p>
+        <p><font size=+2>B. <u>Nested Loops</u></font></p>
+        <p>1. To nest a loop means to place one loop inside another loop. The 
+          statement of the outer loop will consist of another inner loop.</p>
+        <p>2. The following example will print a rectangular grid of stars with 
+          4 rows and 8 columns.<br>
+        <pre><b>for</b> (row=1;  row <= 4;  row++)
+{
+  <b>for</b> (col=1;  col <= 8;  col++)
+    System.out.print("*");
+  System.out.println( );
+}
+
+Output:
+
+********
+********
+********
+********</pre>
+        <p>3. For each occurrence of the outer row loop, the inner col loop will 
+          print its 8 stars, terminated by the newline character.</p>
+        <p>4. The action of nested loops can be analyzed using a chart:<br>
+        </p>
+        <table border="0" width="75%">
+          <tr> 
+            <td> 
+              <p align="center"><i>row</i></p>
+              <p align="center">1<br>
+                2<br>
+                3<br>
+                4 </p>
+            </td>
+            <td> 
+              <p align="center"><i>col</i></p>
+              <p align="center">1 to 8<br>
+                1 to 8<br>
+                1 to 8<br>
+                1 to 8</p>
+            </td>
+          </tr>
+        </table>
+        <p>5. Suppose we wanted to write a method that prints out the following 
+          7-line pattern of stars:</p>
+        <p>
+        <pre>*******<br> ******<br>  *****<br>   ****<br>    ***<br>     **<br>      *<br></pre>
+        <p>6. Here is an analysis of the problem, line-by-line.</p>
+        <table width="40%" border="0">
+          <tr valign="top"> 
+            <td> 
+              <p align="center">Line # </p>
+              <p align="center">1 <br>
+                2<br>
+                3<br>
+                ...<br>
+                7<br>
+                L</p>
+            </td>
+            <td> 
+              <p align="center"># spaces </p>
+              <p align="center">0<br>
+                1<br>
+                2<br>
+                <br>
+                6<br>
+                L-1 </p>
+            </td>
+            <td> 
+              <p align="center"># stars</p>
+              <p align="center"> 7<br>
+                6<br>
+                5<br>
+                <br>
+                1<br>
+                N-L+1 </p>
+            </td>
+          </tr>
+        </table>
+        <p>For a picture of N lines, each line L will have (L-1) spaces and (N-L+1) 
+          stars.</p>
+        <p>7. Here is a pseudocode version of the method.</p>
+        <p>A method to print a pattern of stars:</p>
+        <p>Print N lines of stars, each Line L consists of<br>
+          (L-1) spaces<br>
+          (N-L+1) stars<br>
+          a line feed</p>
+        <p>8. Code version of the method.<br>
+        <pre>
+<b>void</b>  picture (int n)
+{
+  <b>int</b>  line, spaces, stars, loop;
+
+ <b> for</b> (line = 1; line <= n; line++)
+  {
+    spaces = line - 1;
+    <b>for</b> (loop = 1; loop <= spaces; loop++)
+      System.out.print (" ");    // print a blank space
+    stars = n - line + 1;
+    <b>for</b> (loop = 1; loop <= stars; loop++)
+      System.out.print("*");
+    System.out.println ( );
+  }
+}
+</pre>
+        <p></p>
+        <p><font size=+2>C. <u>The do-while Loop</u></font></p>
+        <p>1. There are conditional looping situations where it is desirable to 
+          have the loop execute at least once, and then evaluate an exit expression 
+          at the end of the loop.</p>
+        <p>2. The do-while loop allows you to do a statement first, then evaluate 
+          an exit condition. The do-while loop complements the while loop, which 
+          evaluates the exit expression at the top of the loop.</p>
+        <p>3. The general form of a do-while loop is:<br>
+        </p>
+        <pre><b>do</b>
+{
+  statement;
+}
+<b>while</b> (expression);
+</pre>
+        <p>4. The flow of control for a do-while loop is illustrated:<br>
+          <img src="fig2.jpg" width="135" height="237"> </p>
+        <p>5. The following fragment of code will keep a running total of integers, 
+          terminated by a sentinel -1 value.
+        <pre><b>int</b> number, total = 0;
+<b>do</b>
+{
+  System.out.print ("Enter an integer (-1 to quit) ---> ");
+  number = console.readlnInt();
+  <b>if</b> (number >= 0)
+    total += number;
+}
+<b>while </b>(number >= 0);</pre>
+        In contrast to the <b>while </b>loop version, the <b>do-while</b> has 
+        the advantage of using only one input statement inside of the loop. Because 
+        the Boolean condition is at the bottom, you must pass through the main 
+        body of a <b>do-while</b> loop at least once. 
+        <p>6. The same strategies used to develop <b>while </b>loops apply to 
+          <b>do-while </b>loops. Make sure you think about the following four 
+          sections of the loop: initialization, loop boundary, contents of loop, 
+          and the state of variables after the loop.<br>
+        </p>
+        <p><font size=+2>D. <u>Choosing a Loop Control Structure</u></font></p>
+        <p> 1. If you know how many times a loop is to occur, use a <b>for</b> 
+          loop. Problems that require execution of a pre-determined number of 
+          loops should be solved with a <b>for</b> statement.</p>
+        <p>2. The key difference between a <b>while</b> and <b>do-while</b> is 
+          the location of the boundary condition. In a <b>while</b> loop, the 
+          boundary condition is located at the top of the loop. Potentially a 
+          <b>while </b>loop could happen zero times. If it is possible for the 
+          algorithm to occur zero times, use a <b>while</b> loop.</p>
+        <p>3. Because a <b>do-while</b> loop has its boundary condition at the 
+          bottom of the loop, the loop body must occur at least once. If the nature 
+          of the problem being solved requires at least one pass through the loop, 
+          use a <b>do-while</b> loop. </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Learning to translate thoughts into computer algorithms 
+          is one of the more challenging aspects of programming. We solve repetitive 
+          and selection problems constantly without thinking about the sequence 
+          of events. Use pseudocode to help translate your thinking into code.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

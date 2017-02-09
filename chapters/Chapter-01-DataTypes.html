@@ -1,0 +1,443 @@
+<HTML><HEAD><TITLE>Chapter 1 - Data Types in Java</TITLE></HEAD>
+<BODY>
+  <H2 align=center>Chapter 1 - Data Types in Java</H2>Chapter
+  <HR align=center width="80%">
+
+  <CENTER>
+  <Table BORDER = "0" WIDTH = "80%" CELLPADDING="10">
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>INTRODUCTION:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">As with most high level languages, 
+  Java provides standard data types to store information.  Java is a richly <I>typed</I> language which 
+  gives the programmer a wide variety of data types to use.  In this lesson you will declare 
+  variables, store values in them, and print out their values using the System.out object.
+  </P>
+  <BR>
+  <P>The key topics for this lesson are listed here under:</P>
+  <P>
+  A. Identifiers in Java<BR>
+  B. Basic Data Types in Java<BR>
+  C. Declaring and Initializing Variables in Java<BR>
+  D. Printing Variables Using the System.out object<BR>
+  E. ASCII Code Values and Character Data<BR>
+  F. Assignment Statements and Math Operators<BR>
+  </P>
+  </TD>
+  </TR>
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>VOCABULARY:</B></P></TD>	
+  <TD WIDTH = "27%" VALIGN="top"><P ALIGN="left">
+  IDENTIFIER<BR>integer<BR>char<BR>ESCAPE SEQUENCE<BR>TYPE CONVERSION<BR>
+  MODULUS</P></TD>
+  <TD WIDTH = "30%" VALIGN="top"><P ALIGN="left">
+  KEYWORDS<BR>float<BR>ASCII<BR>TYPE<BR>ASSIGNMENT STATEMENT<BR>
+  boolean</P></TD>
+  <TD WIDTH = "23%" VALIGN="top"></TD>
+  </TR>
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>DISCUSSION:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">
+  <P><FONT size=+2>A. <U>Identifiers in Java</U></FONT></P>
+  <P>1.	An identifier is a name that will be used to describe classes, 
+  methods, constants, variables, and other items.
+  </P>
+  <P>2.	The rules for writing identifiers in Java are:<BR>
+  a. &nbsp;Identifiers must begin with a letter.<BR>
+  b. &nbsp;Only letters, digits, or underscore may follow the initial letter.<BR>
+  c. &nbsp;The blank space cannot be used.<BR>
+  d. &nbsp;Identifiers cannot be reserved words.  Reserved words or keywords are 
+  identifiers reserved for system use.
+  </P>
+  <P>3.	Java is a case sensitive language.  Java will distinguish between upper 
+  and lower case letters in identifiers.  Therefore:<BR><BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <B>grade</B> versus <B>Grade</B> are different identifiers
+  </P>
+  <P>4.	A good identifier should also be a mnemonic device which helps describe 
+  the nature or purpose of that function or variable.  It is better to use<BR><BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <B>grade</B> instead of <B>g</B>,  <B>number</B> instead of <B>n</B>.
+  </P>
+  <P>Remember that our goal is to write code that is easy to read and professional 
+  in nature.  </P>
+  <P>5.	Programmers will adopt different styles of using upper and lower case 
+  letters in writing identifiers.  The reserved keywords in Java must be typed 
+  in lower case text, but identifiers can be typed using any combination of upper 
+  and lower case letters.  
+  </P>
+  <P>6.	The following conventions will be used throughout the curriculum guide:<BR><BR>
+  a. &nbsp;A single word identifier will be written in lower case only.  Examples:  
+  <B>grade</B>, <B>number</B>, <B>sum</B>.<BR>
+  b. If an identifier is made up of several words, the first letter will be 
+  lower case.  Subsequent words will begin with upper case.  Some examples are:  
+  <B>stringType</B>, <B>passingScore</B>, <B>largestNum</B>.<BR>
+  c. Identifiers used as constants will be fully capitalized.  Examples:  
+  <B>PI</B>, <B>MAXSTRLEN</B>.<BR>
+  </P>
+  <P><FONT size=+2>B. &nbsp;<U>Basic Data Types in Java</U></FONT></P>
+  <P>1.	Java provides eight primitive data types:  <B>byte</B>, <B>short</B>, 
+  <B>int</B>, <B>long</B>, <B>float</B>, <B>double</B>, <B>char</B> and a 
+  <B>boolean</B>.</P>
+  <P>a. The data types <B>byte</B>, <B>short</B>, <B>int</B>, and <B>long</B> are for integers.<br>
+    b.
+    The data types <B>float</B> and <B>double</B> are for real or &quot;floating point&quot; numbers. </P>
+  <P>2.	Integer type - any positive or negative number without a decimal point.<BR><BR>
+  Integer examples:  <B>7</B>, <B>-2</B>, <B>0</B>, <B>2025</B>
+  </P>
+  <P>3.	Floating Point type - any signed or unsigned number with a decimal point.
+  <BR><BR>
+  Floating point examples:  <B>7.5</B>&nbsp;&nbsp;&nbsp;&nbsp;<B>-66.72</B>&nbsp;&nbsp;
+  &nbsp;&nbsp;<B>0.125</B>&nbsp;&nbsp;&nbsp;&nbsp;<B>5.</B>&nbsp;&nbsp;&nbsp;&nbsp;
+  <B>3f</B>&nbsp;&nbsp;&nbsp;&nbsp;<B>28d</B></P>
+  <P>A floating point value can be specified by<br>
+    a.  a decimal point. e.g. <strong>5. </strong>, <strong>-3.1415</strong><br>
+  b. an integer number appended by an f or F, d or D. e.g. <strong>2011f</strong>, <strong>-345d</strong><br>
+  c. scientific notation. e.g. <strong>1625. = 1.625e3</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>.000125 = 1.25e-4</strong></P>
+  <P>A floating point value <strong>cannot</strong>  contain a comma or $ symbol. e.g. <B>1,234.56</B>&nbsp;&nbsp;&nbsp;&nbsp;<B>$66.95</B><BR>
+  </P>
+  <P>4.	The following table summarizes the bytes allocated and the resulting size.
+  <BR><BR>
+  <Table BORDER = "1" CELLPADDING="3">
+  <TR>
+  <TD> </TD>
+  <TD><B>Size</B></TD>
+  <TD><B>Minimum Value</B></TD>
+  <TD><B>Maximum Value</B></TD>
+  </TR>
+  <TR>
+  <TD><B>byte</B></TD>
+  <TD>1 byte</TD>
+  <TD>-128</TD>
+  <TD>127</TD>
+  </TR>
+  <TR>
+  <TD><B>short</B></TD>
+  <TD>2 bytes</TD>
+  <TD>-32768</TD>
+  <TD>32767</TD>
+  </TR>
+  <TR>
+  <TD><B>int</B></TD>
+  <TD>4 bytes</TD>
+  <TD>-2147483648</TD>
+  <TD>2147483647</TD>
+  </TR>
+  <TR>
+  <TD><B>long</B></TD>
+  <TD>8 bytes</TD>
+  <TD>-9223372036854775808</TD>
+  <TD>9223372036854775807</TD>
+  </TR>
+  <TR>
+  <TD><B>float</B></TD>
+  <TD>4 bytes</TD>
+  <TD>-3.40282347E+38</TD>
+  <TD>3.40282347E+38</TD>
+  </TR>
+  <TR>
+  <TD><B>double</B></TD>
+  <TD>8 bytes</TD>
+  <TD>-1.79769313486231570E+308</TD>
+  <TD>1.79769313486231570E+308</TD>
+  </TR>
+  </Table>
+  </P>
+  <P>5. Character type - letters, digits 0..9, and punctuation symbols.<BR><BR>
+  a. &nbsp;Examples: &nbsp;&nbsp;&nbsp;'A', &nbsp;&nbsp;&nbsp;'a', 
+  &nbsp;&nbsp;&nbsp;'8', &nbsp;&nbsp;&nbsp;'*'<BR>
+  b. &nbsp;Note that a character type must be enclosed within single quotes.<BR>
+  c. &nbsp;Java character types are stored using 2 bytes, usually according to the ASCII 
+  collating sequence.  ASCII stands for American Standard Code for Information Interchange.<BR>
+  d. &nbsp;The character value 'A' is actually stored as the integer value 65.  Because a 
+  capital 'A' and the integer 65 are physically stored in the same fashion, this will allow 
+  us to easily convert from character to integer types, and vice versa.<BR>
+  e. &nbsp;Using the single quote as a delimiter leads to the question about how to assign 
+  the single quote (') character to a variable.  Java  provides escape sequences for unusual 
+  keystrokes on the keyboard.  Here is a partial list:<BR><BR>
+  <Table BORDER = "0" CELLPADDING="3">
+  <TR>
+  <TD WIDTH = "50%"><B>Character</B></TD>
+  <TD WIDTH = "50%"><B>Java Escape Sequence</B></TD>
+  </TR>
+  <TR>
+  <TD WIDTH = "50%">Newline</TD>
+  <TD WIDTH = "50%"><B>'\n'</B></TD>
+  </TR>
+  <TR>
+  <TD WIDTH = "50%">Horizontal tab</TD>
+  <TD WIDTH = "50%"><B>'\t'</B></TD>
+  </TR>
+  <TR>
+  <TD WIDTH = "50%">Backslash</TD>
+  <TD WIDTH = "50%"><B>'\\'</B></TD>
+  </TR>
+  <TR>
+  <TD WIDTH = "50%">Single quote</TD>
+  <TD WIDTH = "50%"><B>'\''</B></TD>
+  </TR>
+  <TR>
+  <TD WIDTH = "50%">Double quote</TD>
+  <TD WIDTH = "50%"><B>'\"'</B></TD>
+  </TR>
+  <TR>
+  <TD WIDTH = "50%">Null character</TD>
+  <TD WIDTH = "50%"><B>'\0'</B></TD>
+  </TR>
+  </Table>
+  </P>
+  <P>6. Data types are provided by high level languages to minimize memory usage and 
+  processing time.  Integers and characters require less memory and are easier to process.  
+  Floating point values require more memory and time to process.
+  </P>
+  <P>7. The final primitive  is the type <B>boolean</B>. It is used to represent a single 
+  <B>true/false</B> value. A <B>boolean</B> value can have only one of two values:<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>true</B>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>false</B><BR>
+  In a Java program, the words <B>true</B> and <B>false</B> are reserved words that always mean these <B>boolean</B> values.
+  </P>
+  <P><FONT size=+2>C. &nbsp;<U>Declaring and Initializing Variables in Java</U></FONT></P>
+  <P>1. A variable must be declared before it can be initialized with a value.  The general 
+  syntax of variable declarations is:<BR><BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;datatype&gt;&nbsp;&nbsp;&nbsp;
+  &lt;variableName&gt;;<BR>
+  </P>
+  <P>2. Variables can be declared near the top of the method or in the midst of writing code. 
+  Variables can also be declared and assigned a value in one line.  The following example program 
+  illustrates these aspects of variable declaration and assignments.
+  </P>
+  <P><FONT size=+1>&nbsp;<U>Program 3-1</U></FONT></P>
+  <PRE>
+  public class DeclareVar  {
+     public static void main(String[] args)  {
+          // first is declared and initialized
+          // second is just intialized
+          int first, second; 
+          double  x = 2.5;
+          char  ch;
+          bool  done;
+
+          first = 5;
+          second = 7;
+          x = 2.5;
+          ch = 'T';
+          done = false;
+
+          int sum = first + second;
+     }
+  }
+  </PRE>
+  <P>In Program 3-1, two variables, <strong>first</strong> and <strong>second</strong>, are declared on the same line, the variable <strong>x</strong> is declared and assigned the value <strong>2.5</strong>, and the variable <strong>sum</strong> is declared and assigned the computed value <strong>first + second</strong>.</P>
+  <P>3. Where the variables are declared is a matter of programming style.  Your instructor 
+  will probably have some preferences regarding this matter.
+  </P>
+  <P><FONT size=+2>D. &nbsp;<U>Printing Variables Using the System.out Object</U></FONT></P>
+  <P>
+  1. The <B>System.out</B> object is defined in each Java program. It has methods for displaying text 
+  strings and numbers in plain text format on the system display (console). For example:
+  </P>
+  <P><FONT size=+1>&nbsp;<U>Program 3-2</U></FONT></P>
+  <PRE>
+  public class PrintVar  {
+     public static void main(String[] args)  {
+         int  number = 5;
+         char  letter = 'E';
+         double average = 3.95;
+         boolean done = false;
+
+         System.out.println("number = " + number);
+         System.out.println("letter = " + letter);
+         System.out.println("average = " + average);
+         System.out.println("done = " + done);
+         System.out.print("The ");
+         System.out.println("End!");
+     }
+  }
+
+  Run output:
+
+  number = 5
+  letter = E
+  average = 3.95
+  done = false
+  The End!
+  </PRE>
+  <P>2. Method <B>System.out.println</B> displays (or prints) a line of text in the console window. 
+  When <B>System.out.println</B> completes its task, it automatically positions the output cursor 
+  (the location where the next character will be displayed) to the beginning of the next line in 
+  the console window (this is similar to pressing the <I>Enter</I> key when typing in a text 
+  editor—the cursor is repositioned at the beginning of the next line in your file).
+  </P>
+  <P>3. The expression
+  </P>
+  <PRE>
+      "number = " + number
+  </PRE>
+  <P>from the statement
+  </P>
+  <PRE>
+      System.out.println("number = " + number);
+  </PRE>
+  <P>uses the <strong>+</strong> as an operator to “link” or concatenate two strings. The result of 
+  this operation is a new, and normally longer string. String concatenation is discussed in 
+  more detail in the next lesson.  </P>
+  <P>4. The lines
+  </P>
+  <PRE>
+      System.out.print("The ");
+      System.out.println("End!");
+  </PRE>
+  <P>of Program 3-2 display one line in the console window. The first statement uses 
+    <strong>System.out</strong>’s method <strong>print</strong> to display a string. Unlike println, <strong>print</strong> displays the argument and positions the cursor after the last displayed character in the console window.</P>
+  <P>5. Note the distinction between sending a text constant, "number = ", versus a variable, 
+  number, to the System.out object.  Each variable will be printed out as represented by its declared data type, integer variables printed out like integers, boolean as true/false, and so forth.  </P>
+  <P><FONT size=+2>E. &nbsp;<U>ASCII Code Values and Character Data</U></FONT></P>
+  <P>1. As mentioned earlier in section B.5, a character value can easily be converted to 
+  its corresponding ASCII integer value.
+  </P>
+  <P>2. A character value is stored using two bytes of memory, which consists of 16 bits 
+  of binary (0 or 1) values.
+  </P>
+  <P>3. The letter 'A' has the ASCII value of 65, which is stored as the binary value 
+  0000000001000001.  This is illustrated in the following program fragment:
+  </P>
+  <PRE>
+    char letter = 'A';
+    System.out.println("letter = " + letter);
+
+    System.out.print("its ASCII position = ");
+    System.out.print((int)letter);
+
+    Run output:
+
+    letter = A
+    its ASCII position = 65
+  </PRE>
+  <P>The statement <strong>(int)letter</strong> is called a type conversion.  The data type of the variable 
+  is converted to the prefix parenthesized type (int), if possible.  </P>
+  <P>4. In Java, you can make a direct assignment of a character value to an integer variable, 
+  and vice versa.  This is possible because both an integer and a character variable are 
+  ultimately stored in binary.  However, it is better to be more explicit about such conversions 
+  by using type conversions.  For example, the two lines of code below assign position the 
+  ASCII value of letter.
+  </P>
+  <PRE>
+    char letter = 'C';  // ASCII value = 67
+    int position;
+
+    position = letter;  // This is legal, position now equals 67
+  </PRE>
+  <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vs.
+  </P>
+  <PRE>
+    position = (int)letter;  // This is easier to understand.
+  </PRE>
+  <P><FONT size=+2>F. &nbsp;<U>Assignment Statements and Math Operators</U></FONT></P>
+  <P>1. An assignment statement has the following basic syntax:<BR><BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;variable&gt;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&lt;expression&gt;;
+  </P>
+  <P>
+  a. &nbsp;The <expression> can be a literal constant value such as 2, 12.25, 't'.<BR>
+  b. &nbsp;The <expression> can also be a numeric expression involving operands (values)
+  and operators.<BR>
+  c. &nbsp;The  =  operator returns the value of the expression.  This means that 
+  the statement
+  </P>
+  <PRE>
+    a = 5;
+  </PRE>
+  <P>also results in the value 5.  This allows for chaining of assignment operators.
+  </P>
+  <PRE>
+    a = b = 5;
+  </PRE>
+  <P>The assignment operator (=) is right-associative.  This means that the above 
+  statement is really solved in this order:
+  </P>
+  <PRE>
+    a = (b = 5);// solved from right to left.
+  </PRE>
+  <P>Since (b = 5) returns the integer 5, the value 5 is also assigned to variable a.
+  </P>
+  <P>2. Java provides 5 math operators as listed below:<BR><BR>
+  + &nbsp;Addition, as well as unary +<BR>
+  - &nbsp;Subtraction, as well as unary -<BR>
+  * &nbsp;Multiplication<BR>
+  / &nbsp;Real and integer division<BR>
+  % &nbsp;Modulus, remainder of division	
+  </P>
+  <P>3. The numerical result and data type of the answer depends on the type of 
+  operands used in a problem.
+  </P>
+  <P>4. For all the operators, if both operands are integers, the result is an integer.  
+  Examples:
+  </P>
+  <PRE>
+    2 + 3 = 5  (integer)	9 - 3 = 6  (integer)
+    4 * 8 = 32 (integer)	11/2 = 5  (integer)
+  </PRE>
+  <P>5. If either of the operands is a float type, the result is a float type.  
+  Examples:
+  </P>
+  <PRE>
+    2 + 3.000 = 5.000  (float)
+    25 / 6.75 = 3.7037 (float)
+  </PRE>
+  <P>
+  a. &nbsp;When an integer and a float are used in a binary math expression, the 
+  integer is promoted to a float value, then the math is executed.<BR>
+  b. &nbsp;In the example 2 + 3.000 = 5.000, the integer value 2 is promoted to a 
+  float (2.000) and then added to the 3.000.
+  </P>
+  <P>6. The modulus operator (%) returns the remainder of dividing the first operand 
+  by the second.  For example:
+  </P>
+  <PRE>
+      10 % 3 = 1    2 % 4 = 2   16 % 2 = 0   27.475 % 7.22 = 5.815
+  </PRE>
+  <P>7. Changing the sign of a value can be accomplished with the negation operator 
+  (-), often called the unary (-) operator.  A unary operator works with only one 
+  value.  Applying the negation operator to an integer returns an integer, while 
+  applying it to a float returns a float value.  For example:
+  </P>
+  <PRE>
+      -(67) = -67      -(-2.345) = 2.345 
+  </PRE>
+  <P>8. To obtain the fractional answer to a question like 11/2 = 5.5, a type 
+  conversion must be applied to one of the operands.
+  </P>
+  <PRE>
+      (double)11/2	results in 5.5
+	11.000/2	then we solve division
+	5.5
+  </PRE>
+  <P>The type conversion operators are unary operators with the following syntax:
+  </P>
+  <PRE>
+      (type) operand
+  </PRE>
+  <P>9. There is more to cover regarding operators in Java.  Topics such as math 
+  precedence and assignment operators will be covered later.
+  </P>
+  </TD></TR>
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>SUMMARY/ REVIEW:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">
+  <P>This lesson has covered a great amount of detail regarding the Java language.  
+  At first you will have to memorize the syntax of data types, but with time and 
+  practice fluency will come.
+  </P>
+  </TD></TR>
+  </TABLE>
+  </CENTER>
+<P>
+   <BR><BR>
+   <CENTER><A href="../../index.html">Back to Java Main Page</A>
+  </CENTER>
+</P>
+</BODY>
+</HTML>

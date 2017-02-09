@@ -1,0 +1,229 @@
+<html>
+<head>
+<title>Chapter 17 - Two Dimensional Arrays</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 17 - Two Dimensional Arrays</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Two dimensional arrays allow the programmer to solve problems 
+          involving rows and columns. Many data processing problems involve rows 
+          and columns, such as an airplane reservation system or the mathematical 
+          modeling of bacteria growth. A classic problem involving two-dimensional 
+          arrays is the bacteria program presented in the lab exercise, Life. 
+          After surveying the syntax and unique aspects of these larger data structures, 
+          such information will be applied to more challenging lab exercises.</p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. Two-Dimensional Arrays<br>
+          B. Passing Two-Dimensional Arrays to Methods<br>
+          C. Two-Dimensional Array Algorithms</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left">MATRIX<br>
+          COLUMN</p>
+      </td>
+      <td valign="top"> 
+        <p align="left"> ROW</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Two-Dimensional Arrays</u></font></p>
+        <p>1.Often the data a program uses comes from a two dimensional situation. 
+          For example, maps are two dimensional (or more), the layout of a printed 
+          page is two dimensional, a computer-generated image (such as on your 
+          computer's screen) is two dimensional, and so on.</p>
+        <p>For these situations, a Java programmer can use a two-dimensional array. 
+          This allows for the creation of table-like data structures with a row 
+          and column format. The first subscript will define a row of a table 
+          with the second subscript defining a column of a table. Here is an example 
+          program including a diagram of the array.</p>
+        <p> <u>Program 19-1</u><br>
+        <pre><b>class</b> ArrayExample
+{
+  <b>public static void</b> main (String[] args)
+  {
+    <b>int</b>[][] table = <b>new</b> int[3][4];
+    <b>int </b> row, col;
+
+    <b>for</b> (row = 0; row < 3; row++)
+      <b>for</b> (col = 0; col < 4; col++)
+        table[row][col] = row + col;
+  }	
+}</pre>
+        <p><img src="fig1.jpg" width="219" height="203"></p>
+        <p>2. Two-dimensional arrays are objects. A variable such as table is 
+          a reference to a 2D array object. The declaration </p>
+        <p><code>int[][] table;</code></p>
+        <p>says that table can hold a reference to a 2D array of int. Without 
+          any further initialization, it will start out holding null.</p>
+        <p> 3. The declaration </p>
+        <p><code>int[][]table = new int[3][4];</code></p>
+        <p>says that table can hold a reference to a 2D array of int, creates 
+          an array object of 3 rows and 4 columns, and puts the reference in table. 
+          All the elements of the array are initialized to zero.</p>
+        <p>4. The declaration <br>
+        </p>
+        <p>
+        <pre><b>int</b>[][] table = { {0,0,0,0},
+                  {0,0,0,0},
+                  {0,0,0,0} };
+</pre>
+        <p>does exactly the same thing as the previous declaration (and would 
+          not ordinarily be used.)</p>
+        <p>5. The declaration </p>
+        <pre><b>int</b>[][]table = { {0,1,2,3},
+                 {1,2,3,4},
+                 {2,3,4,5} };
+</pre>
+        <p> creates an array of the same dimensions (same number of rows and columns) 
+          as the previous array and initializes the elements to specific values.</p>
+        <p>6. If no initializer is provided for an array, then when the array 
+          is created it is automatically filled with the appropriate value: zero 
+          for numbers, <b>false</b> for <b>boolean</b>, and <b>null</b> for objects.</p>
+        <p>7. Just as with one-dimensional arrays, the row and column numbering 
+          of a 2-D array begin at subscript location zero (0). The 3 rows of the 
+          table are referenced from rows 0...2. Likewise, the 4 columns of the 
+          table are referenced from columns 0...3.</p>
+        <p>8. The two-dimensional table is filled with the sums of row and col. 
+          To access each location of the matrix, specify the row coordinate first, 
+          then the column:</p>
+        <p><code>table[row][col]</code></p>
+        <p>Each subscript must have its own square brackets. </p>
+        <p>9. The length of a 2D array is the number of rows it has. The row index 
+          will run from 0 to length-1. The number of rows in table are given by 
+          the value table.length. </p>
+        <p>Each row of a 2D array has its own length. To get the number of columns 
+          in table, you have to ask how many ints there are in a row; this number 
+          would be given by table[0].length, or equivalently by table[1].length 
+          or table[2].length. (There is actually no rule that says that all the 
+          rows of an array must have the same length, and some advanced applications 
+          of arrays use varying-sized rows. But if you use the new operator to 
+          create an array in the manner described above, you'll always get an 
+          array with equal-sized rows.)</p>
+        <p>10. Program 19-1 assumes its array argument has 3 rows and 4 columns. 
+          That is fine for this particular program, but a nicer definition would 
+          work for any array of any two dimensions.</p>
+        <p> <u>Program 19-2</u><br>
+        <pre><b>class</b> ArrayExample2
+{
+  <b>public static void</b> main (String[] args)
+  {
+    <b>int</b>[][] table = <b>new</b> <b>int</b>[3][4];
+    <b>int</b>  row, col;
+
+    <b>for</b> (row = 0; row < table.length; row++)
+      <b>for</b> (col = 0; col < table[row].length; col++)
+        table[row][col] = row + col;
+  }
+}
+</pre>
+        <p>In Program 19-2, the limits of the for loops have been redefined using 
+          table.length and table[row].length so that they work with any two-dimensional 
+          array of ints with any number of rows and columns .</p>
+        <p><font size=+2><u>B. Passing Two-Dimensional Arrays to Methods</u></font></p>
+        <p>1.1. The following program will illustrate parameter passing of an 
+          apmatrix. The purpose of this program is to read a text file containing 
+          integer data, store it in a 2-D array, and print it out. The contents 
+          of the text file &quot;data.txt&quot; is shown first:</p>
+        <p> <i>&quot;data.txt&quot;</i></p>
+        <pre>17   3   2  13
+ 5  10  11   8
+ 9   6   7  12
+ 4  15  14   1
+</pre>
+        <p><u>Program 19-3</u> 
+        <pre>// A program to illustrate 2D array parameter passing
+<b>class</b> Test2D
+{
+  <b>static void</b> printTable (int[][] pTable)
+  {
+    <b>for</b> (<b>int</b> row = 0; row < pTable.length; row++)
+    {
+      <b>for</b> (<b>int</b> col = 0; col < pTable[row].length; col++)
+        System.out.print(Format.right(pTable[row][col], 4));
+      System.out.println();
+    }
+  }
+  
+  <b>static void</b> loadTable (<b>int</b>[][] lTable)
+  {
+    TextReader inFile = <b>new</b> TextReader("data.txt");
+    
+    <b>for</b> (<b>int</b> row = 0; row < lTable.length; row++)
+      <b>for</b> (<b>int</b> col = 0; col < lTable[row].length; col++)
+        lTable[row][col] = inFile.readInt();
+  }
+  <b>
+  public static void</b> main (String[] args)
+  {
+   <b> final int</b> MAX = 4;
+    
+    TextReader keyboard = <b>new</b> TextReader();
+    
+    <b>int</b>[][] grid = <b>new</b> <b>int</b>[MAX][MAX];
+    
+    loadTable(grid);
+    printTable(grid);
+  }
+}
+</pre>
+        <p>2. The <code>loadTable</code> and <code>printTable</code> methods use 
+          a reference parameter, (<code>int[][] lTable and int[][] pTable</code> 
+          respectively). The local identifiers <code>lTable</code> and <code>pTable</code> 
+          serve as aliases for the actual parameter grid passed to the methods.
+        <p>3. When a program is running and it tries to access an element of an 
+          array, the Java virtual machine checks that the array element actually 
+          exists. This is called bounds checking. If your program tries to access 
+          an array element that does not exist, the Java virtual machine will 
+          generate an ArrayIndexOutOfBoundsException exception. Ordinarily, this 
+          will halt your program.<br>
+        </p>
+        <p><font size=+2><u>C. Two-Dimensional Array Algorithms</u></font></p>
+        <p>1. The most common 2-D array algorithms will involve processing the 
+          entire grid, usually row-by-row or column-by-column.</p>
+        <p>2. Problem-solving on a matrix could involve processing:</p>
+        <p>a. one row<br>
+          b. one column<br>
+          c. one cell<br>
+          d. adjacent cells in various different directions</p>
+        <p>3. In the next lesson we will look at a 2-D recursive solution to a 
+          rather difficult problem.<br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Two-dimensional arrays will be applied to two interesting 
+          problems. The simulation of life in a petri dish of bacteria will require 
+          a two-dimensional array representation. The second and third lab exercises 
+          are different versions of the &quot;Knight's Tour&quot; problem, an 
+          interesting and demanding chess movement problem.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<html>
+<head>
+<title>Chapter 19 - Quadratic Sorting Algorithms</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 19: Quadratic Sorting Algorithms</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">In this lesson, you will learn about three sorting algorithms: 
+          bubble, selection, and insertion. You are responsible for knowing how 
+          they work, but you do not necessarily need to memorize and reproduce 
+          the code. After counting the number of steps of each algorithm, you 
+          will have a relative sense of which is the fastest and the slowest sorting 
+          algorithm.</p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. Sorting Template Program<br>
+          B. Bubble Sort<br>
+          C. Selection Sort<br>
+          D. Insertion Sort<br>
+          E. Counting Steps - Quadratic Algorithms</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left">BUBBLE SORT <br>
+          SELECTION SORT <br>
+          QUADRATIC <br>
+          NONDECREASING ORDER<br>
+        </p>
+      </td>
+      <td valign="top"> 
+        <p align="left">SWAP <br>
+          INSERTION SORT<br>
+          STUB</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Sorting Template Program</u></font></p>
+        <p>1. A program shell has been provided as Handout H.A.21.1, <i>SortTemp.java</i>. 
+        </p>
+        <p>2. The program asks the user to select a sorting algorithm, fills the 
+          array with an amount of data chosen by the user, calls the sorting algorithm, 
+          and gives an option of printing out the data after it has been sorted.</p>
+        <p>3. At this point, each sorting algorithm has been left as a function 
+          stub. A stub is an incomplete routine which can be called but does not 
+          solve anything yet. The stub will be filled in later as each algorithm 
+          is developed and understood.</p>
+        <p>4. Stub programming is a programming methodology strategy used during 
+          the implementation stage of program development. It allows for the coding 
+          and testing of algorithms in the context of a working program. As each 
+          sorting algorithm is completed, it can be added to the program shell 
+          and tested without having to complete the other sections.</p>
+        <p>5. This stepwise development of programs using stub programming will 
+          be used extensively in future lessons.<br>
+        </p>
+        <p><br>
+        </p>
+        <p><font size=+2><u>B. Bubble Sort</u></font></p>
+        <p>1. Here is a bubble sort algorithm.</p>
+        <pre><b>public static void</b> bubbleSort(<b>int</b>[] list)
+{
+ <b> for</b> (<b>int</b> outer = 0; outer < list.length - 1; outer++)
+  {
+    <b>for</b> (<b>int</b> inner = 0; inner < list.length-outer-1; inner++)
+    {
+      <b>if</b> (list[inner] > list[inner + 1])
+      {
+        //swap list[inner] & list[inner+1]
+        <b>int</b> temp = list[inner];
+        list[inner] = list[inner + 1];
+        list[inner + 1] = temp;
+      }
+    }
+  }
+}
+</pre>
+        <p>2. Given an array of 6 values, the loop variables outer and inner will 
+          evaluate as follows:</p>
+        <table width="75%" border="0">
+          <tr valign="top"> 
+            <td>When outer = 
+              <p> <br>
+                0<br>
+                1 <br>
+                2 <br>
+                3 <br>
+                4 </p>
+            </td>
+            <td>inner ranges from<br>
+              0 to &lt; (6 - outer - 1) <br>
+              <br>
+              0 to 4<br>
+              0 to 3<br>
+              0 to 2<br>
+              0 to 1<br>
+              0 to 0</td>
+          </tr>
+        </table>
+        <p>3. When outer = 0, then the inner loop will do 5 comparisons of values 
+          next to each other. As inner ranges from 0-4, it does the following 
+          comparisons:</p>
+        <table width="75%" border="0">
+          <tr valign="top"> 
+            <td> inner 
+              <p> 0<br>
+                1 <br>
+                ... <br>
+                4 <br>
+              </p>
+            </td>
+            <td> <b>if</b> list[inner] &gt; list[inner + 1] <br>
+              <br>
+              <b>if</b> list[0] &gt; list[1]<br>
+              <b>if</b> list[1] &gt; list[2]<br>
+              ...<br>
+              <b>if</b> list[4] &gt; list[5]</td>
+          </tr>
+        </table>
+        <p>4. If (list[inner] &gt; list[inner+1]) is <b>true</b>, then the values 
+          are out of order and a swap takes place.</p>
+        <p>5. After the first pass (outer = 0), the largest value will be in its 
+          final resting place. When outer = 1, the inner loop only goes from 0 
+          to 3 because a comparison between positions 4 and 5 is unnecessary. 
+          The inner loop is shrinking.</p>
+        <p>6. Because of the presence of duplicate values this algorithm will 
+          result in a list sorted in nondecreasing order. If there is a duplicate 
+          value it would be incorrect to say the list is in strictly increasing 
+          order because there will be spots in the list where the values do not 
+          increase.</p>
+        <p>7. Here is a small list of data to test your understanding of Bubble 
+          Sort. Write in the correct sequence of integers after each advance of 
+          outer.</p>
+        <p><img src="fig1.jpg" width="439" height="233"><br>
+        </p>
+        <p><font size=+2><u>C. Selection Sort</u></font></p>
+        <p>1. The logic of selection sort is similar to bubble sort except that 
+          fewer swaps are executed.</p>
+        <pre><b>public static void</b> selectionSort(<b>int</b>[] list)<br>{<br>  <b>int</b> min, temp;<br>  <br>  <b>for</b> (<b>int</b> outer = 0; outer &lt; list.length - 1; outer++)<br>  {<br>    min = outer;<br>    <b>for</b> (<b>int</b> inner = outer + 1; inner &lt; list.length; inner++)<br>    {<br>      <b>if</b> (list[inner] &lt; list[min])<br>      {<br>        min = inner;<br>      }<br>    }<br>    //swap list[outer] &amp; list[flag]<br>    temp = list[outer];<br>    list[outer] = list[min];<br>    list[min] = temp;<br>  }<br>}<br></pre>
+        <p>2. Selection sort also uses passes to sort for a position in the array. 
+          Again, assuming we have a list of 6 numbers, the outer loop will range 
+          from 1 to 5. When outer = 1, we will look for the smallest value in 
+          the list and move it to the 1st position in the array.</p>
+        <p>3. However, when looking for the smallest value to place in position 
+          1, we will not swap as we search the entire list. The algorithm will 
+          check from positions 2 to 6, keeping track of where the smallest value 
+          is found by using min as a state variable. After we have found the location 
+          of the largest value in index position min, we swap list[outer] and 
+          list[min].</p>
+        <p>4. By keeping track of where the smallest value is located and swapping 
+          once, we have a more efficient algorithm than bubble sort.</p>
+        <p>5. Here is a small list of numbers to test your understanding of Selection 
+          Sort. Fill in the correct numbers for each line after the execution 
+          of the outer loop. <br>
+        </p>
+        <p><img src="fig2.jpg" width="439" height="233"></p>
+        <p><font size=+2><u>D. Insertion Sort</u></font></p>
+        <p>1. Insertion sort takes advantage of this logic:</p>
+        <p> If A &lt; B and B &lt; C, then it follows that A &lt; C. We can skip 
+          the comparison of A and C.</p>
+        <p>2. Consider the following partially sorted list of numbers:</p>
+        <p> 2 5 8 3 9 7</p>
+        <p> The first three values of the list are sorted. The 4th value in the 
+          list (3), needs to move back in the list between the 2 and 5. <br>
+        </p>
+        <p><img src="fig3.jpg" width="113" height="52"></p>
+        <p>This involves two tasks, finding the correct insert point and a right 
+          shift of any values between the start and insertion point. </p>
+        <p>3. Following is the code:<br>
+        </p>
+        <pre><b>public static void</b> insertionSort(int[] list)
+{
+  <b>for</b> (<b>int</b> outer = 1; outer < list.length; outer++)
+  {
+    <b>int</b> position = outer;
+    <b>int</b> key = list[position];
+    
+    // Shift larger values to the right
+    <b>while</b> (position > 0 && list[position - 1] > key)
+    {
+      list[position] = list[position - 1];
+      position--;
+    }
+    list[position] = key;
+  }
+}
+</pre>
+        <p>4. By default, a list of one number is sorted. Hence the outer loop skips 
+          position 0 and ranges from positions 1 to list.length. For the sake 
+          of discussion, let us assume a list of 6 numbers.</p>
+        <p>5. For each pass of outer, the algorithm will solve two things concerning 
+          the value stored in list[outer]. It finds the location where list[outer] 
+          needs to be inserted in the list. Second, it does a right shift on sections 
+          of the array to make room for the inserted value. </p>
+        <p>6. Constructing the inner while loop is an appropriate place to apply 
+          DeMorgan's laws:<br>
+        </p>
+      <pre>a.	The inner while loop postcondition has two possibilities:
+	The value (key) is larger than its left neighbor.
+	The value (key) moves all the way back to position 0.
+
+b.	This can be summarized as:
+
+	(0 == pos || list[pos - 1] <= key)
+
+c.	If we negate the loop postcondition we get the while loop boundary condition:
+
+	(0 != pos && list[pos-1] > key)
+
+d.	This can also be rewritten as:
+
+	((pos > 0) && (list[pos-1] > key))
+</pre>
+        <p>7. The two halves of the boundary condition cover these situations:<br>
+          <br>
+        
+        <pre>(pos > 0) - we are still on the list, keep processing
+list[pos-1] > temp) -	the value in list[pos-1] is larger than<br>                      key, keep moving left (pos--) to find <br>                      the first value smaller than key.</pre>
+        <p>8. This algorithm is appropriate when a list of data is kept in sorted 
+          order with very few changes. If a new piece of data is added, probably 
+          at the end of the list, it will get inserted back into the correct position 
+          in the list. All the other values in the list do not move and the inner 
+          while loop will not be used except when inserting a new value into the 
+          list. </p>
+        <p>9. Here is the same list of six integers to practice Insertion Sort.<br>
+        </p>
+        <p><img src="fig4.jpg" width="434" height="235"></p>
+        <p><font size=+2><u>E. Counting Steps - Quadratic Algorithms</u></font></p>
+        <p>1. These three sorting algorithms are categorized as quadratic sorts 
+          because the number of steps increases as a quadratic function of the 
+          size of the list.</p>
+        <p>2. It will be very helpful to study algorithms based on the number 
+          of steps they require to solve a problem. We will add code to the sorting 
+          template program and count the number of steps for each algorithm.</p>
+        <p>3. This will require the use of an instance variable - we'll call it 
+          steps. The steps variable will be maintained within the sorting class 
+          and be accessed through appropriate accessor and modifier methods. You 
+          will need to initialize steps to 0 at the appropriate spot in the main 
+          menu method.</p>
+        <p>4. As you type in the sorting algorithms, add increment statements 
+          for the instance variable steps. For example here is a revised version 
+          of the bubbleSort method:<br>
+        </p>
+        <pre><b>void</b> bubbleSort (<b>int</b>[] list)
+{
+  steps++;     // initialization of outer
+  <b>for</b> (<b>int</b> outer = 0; outer < list.length-1; outer++)
+  {
+    steps += 3;
+    //  1 - boundary check of outer loop;
+    //  2 - increment, outer++
+    //  3 - initialization of inner loop
+    <b>for</b> (<b>int</b> inner = 0; inner < list.length-outer-1; inner++)
+    {
+      steps += 3;
+      //  1 - boundary check of inner loop
+      //  2 - increment, inner++
+      //  3 - if comparison
+      <b>if</b> (list[inner] > list[inner+1])
+      {
+        <b>int</b> temp = list[inner]
+        list[inner] = list[inner + 1]);
+        list[inner + 1] = temp;
+        steps += 3;    // swap of list[inner] & list[inner + 1]
+      }
+    }
+  }
+}
+</pre>
+        <p>5. It is helpful to remember that a for statement is simply a compressed 
+          while statement. Each for loop has three parts: initialization, boundary 
+          check, and incrementation.</p>
+        <p>6. As you count the number of steps, an interesting result will show 
+          up in your data. As the size of the data set (n) doubles the number 
+          of steps executed increases at a quadratic rate. </p>
+        <p>7. Bubble sort is an example of a quadratic algorithm in which the 
+          number of steps required increases at a quadratic rate as the size of 
+          the data set increases.</p>
+        <p>8. A quadratic equation in algebra is one with a squared term, like 
+          x^2. As the size (n) of the array increases, the number of steps required 
+          for any of the quadratic sorts increases by an n^2 factor.<br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Sorting data by the computer is one of the best applications 
+          of computers and software. What takes hours or days by hand can be solved 
+          in seconds or minutes by a computer. However, these quadratic algorithms 
+          have problems sorting large amounts of data. More efficient sorting 
+          algorithms will be covered in later lessons.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

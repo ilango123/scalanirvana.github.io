@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>Chapter 22 - Quicksort</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 22: Quicksort</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left">Quicksort is another recursive sorting algorithm that 
+          works by dividing lists in half. Whereas mergesort divided lists in 
+          half and then sorts each sublist, quicksort will roughly sort the entire 
+          list, and then split the list in half. The order of these two sorts 
+          falls into a new category, O(N * log N). When the lists become large, 
+          either of these sorts will do an excellent job.</p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. Quicksort <br>
+          B. Order of Quicksort <br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "41%" valign="top"> 
+        <p align="left">QUICKSORT</p>
+      </td>
+      <td valign="top" width="45%"> 
+        <p align="left">&nbsp;</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Quicksort</u></font></p>
+        <p>1. Here is the overall strategy of quicksort:<br>
+          a. Quicksort chooses an arbitrary value from somewhere in the list. 
+          A common location is the middle value of the list.<br>
+          b. This value becomes a decision point for roughly sorting the list 
+          into two sublists. All the values smaller than the dividing value end 
+          up in the left sublist, while all the values greater than the dividing 
+          value end up in the right sublist.<br>
+          c. Each sublist is then recursively sorted with quicksort.<br>
+          d. The termination of quicksort occurs when a list of one value is obtained, 
+          which by definition is sorted.</p>
+        <p>2. This is the code for quicksort:<br>
+        <pre><b>void</b> quickSort (<b>int</b>[] list, <b>int</b> first, <b>int</b> last)
+{
+	<b>int</b> g = first, h = last;
+  <b>int</b> midIndex, dividingValue, temp;
+
+  midIndex = (first + last) / 2;
+  dividingValue = list[midIndex];
+  <b>do</b>
+  {
+    <b>while</b> (list[g] < dividingValue) g++;
+    <b>while</b> (list[h] > dividingValue) h--;
+    <b>if</b> (g <= h)
+    {
+      //swap(list[g], list[h]);
+      <b>int</b> temp = list[g];
+      list[g] = list[h];
+      list[h] = temp;
+      g++;
+      h--;
+    }
+  }
+  <b>while</b> (g < h);
+  <b>if</b> (h > first) quickSort (list,first,h);
+  <b>if</b> (g < last) quickSort (list,g,last);
+}</pre>
+        <p> 3. Suppose we have the following list of 9 unsorted values in an array:</p>
+        <p>17 22 34 28 19 84 11 92 1</p>
+        <p>a. The values received by the formal parameter <code>list</code> in 
+          the first call of <code>quicksort</code> are a reference to an array, 
+          1, and 9. Variable first is initialized with the value 1, and last is 
+          initialized with the value 9.</p>
+        <p>b. The <code>midIndex</code> value is calculated as (1+9) / 2, which 
+          equals 5.</p>
+        <p>c. The <code>dividingValue</code> is the value in location 5, list[5] 
+          = 19.</p>
+        <p>d. The value of 19 will be our decision point for sorting values into 
+          two lists. The list to the left will contain all the values less than 
+          or equal to 19. The list the right will contain the values larger than 
+          or equal to 19. Or simply put, small values go to the left and large 
+          values go to the right.</p>
+        <p>e. The identifiers g and h will be indices to locations in the list. 
+          The while loops will move g and h until a value is found to be on the 
+          wrong side of the dividing value of 19. The g index is initialized with 
+          the value of first and the h index is initialized with the value of 
+          last. </p>
+        <p>f. The g index starts at position 1 and moves until it &quot;sees&quot; 
+          that 22 is on the wrong side. Index g stops at location 2. </p>
+        <p>g. The h index starts at position 9. Immediately it &quot;sees&quot; 
+          that the value 1 is on the wrong side. Index h never moves and stays 
+          at position 9 of the array.</p>
+        <p>h. Since g &lt;= h (2 &lt;= 9), the values in list[2] and list[9] are 
+          swapped. After the values are swapped, index g moves one position to 
+          the right and index h moves one position to the left. </p>
+        <p>i. The values of the pointers are now: g = 3, h = 8. We continue the 
+          do-while loop until g and h have passed each other, that is when g &lt; 
+          h. At this point, the lists will be roughly sorted, with values smaller 
+          than 19 on the left, and values greater than 19 on the right.</p>
+        <p><br>
+          j. If the left sublist has more than one value, (which is determined 
+          by the h &gt; first expression), then a recursive call of quicksort 
+          is made. This call of quicksort will send the index positions which 
+          define that smaller sublist.</p>
+        <p>k. Likewise, if the right sublist has more than one value, quicksort 
+          is called again and the index positions which define that sublist are 
+          passed.</p>
+        <p><font size=+2><u>B. Order of Quicksort </u></font></p>
+        <p>1. Determining the order of quicksort, O (N*log2N), is a difficult 
+          process. The best way to understand it is to imagine a hypothetical 
+          situation where each call of quicksort results in even sublists.</p>
+        <p>2. If a list has 128 elements, the number of calls of quicksort required 
+          to move a value into its correct spot is log2128, which equals 7 steps. 
+          Dividing the list in half gives us the log2N aspect of quicksort.
+        <p>3. But we need to do this to 128 numbers, so the approximate number 
+          of steps to sort 128 numbers will be 128 * log2 128. <br>
+          A general expression of the order of quicksort will be <br>
+          O(N * log2N). An O(N * log2N) algorithm is a more specific designation 
+          of the broader category called O(N * log N). </p>
+        <p>4. A graph of an O(N*log2N) algorithm is very close to a linear algorithm. 
+          The log2N number of steps grows very slowly making quicksort a dramatic 
+          improvement over the O(N2) sorts.<br>
+        </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "14%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td valign="top" colspan="2"> 
+        <p align="left">Quicksort is generally the fastest and therefore most 
+          widely used sorting algorithm. There is a variation of quicksort named 
+          &quot;quickersort&quot; but it is still in the same class of algorithms. 
+          Once again, recursion makes fast work of a difficult task.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

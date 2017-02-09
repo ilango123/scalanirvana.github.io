@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>Chapter 9 - Switch Statements</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 9 - switch Statements<br>
+    </b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">We now conclude our coverage of control structures by 
+          learning about the multi-way selection tool, <b>switch</b>. An example 
+          application of this selection tool appears as the pull-down menus used 
+          in current software. Depending on which command is chosen, the program 
+          will select one direction out of many. The <b>switch</b> statement in 
+          Java allows such decision making.</p>
+        <p><br>
+          The key topic for this lesson is:</p>
+        <p>A. The <b>switch</b> Statements</p>
+        <p align="left"><br>
+        </p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left"><b>switch</b> </p>
+      </td>
+      <td valign="top"> 
+        <p align="left">&nbsp; </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. The switch Statements</u></font></p>
+        <p>1. The general form of a switch statement is:</p>
+        <pre><b>switch</b> (expression)<br>{<br>  <b>case</b> value1:<br>    statement1;<br>    statement2;<br>    ...<br>    <b>break</b>;<br>  <b>case</b> value2:<br>    statement3;<br>    statement4;<br>    ...<br>    <b>break</b>;<br>  <b>case</b> valuen:<br>    statement;<br>    statement;<br>    <b>break</b>;<br>  <b>default</b>:<br>    statement;<br>    statement;<br>} /* end of <b>switch</b> statement */<br></pre>
+        <p>2. The flow of control of a switch statement is illustrated in this 
+          diagram:<br>
+          <img src="fig1.jpg" width="333" height="461">
+        <p>3. The <b>switch</b> statement attempts to match the integer value
+           of the expression with one of the <b>case</b> integer values. The
+           integer value can only be of data type <strong>int</strong>, <strong>short</strong>, <strong>byte</strong>,
+           or <strong>char</strong>. No other data types are allowed.</p>
+        <p>4. If a match occurs, the statements belonging to the <b>case</b> value 
+          are executed until the <b>break</b> statement is encountered.</p>
+        <p>5. The effect of the<b> break</b> statement causes program control 
+          to jump to the end of the <b>switch</b> statement. No other cases are 
+          executed.</p>
+        <p>6. A very common error when coding a <b>switch</b> control structure 
+          is forgetting to include the <b>break</b> statements to terminate each 
+          case value. If the <b>break</b> statement is omitted, all cases following 
+          the matching <b>case</b> value are executed. This is usually very undesirable.</p>
+        <p>7. If no match occurs between the expression and the <b>case</b> values, 
+          the optional default choice is executed.</p>
+        <p>
+        <pre><b>switch </b>(day)
+{
+  <b>case</b> 1:
+    System.out.println( "Monday");
+    <b>break</b>;
+  <b>case</b> 2:
+    System.out.println ("Tuesday");
+    <b>break</b>;
+  <b>case</b> 3:
+    System.out.println ("Wednesday");
+    <b>break</b>;
+ <b> case</b> 4:
+    System.out.println ("Thursday");
+    <b>break</b>;
+  <b>case</b> 5:
+    System.out.println ("Friday");
+    <b>break</b>;
+  <b>default</b>:
+    System.out.println( "not a valid day");
+    <b>break</b>;
+}
+</pre>
+        <br>
+          8. The following example applies the switch statement to printing the 
+          work day of the week corresponding to a value (1-5):<br>
+        <p>9. Suppose we wanted to count the occurrences of vowels and consonants 
+          in a stream of text. The switch statement is able to analyze character 
+          data because such data is converted to integer (ASCII) values for processing.<br>
+        <pre><b>if</b> (('a' &lt;= letter) &amp;&amp; (letter &lt;= 'z'))<br>  <b>switch</b> (letter)<br>  {<br>    <b>case</b> 'a':<br>    <b>case</b> 'e':<br>    <b>case</b> 'i':<br>    <b>case</b> 'o':<br>    <b>case</b> 'u' :<br>		vowel++;<br>	<b>	bre</b>ak;<br>    <b>default</b> :<br>      consonant++;<br>      <b>break</b>;<br>  }<br></pre>
+        <p>a. Note that multiple <b>case</b> values can be lead to one set of 
+          statements.<br>
+          b. It is good programming practice to include a <b>break</b> statement 
+          at the end of the <b>switch</b> structure. If you need to go back and 
+          add another case statement at the end of the <b>switch</b> structure, 
+          a <b>break</b> statement already terminates the previous <b>case </b>statement.<br>
+        </p>
+        <p>10. There are programming situations where the <b>switch</b> statement 
+          should not replace an <b>if-else</b> chain. If the value being compared 
+          must fit in a range of values to result in a statement, the <b>if-else</b> 
+          statement should be used. <br>
+        <pre><b>if</b>  (score >= 90 && score <= 100) 
+	grade = 'A';
+<b>else if</b>  (score >= 80 && score < 90) 
+	grade = 'B';
+<b>else if</b> (score >= 70 && score < 80) 
+	grade = 'C';
+
+	etc...</pre>
+        <p>You should not replace the above structure with a <b>switch</b> statement.</p><br>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">The programming assignment, L.A.11.1, ACSLLand, will stretch 
+          your ability to use control structures effectively. You might want to 
+          review the content of the previous lessons before you tackle this problem. 
+          Good decomposition into single-purpose methods will make this problem 
+          easier to handle and debug.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

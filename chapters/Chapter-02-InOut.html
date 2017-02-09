@@ -1,0 +1,389 @@
+<HTML><HEAD><TITLE>Chapter 2 - Simple Input and Output</TITLE></HEAD>
+<BODY>
+  <H2 align=center>Chapter 2 - Simple I/O</H2>
+  <HR align=center width="80%">
+
+  <CENTER>
+  <Table BORDER = "0" WIDTH = "80%" CELLPADDING="10">
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>INTRODUCTION:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3">
+  <P ALIGN="left">Input and output of program 
+  data are usually referred to as I/O. There are many different ways that a Java program 
+  can perform I/O (input and output). In this lesson, we present some very simple ways to 
+  handle  text input from the keyboard and  output to the console.</P>
+  <BR>
+  <P>The key topics for this lesson are:</P>
+  <P>
+	A. Reading Input with the <B>Scanner</B> Class<BR>
+	B. Multiple Line Stream Output Expressions<BR>
+	C. <B>String</B> Objects<BR>
+	D. <B>String</B> Input
+  </P>
+  </TD>
+  </TR>
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>VOCABULARY:</B></P></TD>	
+  <TD WIDTH = "27%" VALIGN="top"><P ALIGN="left">
+  <B>Scanner</B> <a href="Scanner.html" target="_blank">(Reference)</a><BR>
+  <B>STRING</B></TD>
+  <TD WIDTH = "30%" VALIGN="top"><P ALIGN="left"><BR>
+    <B>CONCATENATE</B></P></TD>
+  <TD WIDTH = "23%" VALIGN="top"></TD>
+  </TR>
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>DISCUSSION:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">
+  <P><FONT size=+2>A. <U>Reading Input with the Scanner Class</U></FONT></P>
+  <P>1. Many of the console based programs from the preceding lessons have not been very 
+  useful. To change any of the data values in the program, it is necessary to change the 
+  variable initializations, recompile the program, and run it again. It would be more 
+  practical if the program could ask for new values for each type of data and then compute 
+  the desired output.
+  </P>
+  <P>2. However, accepting user input in Java has some technical complexities. Throughout 
+  this curriculum guide, we will use a special class, called <B>Scanner</B> <a href="Scanner.html" target="_blank">(reference)</a>, to make 
+  processing input easier and less tedious.  </P>
+  <P>3. Just as the System class provides <B>System.out</B> for output to the console, there is an object 
+  for input, <B>System.in</B>, from the keyboard. Unfortunately, the <B>System.in</B> object does not directly 
+  support convenient methods for reading numbers and strings.
+  The <B>Scanner</B> class and its methods provide convenient ways to read input from <B>System.in</B>.</P>
+  <P>4. To use the <B>Scanner</B> class, you first need to import the class from the java.util package 
+  with the statement
+  </P>
+  <PRE>
+      import java.util.Scanner;
+  </PRE>
+  <P>5. To use a <B>Scanner</B> method, you need to construct a <B>Scanner</B> object.
+  <PRE>
+      Scanner console = new Scanner (System.in);
+  </PRE>
+  Here is a list of <b>Scanner</b> methods.
+  <table border=1 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+ border:none;mso-border-alt:solid windowtext .5pt;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr>
+  <td width=149 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'><i>Method<o:p></o:p></i></p>
+  </td>
+  <td width=248 valign=top style='width:247.5pt;border:solid windowtext .5pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'><i>Returns<o:p></o:p></i></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'>int
+  nextInt()</p>
+  </td>
+  <td width=248 valign=top style='width:247.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Tnoindent style='line-height:13.0pt;mso-line-height-rule:exactly'>Returns
+  the next token as an <span style='font-family:Courier'>int</span>. If the
+  next token is not an integer, <span style='font-family:Courier'>InputMismatchException</span>
+  is thrown.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'>long
+  nextLong()</p>
+  </td>
+  <td width=248 valign=top style='width:247.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Tnoindent style='line-height:13.0pt;mso-line-height-rule:exactly'>Returns
+  the next token as a <span style='font-family:Courier'>long</span>. If the next
+  token is not an integer, <span style='font-family:Courier'>InputMismatchException</span>
+  is thrown.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'>float
+  nextFloat()</p>
+  </td>
+  <td width=248 valign=top style='width:247.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Tnoindent style='line-height:13.0pt;mso-line-height-rule:exactly'>Returns
+  the next token as a <span style='font-family:Courier'>float</span>. If the
+  next token is not a float or is out of range, <span style='font-family:Courier'>InputMismatchException</span>
+  is thrown.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'>double
+  nextDouble()</p>
+  </td>
+  <td width=248 valign=top style='width:247.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Tnoindent style='line-height:13.0pt;mso-line-height-rule:exactly'>Returns
+  the next token as a <span style='font-family:Courier'>long</span>. If the
+  next token is not a float or is out of range, <span style='font-family:Courier'>InputMismatchException</span>
+  is thrown.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'>String
+  next()</p>
+  </td>
+  <td width=248 valign=top style='width:247.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Tnoindent style='line-height:13.0pt;mso-line-height-rule:exactly'>Finds
+  and returns the next complete token from this scanner and returns it as a string;
+  a token is usually ended by whitespace such as a blank or line break. If not
+  token exists, <span style='font-family:Courier'>NoSuchElementException</span>
+  is thrown.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'>String
+  nextLine()</p>
+  </td>
+  <td width=248 valign=top style='width:247.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Tnoindent style='line-height:13.0pt;mso-line-height-rule:exactly'>Returns
+  the rest of the current line, excluding any line separator at the end.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=cdmid style='line-height:12.0pt;mso-line-height-rule:exactly'>void
+  close()</p>
+  </td>
+  <td width=248 valign=top style='width:247.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Tnoindent style='line-height:13.0pt;mso-line-height-rule:exactly'>Closes
+  the scanner.</p>
+  </td>
+ </tr>
+</table>
+  </P>
+  <P>6. Here are some example statements:
+  <PRE>
+      int num1;
+      String s1, s2;
+
+      num1 = console.nextInt( );
+      s1 = console.nextLine( );
+      s2 = console.nextLine( );
+  </PRE>
+  When the statement  <B>num1 = console.nextInt()</B> is encountered, execution of the 
+  program is suspended until an appropriate value is entered on the keyboard.
+  </P>
+  <P>7.	Any whitespace (spaces, tabs, newline) will separate input values.  When 
+  filling character variables, white space keystrokes are ignored as the character 
+  variables are filled.  If it is desirable to fill String variables with both 
+  whitespace and non-whitespace characters, the method <B>nextLine() </B> is required.
+  <PRE>
+      String str;
+      System.out.print("Enter a sentence -->  ");
+      str = console.nextLine();
+  </PRE>
+  </P>
+  <P>8. When requesting data from the user via the keyboard, it is good programming 
+  practice to provide a prompt.  An unintroduced input statement leaves the user 
+  hanging without a clue of what the program wants.  Prompt the user.
+  <PRE>
+      int number;
+      System.out.print("Enter an integer -->  ");
+      number = console.nextInt();
+  </PRE>
+  </P>
+
+  <P><FONT size=+2>B. &nbsp;<U>Multiple Line Output Expressions</U></FONT></P>
+  <P>1. We have already used examples of multiple output statements such as:
+  <PRE>
+      System.out.println("The value of sum = " + sum);
+  </PRE>
+  </P>
+  <P>2. There will be occasions when the length of an output statement 
+  exceeds one line of code.  This can be broken up several different ways.
+  <PRE>
+      System.out.println("The sum of " + num1 + " and " + num2 +
+                   " = " + (num1 + num2));  </PRE>
+  or...
+  <PRE>
+      System.out.print("The sum of " + num1 + " and " + num2);
+      System.out.println( " = " + (num1 + num2));
+  </PRE>
+  </P>
+  <P>3.	You cannot break up a <B>String</B> constant and wrap it around a line.  
+  This is NOT valid:
+  <PRE>
+      System.out.print("A long string constant must be broken
+          up into two separate quotes.  This will NOT work.");
+  </PRE>
+  However, this will work:
+  <PRE>
+      System.out.print("A long string constant must be broken"
+          + "up into two separate quotes.  This will work.");
+  </PRE>
+  </P>
+
+  <P><FONT size=+2>C</FONT><FONT size=+2>. &nbsp;<U>String Objects</U></FONT></P>
+  <P>1. Next to numbers, strings are the most important data type that most programs 
+  use. A string is a sequence of characters such as "Hello".  In Java, strings are 
+  enclosed in quotation marks, which are not themselves part of the string.</P>
+  <P>2. Java does not have an explicit string data type. Instead, the <B>String</B> class in the <B>java.lang</B> package contains class methods to create string objects and   
+  commonly used string functions.  Java loads the <B>java.lang</B> package automatically, 
+  so no special actions are required to access the <strong>String</strong> class.</P>
+  <P>3. <B>String</B> objects can be constructed in two ways:
+  <PRE>
+      String name = "Bob Binary";
+      String anotherName = new String("Betty Binary");  </PRE>
+  Due to the usefulness and frequency of use of strings, a shorter version without 
+  the keyword <B>new</B>, was developed as a short-cut way of creating a <B>String</B> 
+  object. This creates a <B>String</B> object containing the characters between quote 
+  marks, just as before. A <B>String</B> created in this method is called a 
+  <B>String literal</B>. Only <B>String</B>s have a short-cut like this. All other 
+  objects are constructed by using the <B>new</B> operator.
+  </P>
+  <P>4. Assignment can be used to place a different string into the variable.
+  <PRE>
+      name = "Boris";
+      anotherName = new String("Bessy");
+  </PRE>
+  </P>
+  <P>5.	The number of characters in a <B>String</B> is called the length of the 
+  <B>String</B>. For example, the length of "Hello World!" is 13. Class <B>String</B> has its own special  <strong>length</strong> method to computer the number of characters.
+  <PRE>
+  int n = name.length();  </PRE>
+  Unlike numbers, <B>String</B>s are objects. Therefore, you can call methods on 
+  <B>String</B>s. In the above example, the length of the <B>String</B> object <B>name</B> 
+  is computed with the method call <B>name.length()</B>.
+  </P>
+  <P>6. A <B>String</B> of length zero, containing no characters, is called the empty 
+  <B>String</B> and is written as "".
+  </P>
+  <P>7. Programmers often make one <B>String</B> object from two <B>String</B>s with the
+  <B>+</B> operator, which concatenates (connects) two or more <B>String</B>s into one 
+  <B>String</B>. Concatenation is illustrated below.
+  <PRE>
+    public class DemoStringMethods   {
+        public static void main(String[] args)   {
+            String a = new String("Any old");
+            String b = " String";
+            String aString = a + b; // aString is "Any old String"
+   
+            // Show string a
+            System.out.println("a: " + a);
+
+            // Show string b
+            System.out.println("b: " + b);
+
+            // Show the result of concatenating a and b
+            System.out.println("a + b: " + aString);
+
+            // Show the number of characters in the string
+            System.out.println("length: " + aString.length());
+        }
+    }
+
+      Run output:
+
+      a: Any old
+      b:  String
+      a + b: Any old String
+      length: 14
+  </PRE>
+  </P>
+  <P>8. Notice that using <B>String</B>s in the context of input and output statements 
+  is identical to using other data types.  
+  </P>
+  <P>9.	The <B>String</B> class will be covered in depth in a later lesson.  For now 
+  you will use <B>String</B>s for simple input and output in programs.
+  </P>
+
+  <P><FONT size=+2>D</FONT><FONT size=+2>. &nbsp;<U>String Input</U></FONT></P>
+  <P>1. The <B>Scanner</B> class has two methods for reading textual input from 
+  the keyboard. 
+  </P>
+  <P>2.	The <B>next</B> method returns a reference to a <B>String</B> object that 
+  has from zero to many characters typed by the user at the keyboard. A word is a 
+  sequence of printable characters separated from the next word by white space. 
+  White space is defined as blank spaces, tabs, or newline characters in the input 
+  stream. White space separates <B>int</B>s and <B>double</B>s on input. White space 
+  also separates words on input. When input from the keyboard, <B>next</B> stops 
+  adding text to the <B>String</B> object when the first white space is encountered 
+  on the input stream from the user.
+  </P>
+  <P>3. A <B>nextLine</B> method returns a reference to a <B>String</B> object that 
+  contains from zero to many characters entered by the user. With <B>nextLine</B>, 
+  the <B>String</B> object may contain blank spaces and tabs. The newline marker 
+  is not included. It is discarded from the input stream.
+  </P>
+  <P>4. Input is illustrated below.
+  <PRE>
+    public class DemoStringInput   {
+        public static void main(String[] args)   {
+            Scanner keyboard = new Scanner( );
+            String word1, word2, restOfLine;
+
+            // ask for input from the keyboard
+            System.out.print("Enter a line: ");
+
+            // grab the first "word"
+            word1 = keyboard.next();
+            // grab the second "word"
+            word2 = keyboard.next();
+            // read the rest of the line
+            restOfLine = keyboard.nextLine();
+
+            // output the strings
+            System.out.println("word1 = " + word1);
+            System.out.println("word2 = " + word2);
+            System.out.println("restOfLine = " + restOfLine);
+        }
+    }
+
+      Run output:
+
+      Enter a line: Hello world! I like Java Programming!
+      word1 = Hello
+      word2 = world!
+      restOfLine =  I like Java Programming!  </PRE>
+  </P>
+  </TD></TR>
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>SUMMARY/ REVIEW:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">
+  <P>The  class <B>Scanner</B>  will be used in many 
+  programs.  The labs in this lesson will provide an opportunity to practice using 
+  simple I/O and formatting.  </P>
+  </TD></TR>
+  </TABLE>
+  </CENTER>
+<P>
+   <BR><BR>
+   <CENTER><A href="../../index.html">Back to Java Main Page</A>
+  </CENTER>
+</P>
+</BODY>
+</HTML>

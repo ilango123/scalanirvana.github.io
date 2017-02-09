@@ -1,0 +1,521 @@
+<html>
+<head>
+<title>Chapter 6: If-else</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p align="center"><font size="5"><b>Chapter 6: Structured Programming, Control 
+  Structures, <br>
+  if-else Statements, Pseudocode</b></font><br>
+</p>
+<table border = "0" width = "80%" cellpadding="10" align="center">
+  <tr> 
+    <td width = "13%" valign="top"> 
+      <p align="left"><b>INTRODUCTION:</b></p>
+    </td>
+    <td valign="top" colspan="2"> 
+      <p align="left">This lesson is the first of four covering the standard control 
+        structures of a high-level language. Using such control structures requires 
+        the creation of simple to complex Boolean statements that evaluate to 
+        true or false. After covering the relational and logical operators available 
+        in Java, the remainder of this lesson will present the <b>if-else</b> 
+        control structure.</p>
+      <p>The key topics for this lesson are:<br>
+      </p>
+      <p> A. Structured Programming<br>
+        B. Control Structures<br>
+        C. Algorithm Development and Pseudocode<br>
+        D. Relational Operators<br>
+        E. Logical Operators<br>
+        F. Precedence and Associativity of Operators<br>
+        G. The <b>if-else </b>Statements<br>
+        H. Compound Statements<br>
+        I. Nested <b>if-else</b> Statements<br>
+        J. Conditional Operator<br>
+        K. Boolean Identifiers<br>
+        <br>
+      </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width = "13%" valign="top"> 
+      <p align="left"><b>VOCABULARY:</b></p>
+    </td>
+    <td width = "42%" valign="top"> 
+      <p align="left"> STRUCTURED PROGRAMMING<br>
+        CONTROL STRUCTURE<br>
+        SELECTION<br>
+        ALGORITHM<br>
+        LOGICAL OPERATOR<br>
+        IF-ELSE <br>
+        STEPWISE REFINEMENT<br>
+        CONDITIONAL OPERATOR </p>
+    </td>
+    <td width = "45%" valign="top"> 
+      <p align="left"> SEQUENCE<br>
+        ITERATION<br>
+        PSEUDOCODE<br>
+        RELATIONAL OPERATOR<br>
+        COMPOUND STATEMENT<br>
+        BOOLEAN IDENTIFIER </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width = "13%" valign="top"> 
+      <p align="left"><b>DISCUSSION:</b></p>
+    </td>
+    <td valign="top" colspan="2"> 
+      <p align="left"> 
+      <p><font size=+2>A. <u>Structured Programming</u></font></p>
+      <p>1. Up to this point in your study of computer science and Java, you have 
+        created programs that used only sequential execution. So far most programs 
+        have consisted of a sequence of lines that are executed once, line-by-line. 
+        As we add the power of loops and selection, we need to use these tools 
+        in a disciplined manner. </p>
+      <p>2. In the early days of programming (1960's), the approach to writing 
+        software was relatively primitive and ineffective. Much of the code was 
+        written with <b>goto</b> statements that transferred program control to 
+        another part of the code. Tracing this type of code was an exercise in 
+        jumping from one spot to another, leaving behind a trail of lines similar 
+        to spaghetti. The term &quot;spaghetti code&quot; comes from trying to 
+        trace code linked together with <b>goto</b> statements.</p>
+      <p>3. The research of Bohm and Jacopini has led to the rules of structured 
+        programming. Here are five tenets of structured programming.</p>
+      <p>a. &nbsp;&nbsp;No goto statements are to be used in writing code.<br>
+        b. &nbsp;&nbsp;All programs can be written in terms of three control structures: 
+        sequence, selection, and iteration.<br>
+        c.&nbsp;&nbsp; Each control structure has one entrance point and one exit 
+        point. We will sometimes allow for &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;multiple 
+        exit points from a control structure using the break statement.<br>
+        d. &nbsp;&nbsp;Control structures may be stacked (sequenced) one after 
+        the other.<br>
+        e. &nbsp;&nbsp;Control structures may be nested inside other control structures.<br>
+      </p>
+      <p>4. The control structures of Java encourage structured programming. Staying 
+        within the guidelines of structured programming has led to great productivity 
+        gains in the field of software engineering.</p>
+      <p><font size=+2>B. &nbsp;<u>Control Structures</u></font></p>
+      <p>1. There are only three necessary control structures needed to write 
+        programs: sequence, selection, and iteration. 
+      <p> 
+      <p></p>
+      <p>2. Sequence refers to the line-by-line execution as used in your programs 
+        so far. The program enters the sequence, does each step, and exits the 
+        sequence.
+      <p></p>
+      <p>3. Selection is the control structure that allows choice among different 
+        directions. Java provides different degrees of selection:
+      <p>oOne-way selection with an if structure<br>
+        o Two-way selection with an if-else structure<br>
+        o Multiple selection with a switch structure<br>
+        <br>
+      <p></p>
+      <p>4. Iteration refers to looping. Java provides three loop structures:
+      <p> o <b>while</b> loops<br>
+        o <b>do-while</b> loops<br>
+        o <b>for</b> loops<br>
+      </p>
+      <p></p>
+      <p>5. Of the seven control structures, the <b>if-else</b> and <b>while</b> 
+        loop are the most flexible and powerful for problem-solving. The other 
+        control structures have their place, but <b>if-else</b> and <b>while</b> 
+        are the most common control structures used in Java code.
+      <p>6. The diagrams in H.A.8.2, <i>Control Structures in Java</i>, are flowcharts 
+        that describe the flow of program control. A statement rectangle in any 
+        control structure can be a simple line or even another control structure. 
+        A statement can also be a compound statement which consists of multiple 
+        statements.</p>
+      <p><font size=+2>C. &nbsp;<u>Algorithm Development and Pseudocode</u></font></p>
+      <p>1. An algorithm is a solution to a problem. Computer scientists are in 
+        the problem-solving business. They use techniques of structured programming 
+        to develop solutions to problems. Algorithms will range from the easier 
+        &quot;finding the average of two numbers&quot; to the more difficult &quot;visiting 
+        all the subdirectories on a hard disk, searching for a file.&quot;</p>
+      <p>2. A major task of the implementation stage is the conversion of rough 
+        designs into refined algorithms that can then be coded in the implementation 
+        language of choice.</p>
+      <p>3. Pseudocode refers to a rough-draft outline of an answer, written in 
+        English-like terms. We will probably use phrases and words that are close 
+        to programming languages, but avoid using any specific language. Once 
+        the pseudocode has been developed, translation into code occurs more easily 
+        than if we had skipped this pseudocode stage.</p>
+      <p>4. Stepwise refinement is the process of gradually developing a more 
+        detailed description of an algorithm. Problem solving in computer science 
+        involves overall development of the sections of a program, expanding each 
+        section with more detail, later working out the individual steps of an 
+        algorithm using pseudocode, then finally writing a code solution.</p>
+      <p>5. The handout, H.A.8.3, <i>Pseudocode and Algorithm Development</i>, 
+        will present a thorough example of this process. You should read this 
+        now.
+      <p><font size=+2>D. &nbsp;<u>Relational Operators</u></font></p>
+      <p> 1. A relational operator is a binary operator that compares two values. 
+        The following symbols are used in Java as relational operators: </p>
+      <blockquote> 
+        <p> &lt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;less than<br>
+          &gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;greater than<br>
+          &lt;= &nbsp;&nbsp;&nbsp;less than or equal to<br>
+          &gt;=&nbsp;&nbsp; &nbsp;greater than or equal to<br>
+          == &nbsp;&nbsp;&nbsp;equal to<br>
+          != &nbsp;&nbsp;&nbsp;&nbsp;not equal to<br>
+        </p>
+      </blockquote>
+      <p>2. A relational operator is used to compare two values, resulting in 
+        a relational expression. For example:</p>
+      <pre>number &gt; 16 'F' == grade passing &gt;= 60</pre>
+      <p>3. The result of a relational expression is a <b>boolean</b> value, <b>true</b> 
+        or <b>false</b>.</p>
+      <p>4. When character data is compared, the ASCII code values are used to 
+        determine the answer. The following expressions result in the answers 
+        given:</p>
+      <blockquote> 
+        <p> 'A' &lt; 'B' evaluates as true, (65 &lt; 66)<br>
+          'd' &lt; 'a' evaluates as false, (100 &lt; 97)<br>
+          't' &lt; 'X' evaluates as false, (116 &lt; 88)</p>
+      </blockquote>
+      <p> In the last example, you must remember that upper case letters come 
+        first in the ASCII collating sequence; the lower case letters follow after 
+        and consequently have larger ASCII values than do upper case ('A' = 65, 
+        'a' = 97).<br>
+      </p>
+      <p><font size=+2>E. &nbsp;<u>Logical Operators</u></font></p>
+      <p>1. The three logical operators of programming are AND, OR, and NOT. These 
+        operators are represented by the following symbols in Java:</p>
+      <blockquote> 
+        <p> AND &amp;&amp;<br>
+          OR || (two vertical bars)<br>
+          NOT !<br>
+        </p>
+      </blockquote>
+      <p>2. The <u>and</u> operator requires both operands (values) to be true 
+        for the result to be true.</p>
+      <blockquote> 
+        <p> T and T = true<br>
+          T and F = false<br>
+          F and T = false<br>
+          F and F = false</p>
+      </blockquote>
+      <p>3. The following are Java examples of using the &amp;&amp; (and) operator.
+      <pre> ( (2 &lt; 3) &amp;&amp; (3.5 &gt; 3.0) ) evaluates as true
+ ( (1 == 0) &amp;&amp; (2 != 3) ) evaluates as false</pre>
+      <p> The &amp;&amp; operator performs short-circuit evaluation in Java. If 
+        the first half of an &amp;&amp; statement is false, the operator immediately 
+        returns false without evaluating the second half.<br>
+      </p>
+      <p>4. The or operator requires only one operand (value) to be true for the 
+        result to be true.</p>
+      <p> T or T = true<br>
+        T or F = true<br>
+        F or T = true<br>
+        F or F = false<br>
+      </p>
+      <p>5. The following is a Java example of using the || (or) operator.</p>
+      <p> ( (2+3 &lt; 10) || (21 &gt; 19) ) evaluates as true</p>
+      <p> The || operator also performs short-circuit evaluation in Java. If the 
+        first half of an || statement is true, the operator immediately returns 
+        true without evaluating the second half.<br>
+      </p>
+      6. The ! operator is a unary operator that changes a boolean value to its 
+      opposite. 
+      <blockquote>
+        <p> ! false = true<br>
+          ! true = false</p>
+      </blockquote>
+      <p><font size=+2><a name="precedence"></a>F. &nbsp;<u>Precedence and Associativity of Operators</u></font></p>
+      <p>1. Introducing two new sets of operators (relational and logical) adds 
+        to the complexity of operator precedence in Java. An abbreviated precedence 
+        chart is included here. The complete precedence chart was given in Handout 
+        H.A.4.2, <i>Operator Precedence in Java</i>.</p>
+      <p>Table 8-1 Precedence and Associativity of Operators<br>
+      </p>
+      <table width="66%" border="0">
+        <tr valign="top"> 
+          <td> 
+            <div align="center">Operator</div>
+          </td>
+          <td> 
+            <div align="center">Associativity</div>
+          </td>
+        </tr>
+        <tr valign="top"> 
+          <td> 
+            <div align="center"> 
+              <p>! unary - ++ --<br>
+                * / % <br>
+                + -<br>
+                &lt; &lt;= &gt; &gt;=<br>
+                == !=<br>
+                &amp;&amp; <br>
+                || <br>
+                = += -= *= /= </p>
+            </div>
+          </td>
+          <td> 
+            <div align="center">right to left<br>
+              left to right<br>
+              left to right<br>
+              left to right<br>
+              left to right<br>
+              left to right<br>
+              left to right<br>
+              right to left </div>
+          </td>
+        </tr>
+      </table>
+      <p>2. Because the logical operators have low precedence in Java, parentheses 
+        are not needed to maintain the correct order of solving problems. However, 
+        they can be used to make complex expressions more readable.
+      <p> ((2 + 3 &lt; 10) &amp;&amp; (75 % 12 != 12)) {easier to read}<br>
+        (2 + 3 &lt; 10 &amp;&amp; 75 % 12 != 12) {harder to read}<br>
+      </p>
+      <p><font size="+2">G. <u>The if-else Statements</u></font>
+      <p>1. The general syntax of the if-else statement is as follows:
+      <pre>    <b>if</b> (expression)
+         statement1;
+    <b>else</b>
+         statement2;<br>
+</pre>
+      2. <b>if</b> statements may omit the <b>else</b> option which result in 
+      one-way selection. 
+      <pre>    <b>if</b> (expression)
+         statement1;</pre>
+      <p> If the expression is <b>true</b>, the statement is executed, otherwise 
+        nothing is executed. The following flowchart illustrates the flow of control.<br>
+        <img src="fig1.jpg" width="202" height="153"> </p>
+      <p>3. The full <b>if-else</b> statement allows for two-way control. If the 
+        value of the expression is true, statement1 is executed. If the value 
+        of the expression equals false, the <b>else</b> option results in statement2 
+        being executed. The following flowchart from handout, H.A.8.2, illustrates 
+        the flow of control.<br>
+        <img src="fig2.jpg" width="308" height="236"> </p>
+      <p>4. The expression being tested must always be placed in parentheses. 
+        This is a common source of syntax errors.</p>
+      <p>5. Note that a semicolon must be placed after statement1, if the <b>else</b> 
+        option is used.<br>
+      </p>
+      <p><font size="+2"><u>H. Compound Statements </u></font></p>
+      <p>1. The statement executed in a control structure can be a block of statements, 
+        grouped together into a single compound statement.</p>
+      <p>2. A compound statement is created by enclosing any number of single 
+        statements by braces as shown in the following example:<br>
+      </p>
+      <pre>if (expression)<br>{<br>  statement1;<br>  statement2;<br>  statement3;<br>}<br>else<br>{
+  statement4;<br>  statement5;<br>  statement6;<br>}</pre>
+      <p><u>I. Nested if-else Statements</u></p>
+      <p>1. The statement inside of an <b>if</b> or <b>else</b> option can be 
+        another <b>if-else</b> statement. Placing an <b>if-else</b> inside another 
+        is known as nested <b>if-else</b> constructions. For example:<br>
+        
+      <pre>if (expression1)
+    if (expression2)
+        statement1;<br>    else
+        statement2;
+    else
+        statement3;</pre>
+      2. The <b>else</b> option will be paired with the nearest unpaired <b>if</b>. 
+      Statement2 is the alternative action of the inner <b>if</b>, while statement3 
+      is the alternative action of the outer <b>if</b>. 
+      <p>3. The above example has three possible different outcomes as shown in 
+        the following chart:<br>
+      </p>
+      <table border="1" align="center">
+        <tr> 
+          <td> 
+            <div align="center"><b>expression 1</b></div>
+          </td>
+          <td> 
+            <div align="center"><b>expression2</b></div>
+          </td>
+          <td> 
+            <div align="center"><b>statement executed</b></div>
+          </td>
+        </tr>
+        <tr> 
+          <td> 
+            <div align="center">true </div>
+          </td>
+          <td> 
+            <div align="center">true </div>
+          </td>
+          <td> 
+            <div align="center">statement1</div>
+          </td>
+        </tr>
+        <tr> 
+          <td> 
+            <div align="center">true</div>
+          </td>
+          <td> 
+            <div align="center">false</div>
+          </td>
+          <td> 
+            <div align="center">statement2</div>
+          </td>
+        </tr>
+        <tr> 
+          <td> 
+            <div align="center">false</div>
+          </td>
+          <td> 
+            <div align="center">true</div>
+          </td>
+          <td> 
+            <div align="center">statement3</div>
+          </td>
+        </tr>
+        <tr> 
+          <td> 
+            <div align="center">false</div>
+          </td>
+          <td> 
+            <div align="center">false</div>
+          </td>
+          <td> 
+            <div align="center">statement3</div>
+          </td>
+        </tr>
+      </table>
+      <p>4. Caution must be shown when using <b>else</b> statements inside of 
+        nested <b>if-else</b> structures. For example:</p>
+      <p>
+      <pre><b>if</b> (expression1)
+    <b>if</b> (expression2)
+        statement1;<br><b>else</b>
+    statement2;</pre>
+      Indentation is ignored by the compiler, hence it will pair the <b>else</b> 
+      statement with the inner if. If you want the <b>else</b> to get paired with 
+      the outer <b>if</b> as the indentation indicates, you need to add braces:<br>
+      <pre><b>if</b> (expression1)
+{
+<b>   if</b>(expression2)
+		statement1;
+}
+<b>else</b>
+	statement;
+</pre>
+      <p>The braces allow the else statement to be paired with the outer <b>if</b>.</p>
+      <p>5. Another alternative to the example in Section 4. makes use of the 
+        &amp;&amp; operator. A pair of nested <b>if</b> statements can be coded 
+        as a single compound &amp;&amp; statement.<br>
+      <Pre>if (expression1 && expression2)
+	statement1;
+else
+	statement2;</pre>
+      6. The most common and effective use of nested <b>if-else</b> statements 
+      is called an <b>if-else</b> chain. See the following formatting styles:
+      <table width="75%" border="0">
+        <tr>
+          <td width="54%">Formatting style 1</td>
+          <td width="46%">Formatting style 2</td>
+        </tr>
+      </table>
+      <br>
+      <table width="75%" border="1">
+        <tr>
+          <td>
+            <pre><b>if</b> (expression1)
+ 	statement1;
+<b>else</b>	
+     <b>if</b> (expression2)
+			statement2;	
+	<b>	else</b>
+	<b>if	</b> (expression3)
+			statement3;
+	<b>	else</b>
+			statement4;</pre>
+          </td>
+          <td>
+            <pre><b>if</b> (expression1)
+	 	statement1;
+<b>else if</b> (expression2)
+		statement2;
+<b>else if</b> (expression3)
+		statement3;
+<b>else</b>
+		statement4;</pre>
+          </td>
+        </tr>
+      </table>
+      <p>Notice that each successive <b>if-else</b> statement is buried deeper 
+        in the overall structure. Statement4 will only be executed if the first 
+        three expressions are zero (false). </p>
+      <p>7. Formatting style 1 lines up the <b>if</b> with its counterpart <b>else</b> 
+        keyword. This makes it easy to check syntax but the indentation can get 
+        rather deep. Formatting style 2 is a more compact version but you need 
+        to be careful about which <b>else</b> statement belongs to which <b>if</b>. 
+        Formatting style 1 is more appropriate if the statements are compound 
+        statements. Formatting style 2 is appropriate if the statements are single-line 
+        statements.<br>
+      </p>
+      <p>8. The advantage of such an <b>if-else</b> chain is efficiency in execution. 
+        If a non-zero value (true) is encountered at any level, that statement 
+        is executed and the rest of the structure is ignored.</p>
+      <p>9. Consider the following example of determining the type of triangle 
+        given the three sides A, B, and C.<br>
+		
+      <pre><b>if</b> ( (A  == B) && (B == C) )
+	System.out.println("Equilateral triangle");
+<b>else  if</b> ( (A == B) || (B == C) || (A == C) )
+	System.out.println("Isosceles triangle");
+<b>else</b>
+	System.out.println("Scalene triangle");</pre>
+      <p>If an equilateral triangle is encountered, the rest of the code is ignored. 
+        Such a chain is best constructed by placing the most demanding case at 
+        the top and the least demanding case at the bottom.<br>
+      </p>
+      <p><u>J. Conditional Operator (optional) </u></p>
+      <p>1. Java provides an alternate method of coding an <b>if-else </b>statement 
+        using the conditional operator. This operator is the only ternary operator 
+        in Java as it requires three operands. The general syntax is:</p>
+      <pre> (condition) ? statement1 : statement2;</pre>
+      <p>2. If the condition is <b>true</b>, statement1 is executed. If the condition 
+        is <b>false</b>, statement2 is executed.</p>
+      <p>3. This is appropriate in situations where the conditions and statements 
+        are fairly compact.</p>
+      <pre><b>int</b> max (int a, int b) // returns the larger of two integers
+{
+   (a &gt; b) ? return a : return b;
+}
+</pre>
+      <u>K. Boolean Identifiers</u> 
+      <p>1. The execution of<b> if-else </b>statements depends on the value of 
+        the Boolean expression. We can use <b>boolean</b> variables to write code 
+        that is easier to read. </p>
+      <p>2. For example, the <b>boolean</b> variable done could be used to write 
+        code which is more English-like.</p>
+      <p> Instead of<br>
+      <pre><b>if</b> (done == <b>true</b>)  
+  System.out.println("We are done!");
+
+	we can write
+
+<b>if</b> (done) 
+  System.out.println("We are done!");<br></pre>
+      <p>3. Using Boolean identifiers with conditional loops allows a separation 
+        of solving expressions from thinking about program control. Here is an 
+        example solution using the <b>while</b> control structure (to be covered 
+        in the next lesson), presented in a blend of Java and pseudocode:<br>
+        
+      <pre><b>boolean</b> done = false;
+
+<b>while</b> (!done)
+        do some code which could change the value of done</pre>
+      <p>4. Where appropriate you are encouraged to use <b>boolean</b> variables 
+        to aid in program flow and readability. </p>
+      </td>
+  </tr>
+  <tr> 
+    <td width = "13%" valign="top"> 
+      <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+    </td>
+    <td valign="top" colspan="2"> 
+      <p align="left"> 
+      <p>Control structures are a fundamental part of high level languages. Fluency 
+        in any high level language only comes with practice. You will need to 
+        practice control structures in Java as well as all other aspects of the 
+        language.</p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

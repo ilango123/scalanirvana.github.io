@@ -1,0 +1,346 @@
+<html>
+<head>
+<title>Chapter 12 - Inheritance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"><b><font size="5">STUDENT OUTLINE </font></b> 
+  <p><font size="5"><b>Chapter 12 - Inheritance</b></font></p>
+  <hr width="80%">
+  <font size="5"><b> </b></font> 
+  <table border = "0" width = "80%" cellpadding="10">
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>INTRODUCTION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Inheritance is a major component of a powerful and popular 
+          programming technique known as object-oriented-programming. Inheritance 
+          is a technique that will allow you to define a very general class and 
+          then later define more specialized classes by simply adding some new 
+          details to the older more general class definitions. This save work 
+          because the more specialized class inherits all the properties of the 
+          general class and you, the programmer, need only program the new features.</p>
+        <p>The key topics for this lesson are:</p>
+        <p>A. Single Inheritance<br>
+          B. Class Hierarchies <br>
+          C. Using Inheritance <br>
+          D. Method Overriding </p>
+        <p align="left"><br>
+        </p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>VOCABULARY:</b></p>
+      </td>
+      <td width = "27%" valign="top"> 
+        <p align="left">PARENT CLASS<br>
+          BASE CLASS<br>
+          CHILD CLASS </p>
+      </td>
+      <td valign="top"> 
+        <p align="left">SUPERCLASS<br>
+          SUBCLASS<br>
+          DERIVED CLASS </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>DISCUSSION:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left"> 
+        <p><font size=+2><u>A. Single Inheritance</u></font></p>
+        <p>1.Inheritance enables you to define a new class based on a class that 
+          already exists. The new class will be similar to the existing class, 
+          but will have some new characteristics. This makes programming easier, 
+          because you can build upon your previous work instead of starting out 
+          from scratch.</p>
+        <p>2. The class that is used as a basis for defining a new class is called 
+          a superclass (or<i> parent class</i> or <i>base class</i>). The new 
+          class based on the superclass is called a subclass (or <i>child class</i> 
+          or <i>derived class</i>.) </p>
+        <p>3. In Java, (unlike with humans) children inherit characteristics from 
+          just one parent. This is called single inheritance. Some languages allow 
+          a child to inherit from more than one parent. This is called multiple 
+          inheritance. With multiple inheritance, it is sometimes hard to tell 
+          which parent will contribute what characteristics to the child (as with 
+          humans.) Java avoids these problems by using single inheritance. </p>
+        <p></p>
+        <p><br>
+          4. The figure shows a superclass and a subclass. The line between them 
+          shows the &quot;is a kind of&quot; relationship. Notice that the arrow 
+          points to the superclass. The picture can be read as &quot;a Movie is 
+          a kind of Video.&quot; The clouds represent classes. That is, the picture 
+          does not show any particular Car or any particular Ford, but shows that 
+          the class Ford is a subclass of the Car class. </p>
+        <p align="center"><img src="fig1.jpg" width="312" height="247"><br>
+        </p>
+        <p>5. Inheritance is between classes, not between objects. A superclass 
+          is a blueprint that is followed when an object is constructed. A subclass 
+          of the superclass is another blueprint (that looks much like the original), 
+          but with added features. The subclass is used to construct objects that 
+          look like the superclass ' objects, but with added features. </p>
+        <p align="center"><img src="fig2.jpg" width="344" height="316"></p>
+        <p></p>
+        <p>6. The figure shows a superclass and a subclass, and some objects that 
+          have been constructed from each. These objects are shown as rectangles 
+          (to convey the idea that they are more real than the classes, which 
+          are only designs.) In the picture, &quot;Dilbert's Movie,&quot; &quot;Ada's 
+          Star Wars,&quot; and &quot;Owen's Star Wars&quot; represent actual objects. 
+          The cloudy classes represent designs that were used to construct the 
+          objects. <br>
+        </p>
+        <p><font size=+2><u>B. Hierarchies</u></font></p>
+        <p>1. 1. In a hierarchy, each class has at most one superclass, but might 
+          have several subclasses. There is one class, at the &quot;top&quot; 
+          of the hierarchy that has no superclass. This is sometimes called the 
+          root of the hierarchy. </p>
+        <p align="center"><img src="fig3.jpg" width="356" height="277"></p>
+        <p>The figure shows a hierarchy of classes. It shows that &quot;<code>MusicVideo</code> 
+          is a kind of <code>Video</code>,&quot; &quot;<code>Movie</code> is a 
+          kind of <code>Video</code>,&quot; and that &quot;<code>HomeMovie</code> 
+          is a kind of <code>Video</code>.&quot; It also shows that &quot;<code>StarWars</code> 
+          is a kind of <code>Movie</code>.&quot; </p>
+        <p>2. A <i>derived</i> class is a class defined by adding instance variables 
+          and methods to an existing class. The existing class that the derived 
+          class is built upon is called the <i>base class</i>. In our example, 
+          the class Video is the base class and the classes <code>MusicVideo, 
+          Movie, HomeMovie, and StarWars</code> are derived classes. </p>
+        <p>3. The terms &quot;superclass&quot; and &quot;subclass&quot; are not 
+          absolute. Any class may be the superclass for a subclass derived from 
+          it. Just as with human relationships, an individual is a child to some 
+          relatives and a parent to others. </p>
+        <p>4. In Java, the syntax for deriving a child class from a parent class 
+          is:<br>
+        <pre><b>class </b>subclass <b>extends</b> superclass
+{
+   // new characteristics of the subclass go here
+} 
+</pre>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p>5. Several classes can be declared as subclasses of the same superclass. 
+          The subclasses, which might be referred to as &quot;sibling classes,&quot; 
+          share some structures and behaviors - namely, the ones they inherit 
+          from their common superclass. The superclass expresses these shared 
+          structures and behaviors. In the diagram above, classes <code>MusicVideo, 
+          Movie,</code> and <code>HomeMovie</code> are sibling classes. Inheritance 
+          can also extend over several &quot;generations&quot; of classes. This 
+          is shown in the diagram, where class <code>StarWars</code> is a subclass 
+          of class <code>Movie </code>which is itself a subclass of class Video. 
+          In this case, class <code>StarWars</code> is considered to be a subclass 
+          of class <code>Video</code>, even though it is not a direct subclass.</p>
+        <p></p>
+        <p><font size=+2><u>C. Using Inheritance</u></font></p>
+        <p>1. Here is a program that uses a class <code>Video</code> to represent 
+          movies available at a video rental store. The <code>Video</code> class 
+          has basic information in it, and would be OK for documentaries and instructional 
+          tapes. But movies need more information. An additional class, <code>Movie</code>, 
+          is created that is similar to <code>Video</code>, but has the name of 
+          the director and a rating. </p>
+        <pre><b>class</b> Video
+{
+  <b>protected</b> String  myTitle;     // name of the item
+  <b>protected int</b>     myLength;    // number of minutes
+  <b>protected boolean</b> myIsAvail;   // is the tape in the store?
+
+  <b>public</b> Video(String title, <b>int</b> len)
+  {
+    myTitle = title; myLength = len ; myIsAvail = true; 
+  }
+
+  <b>public</b> String toString()
+  {
+    <b>return</b> myTitle + ", " + myLength +
+           " min. available: " + myIsAvail;
+  }
+}
+
+<b>class</b> Movie <b>extends</b> Video
+{
+  <b>protected</b> String  myDirector;     // name of the director
+  <b>protected</b> String  myRating;       // G, PG, R, or X
+
+  // constructor
+  <b>public </b>Movie(String title, <b>int</b> len, String dir, String rating)
+  {
+    // use the super class' constructor
+    <b>super</b>(title, len);
+
+    // initialize what's new to Movie
+    myDirector = dir;  myRating = rating;
+  }
+}
+
+<b>class</b> VideoStore
+{
+
+  <b>public static void </b>main (String args[])
+  {
+    Video item1 = <b>new</b> Video("Juiced on Java", 90 );
+    Movie item2 = <b>new </b>Movie("Just Java", 120, "Gosling", "PG" );
+    System.out.println(item1.toString());
+    System.out.println(item2.toString());
+  }
+}
+</pre>
+        <p>2. The class Movie is a derived class (subclass) of Video. An object 
+          of type Movie has the following members in it: </p>
+        <table width="75%" border="1">
+          <tr>
+            <td>
+              <div align="center"><b>Members</b></div>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="18"><code>MyTitle</code></td>
+            <td height="18">inherited from <code>Video</code></td>
+          </tr>
+          <tr>
+            <td><code>myLength</code></td>
+            <td>inherited from <code>Video</code></td>
+          </tr>
+          <tr>
+            <td><code>myIsAvail</code></td>
+            <td>inherited from <code>Video</code></td>
+          </tr>
+          <tr>
+            <td><code>toString()</code></td>
+            <td>inherited from <code>Video</code></td>
+          </tr>
+          <tr>
+            <td><code>myDirector</code></td>
+            <td>defined in <code>Movie</code></td>
+          </tr>
+          <tr>
+            <td><code>myRating</code></td>
+            <td>defined in <code>Movie</code></td>
+          </tr>
+        </table>
+        <p>Both classes are defined: the Video class can be used to construct 
+          objects of that type, and now the Movie class can be used to construct 
+          objects of the Movie type. </p>
+        <p>3. The class definition for Video has a constructor that initializes 
+          the member data of Video objects. The class Movie has a constructor 
+          that initializes the data of Movie objects. The constructor for class 
+          Movie looks like this: <br>
+        <pre>// constructor
+<b>public</b> Movie(String title, <b>int</b> len, String dir, String rating)
+{
+  // use the super class' constructor
+  <b>super</b>(title, len);
+
+  // initialize what's new to Movie
+  myDirector = dir;  myRating = rating;
+}
+</pre>
+        <p>The statement super(title, len) invokes the base class' constructor 
+          to initialize some of the data. Then the next two statements (on one 
+          line) initialize the members that only Movie has. When super is used 
+          in this way, it must be the first statement in the subclass' constructor. 
+        </p>
+        <p>4. It is not necessary to use super; the following would also work 
+          as a constructor for Movie: <br>
+        </p>
+        <pre>// constructor
+<b>public</b> Movie(String title, <b>int</b> len, String dir, String rating)
+{
+  // initialize the inherited members
+  myTitle = title; myLength = len ; myIsAvail = true;
+
+  // initialize members unique to Movie
+  myDirector = dir;  myRating = rating;
+}</pre>
+        <p>In this constructor, each variable of the newly created Movie object 
+          is set to an initial value. </p>
+        <p>5. So far, we have only seen the <b>public</b> and <b>private</b> access 
+          modifiers. There is a third access modifier that can be applied to an 
+          instance variable or method. If it is declared to be <b>protected</b>, 
+          then it can be used in the class where it is defined and in any subclass 
+          of that class. This is obviously less restrictive than <b>private</b> 
+          and more restrictive than <b>public</b>. Classes that are written specifically 
+          to be used as a basis for making subclasses often have protected members. 
+          The protected members are there to provide a foundation for the subclasses 
+          to build on. But they are still invisible to the public at large.<br>
+        </p>
+        <p><font size=+2><u>D. Method Overriding</u></font></p>
+        <p>1. A derived class can <i>override</i> a method from its base class 
+          by defining a replacement method with the same signature. For example 
+          in our <code>Movie</code> subclass, the <code>toString()</code> method 
+          contained in the Video superclass can not reference the new variables 
+          that have been added to objects of type <code>Movie</code>, so nothing 
+          new is printed out. We need a new <code>toString()</code> method in 
+          the class Movie:<br>
+        <pre><br>// overrides the toString method in the parent class
+<b>public </b>String toString()
+{
+  <b>return</b> myTitle + ", " + myLength +
+         " min. available: " + myIsAvail +
+         ", dir: " + myDirector + ", " + myRating;  
+}
+</pre>
+        <p>2. Even though the base class has a toString() method, the new definition 
+          of toString() in the derived class will override the base class' version 
+          . The base class has its method, and the derived has its own method 
+          with the same name. With the change in the class Movie the following 
+          program will print out the full information for both items. <br>
+        <pre><br><b>class</b> VideoStore
+{
+  <b>public static void </b>main (String args[])
+  {
+    Video item1 = <b>new</b> Video("Samurai Jack", 90 );
+    Movie  item2 = <b>new</b> Movie("Star Wars", 120, "Lucas", "PG");
+    System.out.println(item1.toString());
+    System.out.println(item2.toString());
+  }
+}
+
+Samurai Jack, 90 min. available: true
+Star Wars, 120 min. available: true, dir: Lucas, PG
+</pre>
+        <p>The line item1.toString() calls the toString() method defined in Video, 
+          and the line item2.toString() calls the toString() method defined in 
+          Movie.</p>
+        <p>3.<code> </code>Sometimes (as in the example) you want a derived class 
+          to have its own method, but that method includes everything the derived 
+          class' method does. You can use the super reference in this situation 
+          to first invoke the original toString() method in the base class as 
+          follows:<br>
+          <br>
+        <pre><b>public</b> String toString()
+{
+  <b>return</b> <b>super</b>.toString()+ ", dir: " + myDirector + ", " + myRating;  
+}
+</pre>
+        <p>Unlike the case when super is used in a constructor, inside a method 
+          super does not have to be used in the first statement.</p>
+        </td>
+    </tr>
+    <tr> 
+      <td width = "20%" valign="top"> 
+        <p align="left"><b>SUMMARY/ REVIEW:</b></p>
+      </td>
+      <td width = "80%" valign="top" colspan="2"> 
+        <p align="left">Inheritance represents the &quot;is a kind of&quot; relationship 
+          between types of objects. In practice it may be used to a new features 
+          to an existing class. It is the primary tool for reusing your own and 
+          standard library classes. Inheritance allows a programmer to derive 
+          a new class (called a derived class or a subclass) from another class 
+          (called a base class or superclass). A derived class inherits all the 
+          data fields and methods (but not constructors) from the base class and 
+          can add its own methods or redefine some of the methods of the base 
+          class.
+      </td>
+    </tr>
+  </table>
+  <p><font size="5"><b> </b></font> </p>
+</div>
+</body>
+</html>

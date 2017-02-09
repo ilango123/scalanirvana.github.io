@@ -1,0 +1,412 @@
+<HTML><HEAD><TITLE>Chapter 4 - Classes in Java</TITLE></HEAD>
+
+<BODY>
+  <H2 align=center>Chapter 4 – Defining and Using Classes</H2>
+  <HR align=center width="80%">
+
+  <CENTER>
+  <Table BORDER = "0" WIDTH = "80%" CELLPADDING="10">
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>INTRODUCTION:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">The previous lessons 
+	have discussed how to use objects and their methods.But all the objects have 
+	been created using a class from one of the Java libraries or curriculum 
+	supplied classes. This lesson discusses how to define your own classes and 
+	objects.
+  </P>
+  <BR>
+  <P>The key topics for this lesson are:</P>
+  <P>
+  A. Designing a Class	<BR>
+  B. Determining Object Behavior<BR>
+  C. Instance Variables<BR>
+  D. Implementing Methods<BR>
+  E. Constructors<BR>
+  F. Using Classes<BR>
+  </P>
+  </TD>
+  </TR>
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>VOCABULARY:</B></P></TD>	
+  <TD WIDTH = "27%" VALIGN="top"><P ALIGN="left">
+  ATTRIBUTES<BR>NOUNS<BR>METHOD CALLS<BR>ENCASULATION</P></TD>
+  <TD WIDTH = "30%" VALIGN="top"><P ALIGN="left">
+  BEHAVIORS<BR>VERBS<BR>ACCESS SPECIFIER<BR>CONSTRUCTOR</P></TD>
+  <TD WIDTH = "23%" VALIGN="top"></TD>
+  </TR>
+
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>DISCUSSION:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">
+  <P><FONT size=+2>A. <U>Designing a Class</U></FONT></P>
+  <P>1.	One of the advantages of object-oriented design is it allows a programmer 
+	to create a new abstract data type, which is reusable in other situations.
+  </P>
+  <P>2.	When designing a new data type, two components must be identified - 
+	attributes and behaviors.
+  </P>
+  <P>3.	Consider the icons used in computer operating systems.  The attributes that 
+	describe the icon are things like a graphic pattern, colors, size, name, and 
+	its position on the screen.  Some of its behaviors would include renaming and 
+	moving its position.
+  </P>
+  <P>4.	The attributes of an object are the nouns that describe that object.  These 
+	will become the private data members of a class.
+  </P>
+  <P>5.	The behaviors of an object are the verbs that denote the actions of that 
+	object or what it does.  These will become the member functions of a class.  
+  </P>
+  
+  <P><FONT size=+2>B. &nbsp;<U>Determining Object Behavior</U></FONT></P>
+  <P>1.	In this section, you will learn how to create a simple class that describes 
+	the behavior of a bank account. Before you start programming, you need to 
+	understand how the objects of your class behave. Operations that can be 
+	carried out with a checking account could consist of:
+	<p><li>Accept a deposit
+	<li>Process a check
+	<li>Get the current balance
+  <p></P>
+  <P>2.	In Java, these operations are expressed as method calls. For example, 
+	assume we have an object checking of type CheckingAccount. The methods that 
+	invoke the required behaviors<p>
+  <pre>
+	checking.processDeposit(1000)
+	checking.processCheck(250)
+	System.out.println("Balance: " + checking.getBalance());
+</pre>
+	These methods form the behavior of the CheckingAccount class. The behavior is 
+	the complete list of the methods that you can apply to objects of a given class. 
+	An object of type CheckingAccount can be viewed as a “black box” that can carry 
+	out its methods.
+  <p></P>
+  <P>3.	To construct objects of the CheckingAccount class, it is necessary to declare 
+	an object variable
+<pre>CheckingAccount checking;</pre>
+	Object variables such as checking  are references to objects. Instead of 
+	holding an object itself, a reference variable holds the information necessary 
+	to find the object in memory.
+  <p></P>
+  <P>4.	This object variable checking does not refer to any object at all. An attempt 
+	to invoke a method on this variable would cause the compiler to generate an 
+	error indicating that the variable had not been initialized. To initialize the 
+	variable, it is necessary to create a <b>new</b> CheckingAccount object using 
+	the new operator
+<pre>checking = new CheckingAccount();</pre>
+	This call creates a new object and returns a reference to the newly created 
+	object. To use an object, you must assign that reference to an object variable.
+  <p></P>
+  <P>5. We will implement the CheckingAccount so that a newly created account has an 
+	initial balance of 1000.0 dollars.
+  <pre> // open a new account
+double initialDeposit = 1000.0;
+CheckingAccount checking = new CheckingAccount();
+
+// set initial balance to 1000.0
+checking.processDeposit(intialDeposit);
+</pre>
+<img src="fig6.jpg">
+  <P>6. Objects of the CheckingAccount class can be used to carry out meaningful tasks 
+	without knowing how the CheckingAccount objects store their data or how the 
+	CheckingAccount methods do their work. This is an important aspect of object-
+	oriented programming.
+  </P>
+  <P>7. Once we understand how to use objects of the CheckingAccount class, it is 
+	possible to design a Java class that implements its behaviors. To describe 
+	object behavior, you need to implement a class.
+<pre>
+public class CheckingAccount   {
+   // CheckingAccount data
+
+   // CheckingAccount constructors
+
+   // CheckingAccount methods
+}
+</pre>
+Three methods have already been identified
+<pre>
+public class CheckingAccount   {
+   // CheckingAccount data
+
+   // CheckingAccount constructors
+
+   public double getBalance()   {
+      // method implementation
+   }
+
+   public void processDeposit( double amount )   {
+      // method implementation
+   }
+
+   public void processCheck( double amount )   {
+      // method implementation
+   }
+}
+</pre>
+  <p></P>
+<P>8. A method header consists of the following parts:<p>
+a.&nbsp;&nbsp;&nbsp;An <i>access specifier</i> (such as <b>public</b>). The access specifier controls which other
+methods can call this method. Most methods should be declared as public so all other 
+methods in your program can call them.<br>
+b.&nbsp;&nbsp;&nbsp;The <i>return type</i> of the method (such as <b>double</b> or <b>void</b>). The return type is the type 
+of the value that the method computes. For example, in the CheckingAccount class, the 
+getBalance method returns the current account balance which is a floating-point number, 
+so its return type is <b>double</b>. The processDeposit and processCheck methods don’t return 
+any value. To indicate that a method does not return a value, you use the special type 
+<b>void</b>.<br>
+c.&nbsp;&nbsp;&nbsp;The name of the method (such as processDeposit).<br>
+d.&nbsp;&nbsp;&nbsp;A list of the parameters of the method. The parameters are the input to the method. 
+The processDeposit and processCheck methods each have one parameter, the amount of money 
+to deposit or withdraw. The type of parameter, such as <b>double</b>, and name for each 
+parameter, such as amount, must be specified. If a method has no parameters, like 
+getBalance, it is still necessary to supply a pair of parentheses () behind the method 
+name.
+
+  </P>
+<P>9. Once the method header has been specified, the implementation of the method must 
+be supplied in a block that is delimited by braces {...}. The CheckingAccount methods 
+will be implemented later in Section D.
+  </P>
+  <P><FONT size=+2>C. &nbsp;<U>Instance Variables</U></FONT></P>
+  <P>1. Each object must store its current state. The state is the set of values that 
+describe the object and that influence how an object reacts to method calls. In the case 
+of our checking account objects, the state is the current balance and an account 
+identifier. 
+  </P>
+  <P>2. Each object stores its state in one or more <i>instance variables</i>.
+  </P>
+  <P><FONT size=+1>&nbsp;<U>Program 3-1</U></FONT></P>
+  <PRE>
+  public class CheckingAccount   {
+     ...
+     private double myBalance;
+     private String myAccountNumber;
+
+     // CheckingAccount methods
+  }
+
+  </PRE>
+  <P>3. An instance variable declaration consists of the following parts:
+  </P>
+<p>a.&nbsp;&nbsp;An access specifier (such as private). Instance variables are generally declared 
+with the access specifier <b>private</b>. That means, they can be accessed only by methods of 
+the same class, not by any other method. In particular, the balance variable can be 
+accessed only by the processDeposit, processCheck, and getBalance methods.<br>
+b.&nbsp;&nbsp;The type of the variable (such as <b>double</b>).<br>
+c.&nbsp;&nbsp;The name of the variable (such as myBalance).
+<p><img src="fig6-2.jpg"></p>
+<p>4.  If instance variables are declared private, then all data access must occur 
+through the public methods. This means that the instance variables of an object are 
+effectively hidden from the programmer who uses a class. They are only of concern 
+to the programmer that implements the class. The process of hiding data is called 
+encapsulation. Although it is possible in Java to define instance variables as <b>public</b> 
+(leave them unencapsulated), it is very uncommon in practice. We will make all instance 
+variables private in this curriculum guide.</p>
+<p>5. For example, because the balance instance variable is <b>private</b>, the instance 
+variable in other code cannot be accessed:<p>
+<pre>double balance = checking.myBalance;  // compiler Error!</pre>
+However, the public getBalance method to inquire about the balance can be called:<br>
+<pre>double balance = checking.getBalance();  // OK</pre>
+  <P><FONT size=+2>D. &nbsp;<U>Implementing Methods</U></FONT></P>
+  <P>
+  1. An implementation must be provided for every method of the class. The 
+implementation for three methods of the CheckingAccount class is given below. 
+  </P>
+  <P><FONT size=+1>&nbsp;<U>Program 3-2</U></FONT></P>
+  <PRE>
+  public class CheckingAccount   {
+     private double myBalance;
+     private String myAccountNumber;
+
+     public double getBalance()   {
+        return myBalance;
+     }
+
+     public void processDeposit( double amount )   {
+        myBalance =  myBalance + amount;
+     }
+
+     public void processCheck( double amount )   {
+        myBalance =  myBalance – amount;
+     }
+  }
+
+  </PRE>
+  <P>2. The implementation of the methods is straightforward. When some amount of 
+money is deposited or withdrawn, the balance increases or decreases by that amount. 
+  </P>
+  <P>3. The getBalance method simply returns the current balance. A <b>return</b> statement 
+obtains the value that a method returns and exits the method immediately. The return 
+value becomes the value of the method call expression. The syntax of a <b>return</b> 
+statement is:
+  </P>
+  <PRE>
+      return &lt;expression&gt;;
+  </PRE>
+  or
+  <p></P>
+  <PRE>
+      return;
+  </PRE>
+
+  <P><FONT size=+2>E. &nbsp;<U>Constructors</U></FONT></P>
+  <P>1. The final requirement to implement the CheckingAccount class is to define 
+a constructor. The purpose of a constructor is to initialize the instance variables 
+of an object.
+  </P><pre>
+public class CheckingAccount   {
+    ...
+
+    public CheckingAccount()   {
+        myBalance = 0;
+        myAccountNumber = "NEW";
+    }
+    ...
+}
+</pre>
+  <P>2.	Constructors always have the same name as their class. Similar to methods, 
+constructors are generally declared as public to enable any code in a program to 
+construct new objects of the class. Unlike methods, constructors do not have return 
+types.
+  </P>
+  <P>3. Constructors are always invoked together with the new operator:
+<pre>new CheckingAccount();</pre>
+The <b>new</b> operator allocates memory for the objects, and the constructor initializes it. 
+The value of the new operator is the reference to the newly allocated and constructed object.
+<p>
+In most cases, you want to declare and store a reference to an object in an object variable as 
+follows:
+  </P>
+  <PRE>
+   CheckingAccount checking = new CheckingAccount();
+  </PRE>
+  <P>4. If  you do not initialize an instance variable that is a number, it is initialized 
+automatically to zero. Even though initialization is handled automatically for instance variables, 
+it’s a matter of good style to initialize every object’s instance variable(s) explicitly.
+  </P>
+  <p>5. An object variable is initialized to a special value called <b>null</b>, which indicates 
+that an object variable does not yet refer to an actual object.
+  </p>
+6. Many classes have more than one constructor. For example, you can supply a second constructor 
+for the CheckingAccount class that sets the balance and accountNumber instance variables to 
+initial values, which are the parameters of the constructor:
+  <PRE>
+  public class CheckingAccount   {
+       ...
+
+       public CheckingAccount()   {
+          myBalance = 0;
+          myAccountNumber = "NEW";
+       }
+
+       public CheckingAccount(double initialBalance, String acctNum)   {
+          myBalance = initialBalance;
+          myAccountNumber = acctNum;
+       }
+
+       ...
+  }
+  </PRE>
+The second constructor is used if you supply a number and a string as construction parameters.
+<pre>CheckingAccount checking = new CheckingAccount(5000, "A123");</pre>
+<p>6. Note that there are two constructors of the same name. Whenever you have 
+multiple methods (or constructors) with the same name, the name is said to be overloaded. 
+The compiler figures out which one to call by looking at the parameters.
+
+For example, if you construct a new checkingAccount object with
+<pre>CheckingAccount checking = new CheckingAccount();</pre>
+then the compiler picks the first constructor. If you construct an object with
+<pre>CheckingAccount checking = new CheckingAccount(5000, "A123");</pre>
+then the compiler picks the second contructor.
+<p>7.The implementation of the CheckingAccount class is complete and is given below:
+<pre> <b>public class</b> CheckingAccount  {
+  <b>private double</b> myBalance;
+  <b>private</b> String myAccountNumber;
+
+  <b>public</b> CheckingAccount()   {
+    myBalance = 0;
+    myAccountNumber = "NEW";
+  }
+
+  <b>public</b> CheckingAccount(double initialBalance, String acctNum)  {
+    myBalance = initialBalance;
+    myAccountNumber = acctNum;
+  }
+
+  <b>public double</b> getBalance()   {
+    <b>return</b> myBalance;
+  }
+
+  <b>public void</b> processDeposit(<b>double</b> amount)  {
+    myBalance =  myBalance + amount;
+  }
+
+  <b>public void</b> processCheck(double amount)   {
+    myBalance =  myBalance – amount;
+  }
+}
+</pre>
+  <P><FONT size=+2>F. &nbsp;<U>Using Classes</U></FONT></P>
+  <P>1. Using the CheckingAccount class is best demonstrated by writing a program that 
+solves a specific problem. We want to study the following scenario: 
+  </P>
+  <P>
+An interest bearing checking account is created with a balance of $1,000. For two years in a 
+row, add 2.5% interest. How much money is in the account after two years? 
+
+  <P>2. Two classes are required: the CheckingAccount class that was developed in the 
+preceding sections, and a second class called CheckingAccountTester. The main method of the  
+CheckingAccountTester class constructs a CheckingAccount object, adds the interest twice, then 
+prints out the balance.	
+<pre><p>class</p> CheckingAccountTester  {
+  <p>public static void</p> main( String[] args )  {
+    CheckingAccount checking =
+      <b>new</b> CheckingAccount("A123", 1000);
+
+    <b>final double</b> INTEREST_RATE = 2.5;
+    <b>double</b> interest;
+    
+    interest = checking.getBalance() * INTEREST_RATE / 100;
+    checking.processDeposit(interest);
+
+    System.out.println("Balance after year 1 is $"
+        + checking.getBalance());
+
+    interest = account.getBalance() * INTEREST_RATE / 100;
+    checking.processDeposit(interest);
+   
+    System.out.println("Balance after year 2 is $"
+        + checking.getBalance());
+  }
+}
+</pre>
+  <p></P>
+  <P>3. The classes can be distributed over multiple files or kept together in a single file. 
+If kept together, the class with the main  method must be declared as <b>public</b>. The <b>public</b> 
+attribute cannot be specified for any other class in the same file since a Java source file can 
+contain only one <b>public</b> class.
+  </P>
+  <P>4. Care must be taken to ensure that the name of the file matches the name of the  public 
+class. For example, a single file containing both the CheckingAccount class and the 
+CheckingAccountTester class must be contained in a file called CheckingAccountTester.java, not 
+CheckingAccount.java.
+  
+  </TD></TR>
+  <TR>
+  <TD WIDTH = "20%" VALIGN="top"><P ALIGN="left"><B>SUMMARY/ REVIEW:</B></P></TD>	
+  <TD WIDTH = "80%" VALIGN="top" COLSPAN="3"><P ALIGN="left">
+  <P>The topics in this lesson are critical in your study of computer science.  The concepts 
+of abstraction and object-oriented programming (OOP) will continue to be developed in future 
+lessons. Before you solve the lab exercise, you are encouraged to play with the CheckingAccount 
+class and implement objects using all the behaviors of the class.
+  </P>
+  </TD></TR>
+  </TABLE>
+  </CENTER>
+<P>
+   <BR><BR>
+   <CENTER><A href="../../index.html">Back to Java Main Page</A></CENTER>
+</P>
+</BODY>
+</HTML>
